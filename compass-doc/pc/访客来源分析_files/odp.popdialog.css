@@ -1,0 +1,76 @@
+.fl{
+	float: left;
+}
+.mt10{
+	margin-top: 10px;
+}
+.ml10{
+	margin-left: 10px;
+}
+
+.pop-dialogWindow .pop-dialog-close:hover{
+	cursor:pointer;
+}
+.pop-dialogWindow{
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	position:absolute;
+	z-index:10000;
+}
+.pop-opacity{
+	background-color:#000000;/*±³¾°É«*/
+	filter:alpha(opacity=7);
+	-moz-opacity:0.7;
+    -khtml-opacity: 0.7;
+    opacity: 0.7;
+}
+
+.pop-dialogWindow .pop-dialog-close{
+    background: url("../skin/i/popDialogClose.png") no-repeat scroll  0pt 0pt transparent;
+    display: inline-block;
+    height: 20pt;
+    line-height: 20pt;
+    vertical-align: middle;
+    width: 20px;
+}
+.pop-dialogWindow .pop-dialog-close:hover {
+    background: url("../skin/i/popDialogClose.png") no-repeat scroll -15pt 0pt transparent;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.pop-dialogWindow .dialogContainer{
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+	position:absolute;
+	border:1px solid #cccccc;
+	background-color:white;
+	z-index:20000;
+}
+.pop-dialogWindow .title-cl{
+	position:absolute;
+	right:0;
+	margin:10px;
+}
+.pop-dialogWindow .title-a{
+	height:40px;
+	line-height:40px;
+	background: -moz-linear-gradient(center bottom , #E5E5E9 0%, #FBFBFC 100%) repeat scroll 0 0 padding-box transparent;
+	background: -webkit-gradient(linear, center bottom, center top, color-stop(0%,#E5E5E9), color-stop(100%,#FBFBFC));   
+    background-color:#ededed;
+       
+}
+.pop-dialogWindow .title-t{
+	margin-left:10px;
+	height:20px;
+	font-size: 14px;
+	font-family:"SimSun";
+	color:#333333; 
+	font-weight:bold;
+}

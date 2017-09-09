@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 发送消息(message)Mapper -->
+<mapper namespace="messageMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+	<!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+
+	<sql id="Base_Column_List">
+		userid,username ,ip ,ctime ,source ,type ,shopid ,shopname ,content ,status
+	</sql>
+
+	<resultMap type="com.shifeng.message.entity.Message" id="MessageReturnMap">
+		<!-- 用户id -->
+		<id column="userid" property="userid" />
+		<!-- 用户名称 -->
+		<result column="username" property="username" />
+		<!-- Ip地址 -->
+		<result column="ip" property="ip" />
+		<!-- 时间 -->
+		<result column="ctime" property="ctime" />
+		<!-- 来源 -->
+		<result column="source" property="source" />
+		<!-- 站来源类型 0 pc 1m 2app 3 微信 -->
+		<result column="type" property="type" />
+		<!-- 商家id -->
+		<result column="shopid" property="shopid" />
+		<!-- 商家名称 -->
+		<result column="shopname" property="shopname" />
+		<!-- 消息内容 -->
+		<result column="content" property="content" />
+		<!-- 回复类型(1用户说2商家说) -->
+		<result column="status" property="status" />
+	</resultMap>
+
+	<!-- 查询所有发送消息 -->
+	<select id="findAllmessagePage" parameterType="Page" resultMap="MessageReturnMap">
+		select
+			userid ,
+			username ,
+			ip ,
+			ctime ,
+			source ,
+			type ,
+			shopid ,
+			shopname ,
+			content ,
+			status
+		from message_${t.tableName}
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND date(ctime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.userid!=null and t.userid!=''">
+            AND userid = #{t.userid}
+        </if>
+		<if  test="t.ip!=null and t.ip!=''">
+            AND ip = #{t.ip}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND type = #{t.webtype}
+        </if>
+		<if  test="t.shopId!=null and t.shopId!=''">
+            AND shopId = #{t.shopId}
+        </if>
+        <if test="t.status>0">
+		    AND status = #{t.status}
+		</if>
+		
+	</select>
+
+</mapper>

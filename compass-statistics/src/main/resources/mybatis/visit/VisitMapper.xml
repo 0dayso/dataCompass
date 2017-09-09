@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="VisitMapper">
+    
+   
+  <insert id="saveVisit" parameterType="com.shifeng.entity.visit.Visit">
+		INSERT INTO 
+			op_visit_detail_${nowYearMonth}
+			(userid,ip,channelid,sku,url,second,three,visittime,source,activeId,channelUrlId,type,shopId,county,cookieid)
+		VALUES
+			 (#{userid},#{ip},#{channelid},#{sku},#{url},#{second},#{three},#{visittime},#{source},#{activeId},#{channelUrlId},#{type},#{shopId},#{county},#{cookieid})
+  </insert>
+    
+   
+  <insert id="saveVisitList" parameterType="java.util.Map">
+		INSERT INTO 
+			op_visit_detail_${nowYearMonth}
+			(userid,ip,channelid,sku,url,second,three,visittime,source,activeId,channelUrlId,type,shopId,county,cookieid)
+		VALUES
+		<foreach collection="visitList" item="item" index="index" separator=",">
+			 (#{item.userid},#{item.ip},#{item.channelid},#{item.sku},#{item.url},#{item.second},#{item.three},#{item.visittime},#{item.source},#{item.activeId},#{item.channelUrlId},#{item.type},#{item.shopId},#{item.county},#{item.cookieid})
+ 		</foreach>
+  </insert>
+  
+    
+  <select id="getObject" resultType="com.shifeng.entity.visit.Visit">
+	 SELECT 
+	 	userid,ip,channelid,sku,url,second,three,visittime,source,activeId,channelUrlId,type,shopId,county
+	 FROM 
+	 	op_visit_detail 
+	 WHERE 
+	 	county = ''
+	 LIMIT 
+	 	1
+  
+  </select>
+  
+  <update id="update" parameterType="com.shifeng.entity.visit.Visit">
+  		update 
+  			op_visit_detail
+  		set 
+  			county = #{county}
+  		where
+  			ip = #{ip}		
+  
+  </update>
+  
+  
+	
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- PC流量分析 -->
+<mapper namespace="flowTendencyMapper">
+	
+	
+	<!-- 查询访问明细/小时      浏览量(pv) -->
+	<select id="statisticsPvBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.mp.dto.ShowFlowTendencyHourPvFlow">
+		SELECT
+			COUNT(userid) count,
+			DATE_FORMAT( visittime, '%H') AS timeHour
+		FROM
+    		op_visit_detail${tableName}
+		where
+			1=1
+			<if test="type != -1">
+			AND type = #{type}
+			</if>
+			AND DATE(visittime) = #{endDate}
+			
+		GROUP BY timeHour
+
+	</select>
+	
+	
+	<!-- 查询访客明细/小时           访客数(ip) -->
+	<select id="statisticsUvBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.mp.dto.ShowFlowTendencyHourUvFlow">
+		SELECT COUNT(ipNum) ipNum,timeHour from (
+			SELECT
+				COUNT(DISTINCT ip) ipNum,
+				DATE_FORMAT( visittime, '%H') AS timeHour
+			FROM
+    			op_visit_detail${tableName}
+			WHERE
+			1=1
+			<if test="type != -1">
+			AND type = #{type}
+			</if>
+			AND DATE(visittime) = #{endDate}
+				
+			GROUP BY ip,timeHour
+		) tab
+		group by timeHour
+	</select>
+	
+	
+	<!-- 查询访问用户明细/小时  访客数(cookie)-->
+	<select id="statisticsUserCookieBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.mp.dto.ShowFlowTendencyHourCookieFlow">
+		SELECT COUNT(cookieid) cookieNum,timeHour from (
+			SELECT
+				COUNT(DISTINCT cookieid) cookieid,
+				DATE_FORMAT( visittime, '%H') AS timeHour
+			FROM
+    			op_visit_detail${tableName}
+			WHERE
+			1=1
+			<if test="type != -1">
+			AND type = #{type}
+			</if>
+			AND DATE(visittime) = #{endDate}
+			AND cookieid is not null
+				
+			GROUP BY cookieid,timeHour
+		) tab
+		group by timeHour
+	</select>
+	
+	<!-- 查询访问用户明细/小时    访问用户数   -->
+	<select id="statisticsUservBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.mp.dto.ShowFlowTendencyHourUservFlow">
+		SELECT COUNT(useridNum) useridNum,timeHour from (
+			SELECT
+				COUNT(DISTINCT userid) useridNum,
+				DATE_FORMAT( visittime, '%H') AS timeHour
+			FROM
+    			op_visit_detail${tableName}
+			WHERE
+			1=1
+			<if test="type != -1">
+			AND type = #{type}
+			</if>
+			AND DATE(visittime) = #{endDate}
+			AND userid != 0
+				
+			GROUP BY userid,timeHour
+		) tab
+		group by timeHour
+	</select>
+	
+	
+	
+</mapper>

@@ -1,0 +1,459 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: Verdana, Arial, Lucida, Helvetica, "微软雅黑", "宋体", sans-serif;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+ul, ol, li, p, dl, dt, dd, table {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.clearfix:before, .clearfix:after {
+	display: table;
+	content: "";
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+ *zoom:1
+}
+:focus {
+	outline: 0;
+}
+a {
+	text-decoration: none;
+	color: #333;
+	cursor: pointer;
+}
+/*来源去向TOP5*/
+.compass-wrap {
+	position: relative;
+	padding: 20px;
+}
+.compass-wrap .table {
+	border-collapse: collapse;
+	text-align: right;
+}
+.compass-wrap .table tbody td {
+	border-bottom: 2px solid #fff;
+}
+.compass-wrap .table tbody tr:last-child td {
+	border-bottom: none;
+}
+.compass-wrap .compass-left .table thead {
+	background: #7dbfec;
+}
+.compass-wrap .compass-right .table thead {
+	background: #5cb85c;
+}
+.compass-wrap .table thead {
+	color: #fff;
+	font-size: 14px;
+}
+.compass-wrap .table td:nth-child(1) {
+	text-align: left;
+}
+.compass-wrap .compass-left .table tbody tr {
+	background: #edf6fd;
+	cursor: pointer;
+}
+.compass-wrap .compass-left .table tbody td .ico-right {
+	width: 19px;
+	height: 19px;
+	display: block;
+	float: left;
+	margin-right: 10px;
+	background: url(../../skin/i/shopproflow/sprites.png) no-repeat 0 -196px;
+}
+.compass-wrap .compass-left .table tbody td span {
+	display: block;
+	float: left;
+}
+.compass-wrap .compass-left .table tbody tr:hover {
+	background: #d9ebfa;
+}
+.compass-wrap .compass-left .table tbody tr.on {
+	background: #dff0df;
+}
+.compass-wrap .compass-left .table tbody tr.on .ico-right {
+	background-position: 0 -158px;
+}
+.compass-wrap .compass-right .table tbody tr {
+	background: #e4f3e4;
+}
+.compass-wrap .table thead tr {
+	height: 36px;
+}
+.compass-wrap .table tbody tr {
+	height: 35px;
+}
+.compass-wrap .table td {
+	padding: 8px 10px;
+}
+.compass-wrap .table tbody td {
+	padding: 6px 10px;
+}
+.compass-left {
+	float: left;
+	width: 30%;
+}
+.compass-right {
+	width: 30%;
+	float: right;
+	position: relative;
+}
+.compass-right .arrow {
+	width: 0;
+	height: 0;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+	border-right: 16px solid #e4f3e4;
+	position: absolute;
+	left: -16px;
+	top: 51%;
+}
+.compass-pic {
+	width: 600px;
+	position: absolute;
+	left: 50%;
+	margin-left: -300px;
+	z-index: 0;
+}
+.compass-pic .pic {
+	width: 140px;
+	height: 140px;
+	/* border-radius: 100%; */
+	overflow: hidden;
+	margin: 21px auto;
+	padding-left: 21px;
+	text-align: center;
+}
+.compass-pic img {
+	width: 99px;
+	height: 99px;
+}
+.compass-pic h6 {
+	color: #48a7e7;
+	font-size: 14px;
+	width: 245px;
+	text-align: center;
+	margin: 23px auto 0;
+	line-height: 25px;
+	height: 50px;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+.compass-pic1 {
+	background: url(../../skin/i/shopproflow/3.png) no-repeat center 0;
+	height: 152px;
+	/*top: 50px;*/
+}
+.compass-pic1 .pic {
+	padding-top: 6px;
+}
+/*关联分析*/
+.compass-wrap .title {
+	font-size: 16px;
+	text-align: center;
+}
+.compass-analysis {
+	padding: 0 60px;
+}
+.compass-wrap .list li {
+	position: relative;
+	padding-top: 7px;
+	margin-bottom: 15px;
+}
+.compass-wrap .list li .pic {
+	width: 68px;
+	height: 68px;
+	line-height: 68px;
+	text-align: center;
+	border-radius: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #fff;
+}
+.compass-wrap .list li .pic img {
+	width: 48px;
+	height: 48px;
+	padding-top: 10px;
+}
+.compass-wrap .compass-left .list li .pic, .compass-wrap .compass-left .list li .detail {
+	border: 2px solid #c3ddf1;
+}
+.compass-wrap .compass-right .list li .pic, .compass-wrap .compass-right .list li .detail {
+	border: 2px solid #c1eac1;
+}
+.compass-wrap .compass-right .list li .detail {
+	background-color: #fafefa;
+}
+.compass-wrap .list li .detail {
+	margin-left: 55px;
+	padding: 5px 5px 5px 20px;
+	color: #666;
+	background-color: #fafcff;
+}
+.compass-wrap .list li .detail p.text {
+	width: 60%;
+	float: left;
+	border-right: 1px solid #c2e3f8;
+	margin-right: 5px;
+	height: 46px;
+	overflow: hidden;
+	line-height: 23px;
+}
+.compass-wrap .compass-right .list li .detail p.text {
+	border-right-color: #cbedcb;
+}
+.compass-wrap .list li .num {
+	overflow: hidden;
+}
+.compass-wrap .list .num p {
+	line-height: 23px;
+}
+.compass-wrap .list .num p img {
+	margin-left: 5px;
+}
+.compass-wrap .list .num p i {
+	font-style: normal;
+	float: right;
+}
+.red {
+	color: #ff0303;
+}
+.green{
+	color:#5fb961;
+}
+.compass-pic3 {
+	background: url(../../skin/i/shopproflow/2.png) no-repeat center 0;
+	height: 425px;
+	top: 30px;
+}
+.compass-pic3 .pic {
+	padding-top: 107px;
+}
+/*成交转化*/
+.compass-people {
+	background: url(../../skin/i/shopproflow/1.png) no-repeat 30px 0;
+	height: 225px;
+	width: 295px;
+	float: left;
+}
+.compass-people .pic {
+	margin: 50px 0 0;
+	width: 125px;
+	height: 125px;
+	border-radius: 100%;
+	overflow: hidden;
+	padding: 3px 0 0 37px;
+}
+.compass-people p span {
+	font-size: 20px;
+}
+.compass-people p {
+	margin-top: 20px;
+}
+.compass-transform {
+	padding: 0 60px;
+}
+.compass-content {
+	overflow: hidden;
+}
+.compass-content li {
+	border: 1px solid #e5e4e4;
+	background: #fdfdfd;
+	margin-top: 5px;
+	border-radius: 3px;
+}
+.compass-content li .item {
+	float: left;
+	width: 85px;
+	text-align: center;
+	font-size: 14px;
+	padding: 13px 10px;
+	color: #666;
+}
+.compass-content li .item i {
+	background: url(../../skin/i/shopproflow/sprites.png) no-repeat;
+	display: block;
+	width: 30px;
+	height: 25px;
+	margin: 0 auto;
+}
+.compass-content li .item i.ico-1 {
+	background-position: 0 0;
+}
+.compass-content li .item i.ico-2 {
+	background-position: 0 -50px;
+}
+.compass-content li .item i.ico-3 {
+	background-position: 0 -105px;
+}
+.compass-content li p {
+	float: left;
+	color: #666666;
+	line-height: 23px;
+	padding: 4px 10px 0 0;
+}
+.compass-content li p strong {
+	font-size: 20px;
+	font-weight: normal;
+}
+.compass-content li .wrap {
+	width: 31.13%;
+	float: left;
+	padding: 0 1%;
+	margin: 6px 0;
+	border-left: 1px solid #f0eae9;
+	min-height: 58px;
+}
+.compass-content li .content {
+	overflow: hidden;
+}
+/*圆形进度条*/
+.compass-content li .circle-wrap {
+	float: right;
+	position: relative;
+}
+.compass-content li .circle {
+	width: 56px;
+	height: 56px;
+	position: absolute;
+	border-radius: 50%;
+	right: 0;
+	top: 1px;
+}
+.compass-content li .pie_left, .compass-content li .pie_right {
+	width: 56px;
+	height: 56px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.compass-content li .left, .compass-content li .right {
+	display: block;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition-duration: 0.5s, 0.5s;
+	background-color: #ccc;
+}
+.compass-content li .pie_right, .compass-content li .right {
+	clip: rect(0,auto,auto,28px);
+}
+.compass-content li .pie_left, .compass-content li .left {
+	clip: rect(0,28px,auto,0);
+}
+.compass-content li .mask {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	left: 3px;
+	top: 3px;
+	background: #FFF;
+	position: absolute;
+	text-align: center;
+	line-height: 50px;
+}
+
+/*new start*/
+.yellow-bg {
+	background-color: #ffa60a;
+}
+.blue-bg {
+	background-color: #6ccac9;	
+}
+.green-bg {
+	background-color: #5cb85e; 
+}
+.compass-pic1 .pic {
+	padding-left: 0;
+}
+.wrapper-left{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 225px;
+}
+.wrapper-right{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 225px;
+}
+#arrow_left, #curve_left{
+/*      width: 225px;
+  height: 250px;*/
+}
+#arrow_left{
+  position: absolute;
+  right: -133px;
+  top: 63px;
+  width: 250px;
+  height: 150px;
+}
+#arrow_right{
+  position: absolute;
+  top: 63px;
+  left: 27px;
+  width: 250px;
+  height: 150px;
+}
+#curve_left{
+  width: 225px;
+  height: 250px;
+}
+.no-data {
+	height: 200px;
+	background-color: #fff
+}
+.no-data h2,
+.no-data p {
+	width: 100%;
+	text-align: center;
+	color: #000;
+	line-height: 30px;
+}
+.no-data h2 {
+	font-size: 20px;
+}
+.no-data p {
+	margin-top: 85px;
+	font-size: 26px;
+	color: #A9A7A7;
+}
+.compass-line-wrap {
+	position: absolute;
+	top: 20px;
+	z-index: 1;
+	width: 300px; 
+	height: 211px;
+}
+.table-bg {
+	background-color: #e4f3e4;
+	padding: 0 4px;
+	position: relative;
+}
+.header-fix {
+	width: 10px;
+	height: 36px;
+	position: absolute;
+	top: 0;
+	background-color: #5cb85c;
+}
+@media screen and (max-width: 1366px) {
+    .compass-wrap .list li .detail p.text {
+        width: 46%;
+    }
+}
+/*new end*/

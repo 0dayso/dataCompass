@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 商城用户(mall_user)Mapper -->
+<mapper namespace="mall_userMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    userId,userName ,account ,phone ,email ,sex ,loginNum ,lastLoginIp ,lastLoginTime 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.mall.Mall_user" id="Mall_userReturnMap">
+		<!-- 用户id -->
+      <id column="userId" property="userId"/>
+		<!-- 用户名 -->
+      <result column="userName" property="userName"/>
+		<!-- 账号 -->
+      <result column="account" property="account"/>
+		<!-- 手机号 -->
+      <result column="phone" property="phone"/>
+		<!-- 邮箱 -->
+      <result column="email" property="email"/>
+		<!-- 性别 -->
+      <result column="sex" property="sex"/>
+		<!-- 登录次数 -->
+      <result column="loginNum" property="loginNum"/>
+		<!-- 最后登录ip -->
+      <result column="lastLoginIp" property="lastLoginIp"/>
+		<!-- 最后登录时间 -->
+      <result column="lastLoginTime" property="lastLoginTime"/>
+   </resultMap>
+   
+  <!--  获取同步用户 -->
+   <select id="getStaySyncUserPage" parameterType="page" resultType="com.shifeng.entity.mall.Mall_user">
+   
+	    select
+			UserInfo.UId userId,UName userName,UAccount account,Uphone phone,UEmail email,USex sex,User_Ext.LoginNum loginNum
+			,User_Ext.LoginNewIp lastLoginIp,User_Ext.LoginNewTime lastLoginTime
+		from
+			UserInfo
+		left  join User_Ext ON UserInfo.UId = User_Ext.UId
+   
+   </select>
+   
+   <!-- 保存同步用户 -->
+      <insert id="saveSyncUser" parameterType="java.util.List">
+   		insert into 
+   			mall_user
+   			( userId,userName ,account ,phone ,email ,sex ,loginNum ,lastLoginIp ,lastLoginTime )
+   		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userId},#{item.userName },#{item.account },#{item.phone },#{item.email },#{item.sex}
+			,#{item.loginNum},#{item.lastLoginIp},#{item.lastLoginTime} )
+ 		</foreach>
+   		ON DUPLICATE KEY UPDATE 
+   			userName=VALUES(userName),account=VALUES(account),phone=VALUES(phone),email=VALUES(email),sex=VALUES(sex)
+   			,loginNum=VALUES(loginNum),lastLoginIp=VALUES(lastLoginIp),lastLoginTime=VALUES(lastLoginTime)
+   		
+   </insert>
+  
+	
+</mapper>

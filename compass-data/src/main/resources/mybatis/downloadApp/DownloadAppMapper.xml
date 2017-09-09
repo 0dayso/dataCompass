@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- app下载统计(downloadApp)Mapper -->
+<mapper namespace="downloadAppMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+	<!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+
+	<sql id="Base_Column_List">
+		ip,ctime ,source ,status ,county
+	</sql>
+
+	<resultMap type="com.shifeng.downloadApp.entity.DownloadApp" id="DownloadAppReturnMap">
+		<!-- ip -->
+		<id column="ip" property="ip" />
+		<!-- 创建时间 -->
+		<result column="ctime" property="ctime" />
+		<!-- 来源 -->
+		<result column="source" property="source" />
+		<!-- 类型（1：商城；2：玩嘛） -->
+		<result column="status" property="status" />
+		<!-- 省市 -->
+		<result column="county" property="county" />
+	</resultMap>
+
+	<!-- 查询所有app下载统计 -->
+	<select id="findAlldownloadAppPage" parameterType="Page" resultMap="DownloadAppReturnMap">
+		select
+			ip ,
+			ctime ,
+			source ,
+			status ,
+			county
+		from downloadApp
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+			AND date(ctime) >= #{t.startDate}
+		</if>
+		<if test="t.endDate != null and t.endDate != ''">
+			and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+		</if>
+		<if test="t.status>0">
+			and status = #{t.status}
+		</if>
+		<if test="t.ip!=null and t.ip!=''">
+			AND ip = #{t.ip}
+		</if>
+		<if test="t.county!=null and t.county!=''">
+			AND county like CONCAT("%",#{t.county},"%")
+		</if>
+
+	</select>
+	
+	
+	<select id="findAllDownloadAppData" parameterType="Page" resultMap="DownloadAppReturnMap">
+	    select
+			Date(ctime) ctime,
+			source ,
+			status ,
+			county ,
+			count(0) count
+		from downloadApp
+		where 1=1
+	    <if test="t.startDate != null and t.startDate != ''">
+			AND date(ctime) >= #{t.startDate}
+		</if>
+		<if test="t.endDate != null and t.endDate != ''">
+			and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+		</if>
+		GROUP BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,DATE(ctime)
+            </if>
+            <if test="t.rowFieldVO.isShowCounty==1">
+                ,county
+            </if>
+            <if test="t.rowFieldVO.isShowStatus==1">
+                ,status
+            </if>
+		 ORDER BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,ctime asc
+            </if>
+            <if test="t.rowFieldVO.isShowStatus==1">
+                ,status asc
+            </if>
+	</select>
+	
+	
+
+</mapper>

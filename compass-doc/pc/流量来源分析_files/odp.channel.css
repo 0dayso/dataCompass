@@ -1,0 +1,78 @@
+.odp-channel, .odp-channel * {
+    box-sizing: border-box;
+}
+.odp-channel {
+    display: inline-block;
+    position: relative;
+}
+.odp-channel .channel-item {
+    display: inline-block;
+    width: 80px;
+    height: 28px;
+    border: 1px solid #dddddd;
+    font-size: 12px;
+    color: #333333;
+    background-color: #ffffff;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+}
+.odp-channel .channel-item.channel-choose {
+    border: 1px solid #48A7E7;
+    background-color: #48A7E7;
+    color: #ffffff !important;
+}
+.odp-channel .channel-item:first-child {
+    border-radius: 3px 0 0 3px;
+    /*border-right: none;*/
+}
+.odp-channel .channel-item:last-child {
+    border-radius: 0 3px 3px 0;
+    /*border-left: none;*/
+}
+.odp-channel .channel-item:hover {
+    border-color: #48A7E7;
+    color: #333333;
+}
+.odp-channel .channel-item .drop-arrow {
+    display: inline-block;
+    width: 14px;
+    height: 16px;
+    background-image: url("../img/arrow.png");
+    background-repeat: no-repeat;
+    background-position: 1px 4px;
+    vertical-align: middle;
+    position: relative;
+    left: 2px;
+}
+.odp-channel .channel-item.sel-down .drop-arrow {
+    background-position: 1px -13px;
+}
+.odp-channel .channel-item.channel-choose .drop-arrow {
+    background-position: 1px -28px;
+}
+.odp-channel .channel-item.channel-choose.sel-down .drop-arrow {
+    background-position: 1px -45px;
+}
+.odp-channel .channel-sel-list {
+    float: left;
+    display: none;
+    border: 1px solid #48A7E7;
+    position: absolute;
+    right: -1px;
+    top: 26px;
+    z-index: 2;
+}
+.odp-channel .sel-down .channel-sel-list {
+    display: block;
+}
+.odp-channel .channel-sel-list .channel-item {
+    width: 78px;
+    border: none;
+}
+.odp-channel .channel-sel-list .channel-item:hover {
+    background-color: #ECECEC;
+    color: #333333;
+}

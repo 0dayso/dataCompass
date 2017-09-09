@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 用户统计表(op_user_data)Mapper -->
+<mapper namespace="op_user_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    cdate,userid ,visitnum ,purchasenum ,amount ,payamount ,ordernum ,type ,cookie ,followsku ,cart ,returnordernum ,cancelordernum ,exchangeordernum ,payordernum ,followshop 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_user_data" id="Op_user_dataReturnMap">
+		<!-- 创建日期 -->
+      <id column="cdate" property="cdate"/>
+		<!-- 用户 -->
+      <result column="userid" property="userid"/>
+		<!-- 访问量 -->
+      <result column="visitnum" property="visitnum"/>
+		<!-- 购买数量 -->
+      <result column="purchasenum" property="purchasenum"/>
+		<!-- 下单金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 支付金额 -->
+      <result column="payamount" property="payamount"/>
+		<!-- 订单数量 -->
+      <result column="ordernum" property="ordernum"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- cookie -->
+      <result column="cookie" property="cookie"/>
+		<!-- 关注sku -->
+      <result column="followsku" property="followsku"/>
+		<!-- 购物车 -->
+      <result column="cart" property="cart"/>
+		<!-- 订单退货数量 -->
+      <result column="returnordernum" property="returnordernum"/>
+		<!-- 订单取消数量 -->
+      <result column="cancelordernum" property="cancelordernum"/>
+		<!-- 订单换货数量 -->
+      <result column="exchangeordernum" property="exchangeordernum"/>
+		<!-- 订单支付数量 -->
+      <result column="payordernum" property="payordernum"/>
+		<!-- 关注店铺 -->
+      <result column="followshop" property="followshop"/>
+   </resultMap>
+
+	<!-- 查询用户关注商品 -->
+	<select id="findAllSkuDataPage" parameterType="Page" resultMap="Op_user_dataReturnMap">
+		select
+			op.cdate ,
+			op.userid ,
+			mu.account username,
+			op.type ,
+			SUM(visitnum) visitnum,
+			SUM(purchasenum) purchasenum,
+			ROUND(SUM(amount),2) amount,
+			ROUND(SUM(payamount),2) payamount,
+			SUM(ordernum) ordernum,
+			SUM(cookie) cookie,
+			SUM(cart) cart,
+			SUM(followsku) followsku,
+			SUM(followshop) followshop,
+			SUM(returnordernum) returnordernum,
+			SUM(cancelordernum) cancelordernum,
+			SUM(exchangeordernum) exchangeordernum,
+			SUM(payordernum) payordernum
+		from op_user_data_${t.tableName} op
+		left join mall_user mu on mu.userId = op.userid
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND op.cdate  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and op.cdate <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND op.type = #{t.webtype}
+        </if>
+        GROUP BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,op.cdate
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,op.type
+            </if>
+            <if test="t.rowFieldVO.isShowUser==1">
+                ,op.userid
+            </if>
+            
+         ORDER BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,op.cdate ASC
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,op.type ASC
+            </if>
+        	<if test="t.rowFieldVO.isShowUser==1">
+                ,op.userid ASC
+            </if>
+            
+	</select>
+
+</mapper>

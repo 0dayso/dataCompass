@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 购买明细(op_purchase_detail)Mapper -->
+<mapper namespace="op_purchase_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    purchasetime,userid ,ip ,channelid ,sku ,number ,amount ,status ,source ,activeId ,channelUrlId ,type,shopId,orderId,county
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_purchase_detail" id="Op_purchase_detailReturnMap">
+		<!-- 购买时间 -->
+      <id column="purchasetime" property="purchasetime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 渠道id -->
+      <result column="channelid" property="channelid"/>
+		<!-- sku -->
+      <result column="sku" property="sku"/>
+		<!-- 数量 -->
+      <result column="number" property="number"/>
+		<!-- 金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 支付状态 -->
+      <result column="status" property="status"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 活动ID -->
+      <result column="activeId" property="activeId"/>
+		<!-- 渠道链接ID -->
+      <result column="channelUrlId" property="channelUrlId"/>
+      <!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+      <!-- 店铺ID -->
+      <result column="shopId" property="shopId"/>
+      <!-- 订单ID -->
+      <result column="orderId" property="orderId"/>
+      <!-- 省市 -->
+      <result column="county" property="county"/>
+   </resultMap>
+
+	<!-- 查询所有购买明细 -->
+	<select id="findAllop_purchase_detailPage" parameterType="Page" resultMap="Op_purchase_detailReturnMap">
+		select
+			purchasetime ,
+			userid ,
+			ip ,
+			c.name channelid ,
+			cu.name channelurlid ,
+			sku ,
+			number ,
+			amount ,
+			ps.name status ,
+			source ,
+			activeId ,
+			type,
+			shopId,
+			orderId,
+			county
+		from op_purchase_detail_${t.tableName} op
+		left join channel c on c.id = op.channelid
+		left join channelurl cu on cu.id = op.channelurlid
+		left join paystatus ps on ps.id = op.status
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND DATE(purchasetime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and DATE(purchasetime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.channelId != null and t.channelId != '' and t.channelId!='0'">
+            AND channelid = #{t.channelId}
+        </if>
+        <if  test="t.channelurl!=null and t.channelurl!='' and t.channelurl!='0'">
+            AND channelUrlId = #{t.channelurl}
+        </if>
+        
+        <if  test="t.paystatus!=null and t.paystatus!=''">
+            AND op.status = #{t.paystatus}
+        </if>
+        <if  test="t.userid!=null and t.userid!=''">
+            AND userid = #{t.userid}
+        </if>
+        <if  test="t.sku!=null and t.sku!=''">
+            AND sku = #{t.sku}
+        </if>
+        <if  test="t.activeId!=null and t.activeId!=''">
+            AND activeId = #{t.activeId}
+        </if>
+        <if  test="t.ip!=null and t.ip!=''">
+            AND ip = #{t.ip}
+        </if>
+        <if  test="t.ispay!=null and t.ispay!=''">
+            AND ispay = #{t.ispay}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND type = #{t.webtype}
+        </if>
+        <if  test="t.shopId!=null and t.shopId!=''">
+            AND shopId = #{t.shopId}
+        </if>
+        <if  test="t.orderId!=null and t.orderId!=''">
+            AND orderId = #{t.orderId}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND county like CONCAT("%",#{t.county},"%")
+        </if>
+        
+        order by purchasetime desc
+	</select>
+	
+	<!-- 订单明细 -->
+	<resultMap type="com.shifeng.sell.dto.OrderDetailDTO" id="OrderDetailDTOReturnMap">
+		<result column="orderId" property="orderId"/>
+		<result column="tableName" property="tableName"/>
+		
+		<!-- 订单所有sku -->
+		<collection property="ordersku" ofType="com.shifeng.sell.dto.OrderDetailDTO" column="{orderId=orderId,tableName=tableName}" select="op_purchase_detailMapper.findOrderSku"></collection>
+	</resultMap>
+	
+	<!-- 查询订单明细 -->
+	<select id="findOrderDetailPage" parameterType="Page" resultMap="OrderDetailDTOReturnMap">
+		select
+			op.purchasetime ,
+			op.userid ,
+			mu.account username,
+			op.ip ,
+			c.name channelid ,
+			cu.name channelurlid ,
+			op.sku ,
+			op.number ,
+			op.amount ,
+			ps.name status ,
+			op.source ,
+			op.activeId ,
+			op.type,
+			op.shopId,
+			op.orderId,
+			op.county,
+			mp.name pname,
+			ms.sName sname,
+			'${t.tableName}' tableName
+		from op_purchase_detail_${t.tableName} op
+		left join channel c on c.id = op.channelid
+		left join channelurl cu on cu.id = op.channelurlid
+		left join paystatus ps on ps.id = op.status
+		left join mall_product mp on mp.sku = op.sku
+		left join mall_shop ms on ms.sId = op.shopId
+		left join mall_user mu on mu.userId = op.userid
+		
+		where orderId>0
+		<if test="t.startDate != null and t.startDate != ''">
+            AND DATE(purchasetime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and DATE(purchasetime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.channelId != null and t.channelId != '' and t.channelId!='0'">
+            AND channelid = #{t.channelId}
+        </if>
+        <if  test="t.channelurl!=null and t.channelurl!='' and t.channelurl!='0'">
+            AND channelUrlId = #{t.channelurl}
+        </if>
+        
+        <if  test="t.paystatus!=null and t.paystatus!=''">
+            AND op.status = #{t.paystatus}
+        </if>
+        <if  test="t.userid!=null and t.userid!=''">
+            AND userid = #{t.userid}
+        </if>
+        <if  test="t.sku!=null and t.sku!=''">
+            AND sku = #{t.sku}
+        </if>
+        <if  test="t.activeId!=null and t.activeId!=''">
+            AND activeId = #{t.activeId}
+        </if>
+        <if  test="t.ip!=null and t.ip!=''">
+            AND ip = #{t.ip}
+        </if>
+        <if  test="t.ispay!=null and t.ispay!=''">
+            AND ispay = #{t.ispay}
+        </if>
+        
+        <if  test="t.webtype!=null and t.webtype!='' and t.webtype!='all' and t.webtype!='mp'">
+            AND type = #{t.webtype}
+        </if>
+        <if  test="t.webtype=='mp'">
+            AND type!=0
+        </if>
+        
+        <if  test="t.shopId!=null and t.shopId!=''">
+            AND shopId = #{t.shopId}
+        </if>
+        <if  test="t.orderId!=null and t.orderId!=''">
+            AND orderId = #{t.orderId}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND county like CONCAT("%",#{t.county},"%")
+        </if>
+        group by orderId
+        order by purchasetime desc
+	</select>
+	
+	<!-- 查询订单所有SKU -->
+	<select id="findOrderSku" parameterType="java.util.Map" resultType="com.shifeng.sell.dto.OrderDetailDTO">
+	    select
+			op.purchasetime ,
+			op.userid ,
+			mu.account username,
+			op.ip ,
+			c.name channelid ,
+			cu.name channelurlid ,
+			op.sku ,
+			mp.name pname,
+			op.number ,
+			op.amount ,
+			ps.name status ,
+			op.source ,
+			op.activeId ,
+			op.type,
+			op.shopId,
+			ms.sName sname,
+			op.orderId,
+			op.county,
+			mp.name pname,
+			ms.sName sname
+		from op_purchase_detail_${tableName} op
+		left join channel c on c.id = op.channelid
+		left join channelurl cu on cu.id = op.channelurlid
+		left join paystatus ps on ps.id = op.status
+		left join mall_product mp on mp.sku = op.sku
+		left join mall_shop ms on ms.sId = op.shopId
+		left join mall_user mu on mu.userId = op.userid
+		
+		where orderId = #{orderId}
+	    
+	</select>
+	
+	<select id="findAllPayStatus" resultType="com.shifeng.entity.paystatus.Paystatus">
+	    select id,name from paystatus
+	</select>
+	
+	
+</mapper>

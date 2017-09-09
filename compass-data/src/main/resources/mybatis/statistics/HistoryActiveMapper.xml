@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- sku统计表(op_sku_data)Mapper -->
+<mapper namespace="historyActiveMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<!-- 历史活动统计表-->
+	<select id="findVisitByActiveId" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.HistoryActive">
+		SELECT
+			DATE(visittime) cdate,
+			COUNT(0) visitnum,
+			COUNT(DISTINCT(userid)) visitusernum,
+			COUNT(DISTINCT(ip)) uv,
+			COUNT(DISTINCT(cookieid)) cookie,
+			activeId,
+			type
+		FROM op_visit_detail_${tableName}
+		WHERE activeId>0
+		<if test="startDate != null and startDate != ''">
+            AND DATE(visittime)  >= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != ''">
+            and DATE(visittime) <![CDATA[ <= ]]> #{endDate}
+        </if>
+		
+		GROUP BY activeId
+			<if test="rowFieldVO.isShowDate==1">
+                ,DATE(visittime)
+            </if>
+            <if test="rowFieldVO.isShowType==1">
+                ,type
+            </if>
+	</select>
+	
+	<select id="findAmountByActiveId" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.HistoryActive">
+		SELECT
+			DATE(purchasetime) cdate,
+			SUM(number) purchasenum,
+			SUM(amount) amount,
+			activeId,
+			type
+		FROM op_purchase_detail_${tableName}
+		WHERE activeId>0
+		<if test="startDate != null and startDate != ''">
+            AND DATE(purchasetime)  >= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != ''">
+            and DATE(purchasetime) <![CDATA[ <= ]]> #{endDate}
+        </if>
+		GROUP BY activeId
+			<if test="rowFieldVO.isShowDate==1">
+                ,DATE(purchasetime)
+            </if>
+            <if test="rowFieldVO.isShowType==1">
+                ,type
+            </if>
+	</select>
+	
+	<select id="findPayamountByActiveId" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.HistoryActive">
+		SELECT
+			DATE(purchasetime) cdate,
+			SUM(amount) payamount,
+			activeId,
+			type
+		FROM op_purchase_detail_${tableName}
+		WHERE STATUS!=0 AND activeId>0
+		<if test="startDate != null and startDate != ''">
+            AND DATE(purchasetime)  >= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != ''">
+            and DATE(purchasetime) <![CDATA[ <= ]]> #{endDate}
+        </if>
+		GROUP BY activeId
+			<if test="rowFieldVO.isShowDate==1">
+                ,DATE(purchasetime)
+            </if>
+            <if test="rowFieldVO.isShowType==1">
+                ,type
+            </if>
+	</select>
+	
+	<select id="findOrderCountByActiveId" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.HistoryActive">
+		SELECT
+			DATE(purchasetime) cdate,
+			count(DISTINCT(orderId)) ordernum,
+			activeId,
+			type
+		FROM op_purchase_detail_${tableName}
+		WHERE activeId>0
+		<if test="startDate != null and startDate != ''">
+            AND DATE(purchasetime)  >= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != ''">
+            and DATE(purchasetime) <![CDATA[ <= ]]> #{endDate}
+        </if>
+		GROUP BY activeId,orderId
+			<if test="rowFieldVO.isShowDate==1">
+                ,DATE(purchasetime)
+            </if>
+            <if test="rowFieldVO.isShowType==1">
+                ,type
+            </if>
+	</select>
+	
+</mapper>

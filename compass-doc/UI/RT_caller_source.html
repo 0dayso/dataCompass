@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,i,b,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        i,b{
+            font-style:normal;
+            font-weight: normal;
+        }
+        body{
+            min-width: 952px;
+            overflow-x: hidden;
+			background: #2a2b2f;
+        }
+        .body_right{
+            width: 100%;
+            background: #2a2b2f;
+            float: left;
+        }
+        .right_top{
+            height: 30px;
+            padding: 30px 34px;
+        }
+        .font_RT{
+            color: #ccc;
+            font-size: 24px;
+        }
+        .RT_right_font{
+            float: right;
+        }
+        .all{
+            font-size: 18px;
+            color: #ccc;
+            padding: 8px 42px;
+            border-radius: 5px;
+        }
+        .background_B{
+            background: #028be6;
+            color: #ccc !important;
+        }
+        .background_bluck{
+            background: #3b3c42;
+            color: #028be6;
+        }
+        .updata_time{
+            font-size: 14px;
+            color: #999999;
+            margin-left: 10px;
+        }
+        .updata_number{
+            color: #f74c31;
+        }
+        /*  中部  */
+        input[type="checkbox"]{
+            /* width: 40px; */
+            /* height: 40px; */
+            /* -webkit-border-radius: 50%; */
+            visibility: hidden;
+        }
+        input[type="checkbox"]+label {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 5px;
+            text-align: left;
+            font-size: 16px;
+            color: #ccc;
+            -webkit-box-sizing: border-box;
+        }
+
+        label::before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #2a2b2f;
+            border: 1px solid #0f5a8d;
+            vertical-align: middle;
+            -webkit-border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /*input[type="checkbox"]:checked+label::before{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #0b6099;
+            border: 5px #0f5a8d solid;
+        }*/
+        .CB_radius{
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #0b6099;
+            position: absolute;
+            left: 3px;
+            top: 3px;
+        }
+        .position_R{
+            position: relative;
+        }
+        .right_button{
+            margin-top: 16px;
+            margin-right: 34px;
+            margin-left: 34px;
+            border-radius: 5px;
+            background: #252628;
+        }
+        .button_top{
+            line-height: 40px;
+            width: 100%;
+            font-size: 0;
+        }
+        .button_top>span{
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            color: #666666;
+        }
+        .button_top>span>i{
+            font-size: 16px;
+            color: #666;
+            float: right;
+        }
+        .button_top>span:nth-child(1){
+            width: 27.6%;
+        }
+        .button_top>span:nth-child(2){
+            width: 27.6%;
+        }
+        .button_top>span:nth-child(3){
+            width: 44.8%;
+        }
+        .blue_radius{
+            display: inline-block;
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            background: #0b6099;
+            vertical-align: text-top;
+            position: relative;
+            margin-top: -3px;
+            margin-right: 3px;
+            margin-left: -70px;
+        }
+        .plus{
+            display: inline-flex;
+            position: absolute;
+            top: -10px;
+            left: 6px;
+            font-size: 17px;
+            font-weight: 600;
+            color: #ccc;
+        }
+        .pull_dwon{
+            font-size: 0;
+            margin-top: -6px;
+            color: #ccc;
+        }
+        .pull_dwon>li{
+            display: inline-block;
+            font-size: 16px;
+            text-align: center;
+            color: #666;
+        }
+        .pull_dwon>li:nth-child(1){
+            width: 27.6%;
+        }
+        .pull_dwon>li:nth-child(2){
+            width: 27.6%;
+        }
+        .pull_dwon>li:nth-child(3){
+            width: 44.8%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>	
+<div class="body_right">
+    <div class="right_top">
+        <!--  RT--right_top  -->
+        <span class="font_RT">实时流量来源<i class="updata_time">更新时间：2016-11-9 14:17:10 最近更新<b class="updata_number">99</b>条记录</i></span>
+        <div class="RT_right_font">
+            <span class="all background_B">pc端</span>
+            <span class="all background_bluck">pc</span>
+            <span class="all background_bluck">无线</span>
+        </div>
+    </div>
+
+    <form class="right_middle">
+        <input type="checkbox" value="guangpan" name="choose" id="guangpan">
+        <label for="guangpan" class="position_R"><i class="CB_radius" id="CB_radius1"></i>浏览量</label>
+        <input type="checkbox" value="guangpan1" name="choose" id="guangpan1">
+        <label for="guangpan1" class="position_R"><i class="CB_radius" id="CB_radius2" style="display: none;"></i>浏览量</label>
+    </form>
+
+    <div class="right_button">
+        <div class="button_top">
+            <span>流量来源<i>|</i></span>
+            <span>浏览量<i>|</i></span>
+            <span>浏览量比</span>
+        </div>
+
+        <div>
+            <!--  自主访问  -->
+            <div id="visit" class="button_top">
+                <span class="fontWhite"><span class="blue_radius"><i class="plus">+</i></span>自主访问</span>
+                <span id="visitN">15</span>
+                <span style="text-align: left;">
+                    <i style="display: inline-block;width: 50px;float: left;" id="visit_grade">4.13%</i>
+                    <svg width="440" height="10">
+                        <g>
+                            <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                            <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 130 5" />
+                        </g>
+                    </svg>
+                </span>
+                <ul class="pull_dwon">
+                    <li>直接访问</li>
+                    <li id="visit1" class="visit">6</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" id="visit1_grade">8.74%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 200 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+                <ul class="pull_dwon">
+                    <li>购物车</li>
+                    <li id="visit2"  class="visit">9</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" id="visit2_grade">6.37%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 50 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+            </div>
+            <!--  世峰  -->
+            <div id="shifeng" class="button_top">
+                <span class="fontWhite"><span class="blue_radius"><i class="plus">-</i></span>世峰</span>
+                <span id="shifengN">15</span>
+                <span style="text-align: left;">
+                    <i style="display: inline-block;width: 50px;float: left;">9.52%</i>
+                    <svg width="440" height="10">
+                        <g>
+                            <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                            <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 80 5" />
+                        </g>
+                    </svg>
+                </span>
+                <ul class="pull_dwon">
+                    <li>分类</li>
+                    <li class="shifeng_classify1">6</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" id="shifeng_classify1_grade">3.22%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 90 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+                <ul class="pull_dwon">
+                    <li>搜索</li>
+                    <li id="shifeng_classify2">9</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" id="shifeng_classify2_grade">8.22%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 60 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+                <ul class="pull_dwon">
+                    <li>频道页</li>
+                    <li id="shifeng_classify3">9</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" id="shifeng_classify3_grade">10.22%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 70 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+                <ul class="pull_dwon">
+                    <li>店铺</li>
+                    <li id="shifeng_classify4">9</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" id="shifeng_classify4_grade">5.4%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 100 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+                <ul class="pull_dwon">
+                    <li>频道页</li>
+                    <li id="shifeng_classify5">9</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" class="shifeng_classify5_grade">2.1%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 55 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+            </div>
+            <!--  站外流量  -->
+            <div class="button_top">
+                <span class="fontWhite"><span class="blue_radius"><i class="plus">-</i></span>站外流量</span>
+                <span id="outsideN">15</span>
+                <span style="text-align: left;">
+                    <i style="display: inline-block;width: 50px;float: left;" id="outsideN_grade">4.1%</i>
+                    <svg width="440" height="10">
+                        <g>
+                            <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                            <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 130 5" />
+                        </g>
+                    </svg>
+                </span>
+                <ul class="pull_dwon">
+                    <li>搜索</li>
+                    <li id="outside1">6</li>
+                    <li>
+                        <i style="display: inline-block;width: 50px;float: left;" id="outside1_grade">10.33%</i>
+                        <svg width="440" height="10">
+                            <g>
+                                <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                                <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 120 5" />
+                            </g>
+                        </svg>
+                    </li>
+                </ul>
+            </div>
+            <!--  其他  -->
+            <div class="button_top">
+                <span class="fontWhite"><span class="blue_radius"><i class="plus">-</i></span>其他</span>
+                <span id="elseN">15</span>
+                <span style="text-align: left;">
+                    <i style="display: inline-block;width: 50px;float: left;" id="else_grade">10.27%</i>
+                    <svg width="440" height="10">
+                        <g>
+                            <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                            <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 100 5" />
+                        </g>
+                    </svg>
+                </span>
+            </div>
+            <!--  总计  -->
+            <div class="button_top" style="background: #202022;">
+                <span class="fontWhite">总计</span>
+                <span id="allN">15</span>
+                <span style="text-align: left;">
+                    <i style="display: inline-block;width: 50px;float: left;">100%</i>
+                    <svg width="440" height="10">
+                        <g>
+                            <path stroke="#2a2b2f" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                            <path stroke="#00A5E0" stroke-linecap="round" stroke-width="10" d="M 30 5 L 430 5" />
+                        </g>
+                    </svg>
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+    $("#guangpan1").on("click",function(){
+        $("#CB_radius1").hide();
+        $("#CB_radius2").show();
+    });
+    $("#guangpan").on("click",function(){
+        $("#CB_radius2").hide();
+        $("#CB_radius1").show();
+    });
+
+
+    console.dir($("#visit").find(".visit").html())
+
+</script>
+</html>

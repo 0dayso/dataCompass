@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 注册明细(op_register_detail)Mapper -->
+<mapper namespace="op_register_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    registertime,userid ,ip ,channelid ,source ,activeId ,channelUrlId,county
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_register_detail" id="Op_register_detailReturnMap">
+		<!-- 注册时间 -->
+      <id column="registertime" property="registertime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 渠道id -->
+      <result column="channelid" property="channelid"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 活动ID -->
+      <result column="activeId" property="activeId"/>
+		<!-- 渠道链接ID -->
+      <result column="channelUrlId" property="channelUrlId"/>
+      <!-- 省市 -->
+      <result column="county" property="county"/>
+   </resultMap>
+
+	<!-- 查询所有注册明细 -->
+	<select id="findAllop_register_detailPage" parameterType="Page" resultMap="Op_register_detailReturnMap">
+		select
+			registertime ,
+			userid ,
+			ip ,
+			source ,
+			activeId ,
+			c.name channelid ,
+			cu.name channelurlid,
+			county
+		from op_register_detail_${t.tableName} ord
+		left join channel c on c.id = ord.channelid
+		left join channelurl cu on cu.id = ord.channelurlid
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND DATE(registertime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and DATE(registertime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+       <if  test="t.channelId != null and t.channelId != '' and t.channelId!='0'">
+            AND channelid = #{t.channelId}
+        </if>
+        <if  test="t.channelurl!=null and t.channelurl!='' and t.channelurl!='0'">
+            AND channelUrlId = #{t.channelurl}
+        </if>
+        
+        <if  test="t.userid!=null and t.userid!=''">
+            AND userid = #{t.userid}
+        </if>
+        <if  test="t.activeId!=null and t.activeId!=''">
+            AND activeId = #{t.activeId}
+        </if>
+        <if  test="t.ip!=null and t.ip!=''">
+            AND ip = #{t.ip}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND county like CONCAT("%",#{t.county},"%")
+        </if>
+        
+        order by registertime desc
+	</select>
+
+	
+</mapper>

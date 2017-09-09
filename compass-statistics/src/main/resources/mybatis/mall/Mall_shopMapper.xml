@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 商城店铺(mall_shop)Mapper -->
+<mapper namespace="mall_shopMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    sId,sName ,sLogo 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.mall.Mall_shop" id="Mall_shopReturnMap">
+		<!-- 店铺id -->
+      <id column="sId" property="sId"/>
+		<!-- 店铺名称 -->
+      <result column="sName" property="sName"/>
+		<!-- 店铺Logo -->
+      <result column="sLogo" property="sLogo"/>
+   </resultMap>
+   
+   <!--  获取同步店铺 -->
+   <select id="getStaySyncShopPage" parameterType="page" resultType="com.shifeng.entity.mall.Mall_shop">
+   
+	    select
+			SId sId,SShopName sName,SShopLogo sLogo
+		from
+			SellerInfo
+   
+   </select>
+   
+   <!-- 保存同步店铺 -->
+      <insert id="saveSyncShop" parameterType="java.util.List">
+   		insert into 
+   			mall_shop
+   			( sId,sName ,sLogo )
+   		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.sId},#{item.sName },#{item.sLogo } )
+ 		</foreach>
+   		ON DUPLICATE KEY UPDATE 
+   			sName=VALUES(sName),sLogo=VALUES(sLogo)
+   		
+   </insert>
+	
+</mapper>

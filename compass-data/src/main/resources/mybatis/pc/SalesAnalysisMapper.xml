@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="salesAnalysisMapper">
+	
+	
+	 <!-- 获取销量分析订单数据 -->
+	 <select id="getOrderAnalysis" parameterType="com.shifeng.sell.dto.SalesDTO" resultType="com.shifeng.sell.entity.sales.SalesAnalysis">
+		 SELECT
+		  COUNT(1) AS order_numbber,SUM(amount) AS order_amount
+		FROM
+		  op_purchase_detail_${nowYearMonth}
+		 WHERE
+		  STATUS = 1
+		  AND
+			DATE_FORMAT(purchasetime,'%Y-%m-%d')  BETWEEN #{startDate} AND #{endDate}  
+		<!-- 站来源 查询 -->
+		<if test="type != null">
+			AND type = #{type} 
+		</if>	
+	 </select>
+	
+	
+	 <!-- 获取销量分析访问数据 -->
+	 <select id="getVisitAnalysis" parameterType="com.shifeng.sell.dto.SalesDTO" resultType="com.shifeng.sell.entity.sales.SalesAnalysis">
+	  	SELECT
+		 SUM(visitnum) AS visit_number,SUM(cookie) AS cookie_number
+		FROM
+		  op_data_${nowYearMonth}
+		 WHERE
+			 cdate  BETWEEN #{startDate} AND #{endDate} 
+			
+		<!-- 站来源 查询 -->
+		<if test="type != null">
+			AND type = #{type} 
+		</if>	
+	 </select>
+	
+	
+</mapper>

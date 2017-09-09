@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="ScaleMapper">
+	
+	
+	 <!-- 获取销量分析订单数据 -->
+	 <select id="getUserScaleList" parameterType="com.shifeng.customer.dto.ScaleDTO" resultType="com.shifeng.customer.entity.UserScale">
+		 SELECT
+		  cdate AS visit_data,SUM(visitusernum) AS visit_number
+		FROM
+		  op_data_${nowYearMonth}
+		 WHERE
+			 cdate  BETWEEN #{startDate} AND #{endDate} 
+		<!-- 站来源 查询 -->
+		<if test="type != null">
+			AND type = #{type} 
+		</if>
+		GROUP BY cdate
+		ORDER BY cdate
+	 </select>
+	
+	 
+	
+	
+</mapper>

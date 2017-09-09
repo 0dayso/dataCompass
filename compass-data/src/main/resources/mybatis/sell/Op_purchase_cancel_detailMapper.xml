@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 订单取消明细(op_purchase_cancel_detail)Mapper -->
+<mapper namespace="op_purchase_cancel_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    purchasetime,userid ,ip ,channelid ,sku ,number ,amount ,status ,source ,activeId ,channelUrlId ,type ,shopId ,orderId ,county ,productId ,reason ,submittime ,reasontype 
+    </sql>
+
+    <resultMap type="com.shifeng.sell.entity.cancel.Op_purchase_cancel_detail" id="Op_purchase_cancel_detailReturnMap">
+		<!-- 购买时间 -->
+      <id column="purchasetime" property="purchasetime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 渠道id -->
+      <result column="channelid" property="channelid"/>
+		<!-- sku -->
+      <result column="sku" property="sku"/>
+		<!-- 数量 -->
+      <result column="number" property="number"/>
+		<!-- 金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 支付状态 -->
+      <result column="status" property="status"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 活动ID -->
+      <result column="activeId" property="activeId"/>
+		<!-- 渠道链接ID -->
+      <result column="channelUrlId" property="channelUrlId"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 店铺id -->
+      <result column="shopId" property="shopId"/>
+		<!-- 订单号 -->
+      <result column="orderId" property="orderId"/>
+		<!-- 省市 -->
+      <result column="county" property="county"/>
+		<!-- 产品id -->
+      <result column="productId" property="productId"/>
+		<!-- 原因 -->
+      <result column="reason" property="reason"/>
+		<!-- 提交时间 -->
+      <result column="submittime" property="submittime"/>
+		<!-- 原因类型1订单取消 2 退货 3 换货 -->
+      <result column="reasontype" property="reasontype"/>
+   </resultMap>
+
+	<!-- 查询所有订单取消明细 -->
+	<select id="findAllop_purchase_cancel_detailPage" parameterType="Page" resultType="com.shifeng.sell.dto.PurchasecancelDTO">
+		select
+			op.purchasetime ,
+			op.userid ,
+			mu.account username,
+			op.ip ,
+			op.channelid ,
+			c.name channelname ,
+			op.sku ,
+			mp.name productName,
+			op.number ,
+			op.amount ,
+			ps.name status ,
+			op.source ,
+			op.activeId ,
+			op.channelUrlId ,
+			cu.name channelUrl ,
+			op.type ,
+			op.shopId ,
+			ms.sName shopName,
+			op.orderId ,
+			op.county ,
+			op.reason ,
+			op.submittime ,
+			op.reasontype 
+		from op_purchase_cancel_detail_${t.tableName} op
+		left join mall_user mu on mu.userId = op.userid
+		left join mall_product mp on mp.sku = op.sku
+		left join mall_shop ms on ms.sId = op.shopId
+		left join channel c on c.id = op.channelid
+		left join channelurl cu on cu.id = op.channelurlid
+		left join paystatus ps on ps.id = op.status
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND date(op.submittime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(op.submittime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.userid!=null and t.userid!=''">
+            AND op.userid = #{t.userid}
+        </if>
+        <if  test="t.sku!=null and t.sku!=''">
+            AND op.sku = #{t.sku}
+        </if>
+        <if  test="t.ip!=null and t.ip!=''">
+            AND op.ip = #{t.ip}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND op.type = #{t.webtype}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND op.county like CONCAT("%",#{t.county},"%")
+        </if>
+        <if test="t.status>0">
+		    AND op.reasontype = #{t.status}
+		</if>
+		<if  test="t.shopId!=null and t.shopId!=''">
+            AND op.shopId = #{t.shopId}
+        </if>
+        <if  test="t.channelId != null and t.channelId != '' and t.channelId!='0'">
+            AND op.channelid = #{t.channelId}
+        </if>
+        <if  test="t.channelurl!=null and t.channelurl!='' and t.channelurl!='0'">
+            AND op.channelUrlId = #{t.channelurl}
+        </if>
+        <if  test="t.sku!=null and t.sku!=''">
+            AND op.sku = #{t.sku}
+        </if>
+        <if  test="t.activeId!=null and t.activeId!=''">
+            AND op.activeId = #{t.activeId}
+        </if>
+        <if  test="t.orderId!=null and t.orderId!=''">
+            AND op.orderId = #{t.orderId}
+        </if>
+        <if  test="t.paystatus!=null and t.paystatus!=''">
+            AND op.status = #{t.paystatus}
+        </if>
+        <if  test="t.productId!=null and t.productId!=''">
+            AND op.productId = #{t.productId}
+        </if>
+        <if  test="t.objectStr!=null and t.objectStr!=''">
+            AND op.reason LIKE CONCAT(CONCAT('%', #{t.objectStr}),'%')
+        </if>
+		order by op.purchasetime
+	</select>
+
+	<select id="findAllCancelDataPage" parameterType="Page" resultType="com.shifeng.sell.dto.PurchasecancelDTO">
+	    select
+			type ,
+			county ,
+			reason ,
+			submittime ,
+			reasontype,
+			COUNT(0) count
+		from op_purchase_cancel_detail_${t.tableName}
+		where 1=1
+	    <if test="t.startDate != null and t.startDate != ''">
+            AND date(submittime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(submittime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND type = #{t.webtype}
+        </if>
+		<if test="t.status>0">
+		    AND reasontype = #{t.status}
+		</if>
+		<if  test="t.userid!=null and t.userid!=''">
+            AND userid = #{t.userid}
+        </if>
+		<if  test="t.sku!=null and t.sku!=''">
+            AND sku = #{t.sku}
+        </if>
+        <if  test="t.shopId!=null and t.shopId!=''">
+            AND shopId = #{t.shopId}
+        </if>
+        <if  test="t.productId!=null and t.productId!=''">
+            AND productId = #{t.productId}
+        </if>
+		
+        GROUP BY reason
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,DATE(submittime)
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,type
+            </if>
+            <if test="t.rowFieldVO.isShowCounty==1">
+                ,county
+            </if>
+            <if test="t.rowFieldVO.isShowStatus==1">
+                ,reasontype
+            </if>
+            
+         ORDER BY count desc
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,submittime asc
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,type ASC
+            </if>
+            <if test="t.rowFieldVO.isShowShop==1">
+                ,shopId ASC
+            </if>
+            <if test="t.rowFieldVO.isShowCounty==1">
+                ,county ASC
+            </if>
+            <if test="t.rowFieldVO.isShowStatus==1">
+                ,reasontype ASC
+            </if>
+	</select>
+	
+	
+	
+</mapper>

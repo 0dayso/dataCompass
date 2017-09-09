@@ -1,0 +1,126 @@
+.modal{
+	background-color:#fff;
+}
+.mHeader{
+	/*
+	border:1px solid #d7d7d7;
+	height:25px;
+	line-height:25px;
+	background: url(../../images/protype/modalHead.png) repeat-x 0 0;
+	position:relative;
+	*/
+	background: none repeat scroll 0 0 #eeeeee;
+    color: #666666;
+    height: 33px;
+    line-height: 33px;
+    position: relative;
+}
+.mHeader .tit{
+	margin-left:5px;
+	padding-left:5px;
+	display:inline-block;
+	/*
+	font-size: 14px;
+	background: url(../../images/protype/mIco.png) no-repeat 0 -13px;
+	*/
+}
+.mClose{
+	/*
+	position:absolute;
+	right:16px;
+	top:7px;
+	background: url(../../images/protype/mIco.png) repeat-x 0 0;
+	display: block;
+	width:14px;
+	height:13px;
+	cursor: pointer;
+	*/
+	background: url("../../skin/i/mheader_close.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    height: 22px;
+    line-height: 21px;
+    margin-top: 9px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 22px;
+    margin-right: 8px;
+}
+.mBody{
+	border-left:1px solid #d7d7d7;
+	border-right:1px solid #d7d7d7;
+	padding:0 18px;
+	height: 300px;
+    overflow: auto;
+}
+.mFooter{
+	border:1px solid #d7d7d7;
+	border-top:0;
+	text-align:center;
+	padding:20px 0;
+}
+
+
+dl.sort{
+	border-bottom:1px dashed #d7d7d7;
+	overflow:hidden;
+	zoom:1;
+}
+dl.sort.last{
+	border-bottom:0;
+}
+.sort dt{
+	float: left;
+	color:#cc0000;
+	font-weight: bold;
+	display: block;	
+	height:33px;
+	line-height:33px;
+	text-align:right;
+	margin-right:5px;
+	clear:left;
+}
+.sort dd {
+    float: left;
+    line-height: 21px;
+    margin: 6px 0 6px 10px;
+    padding: 0 3px;
+}
+.sort dd:hover {
+    background-color: #FFEFD6;
+}
+
+.banner-wrap {
+	width: 100%;
+	height: 75px;
+	margin-bottom: 15px;
+}
+.inner-wrap {
+	position: relative;
+	width: 1260px;
+	margin: 0 auto;
+}
+.close-btn {
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 5px;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+}
+.close-btn:hover {
+	background-position: 0px -24px;
+}
+
+.closeShow-btn {
+	display: block;
+	position: absolute;
+	right: -12px;
+	top: -12px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	background:url('../../skin/inner/closeShow.png');
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DataMapper">
+    
+   
+  <insert id="saveVisitList" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,visitnum,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.visitnum},#{item.type},#{item.shopId} 	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE visitnum=VALUES(visitnum)
+  </insert>  
+  
+  <insert id="saveRegisterList" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,registernum,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.registernum},#{item.type},#{item.shopId} 	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE registernum=VALUES(registernum)
+  </insert>  
+  
+  <insert id="savePurchaseList" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,purchasenum,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.purchasenum},#{item.type},#{item.shopId}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE purchasenum=VALUES(purchasenum)
+  </insert>
+  <insert id="saveAmountList" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,amount,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},ROUND(#{item.amount},2),#{item.type},#{item.shopId}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE amount=VALUES(amount)
+  </insert>
+  
+  <insert id="savePayamountList" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,payamount,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},ROUND(#{item.payamount},2),#{item.type},#{item.shopId}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE payamount=VALUES(payamount)
+  </insert>
+  
+  <!-- 保存统计订单数量 -->
+  <insert id="saveOrdernum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,ordernum,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.ordernum},#{item.type},#{item.shopId}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE ordernum=VALUES(ordernum)
+  </insert>
+  
+  <!-- 保存统计访客数 -->
+  <insert id="saveUv" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,uv,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.uv},#{item.type},#{item.shopId}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE uv=VALUES(uv)
+  </insert>
+  
+  <!-- 保存访问用户数 -->
+  <insert id="saveVisitusernum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,visitusernum,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.visitusernum},#{item.type},#{item.shopId}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE visitusernum=VALUES(visitusernum)
+  </insert>
+  
+  <!-- 保存saveCookie -->
+  <insert id="saveCookie" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,cookie,type,shopId)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.cookie},#{item.type},#{item.shopId}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE cookie=VALUES(cookie)
+  </insert>
+  <!-- ======================= -->
+  <!-- 保存取消订单统计 -->
+  <insert id="saveQuXiaoDingDan" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,cookie,type,cancelordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.cookie},#{item.type},#{item.cancelordernum}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE cancelordernum=VALUES(cancelordernum)
+  </insert>
+  
+  <!-- 保存退货统计 -->
+  <insert id="saveTuiHuo" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,cookie,type,returnordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.cookie},#{item.type},#{item.returnordernum}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE returnordernum=VALUES(returnordernum)
+  </insert>
+  
+  <!-- 保存换货统计 -->
+  <insert id="saveHuanHuo" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,cookie,type,exchangeordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.cookie},#{item.type},#{item.exchangeordernum}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE exchangeordernum=VALUES(exchangeordernum)
+  </insert>
+  
+  <!-- 保存订单支付数量统计 -->
+  <insert id="savePayOrderNum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_data_${nowYearMonth}
+			(cdate,channelid,channelurlid,cookie,type,payordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.channelid},#{item.channelurlid},#{item.cookie},#{item.type},#{item.payordernum}	)
+		</foreach>
+		ON DUPLICATE KEY UPDATE payordernum=VALUES(payordernum)
+  </insert>
+  
+  
+	
+</mapper>

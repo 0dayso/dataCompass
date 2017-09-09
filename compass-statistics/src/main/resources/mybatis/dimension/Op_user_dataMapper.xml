@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 用户统计表(op_user_data)Mapper -->
+<mapper namespace="op_user_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    cdate,userid ,visitnum ,purchasenum ,amount ,payamount ,ordernum ,type ,cookie ,followsku ,cart ,returnordernum ,cancelordernum ,exchangeordernum ,payordernum ,followshop 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.dimension.Op_user_data" id="Op_user_dataReturnMap">
+		<!-- 创建日期 -->
+      <id column="cdate" property="cdate"/>
+		<!-- 用户 -->
+      <result column="userid" property="userid"/>
+		<!-- 访问量 -->
+      <result column="visitnum" property="visitnum"/>
+		<!-- 购买数量 -->
+      <result column="purchasenum" property="purchasenum"/>
+		<!-- 下单金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 支付金额 -->
+      <result column="payamount" property="payamount"/>
+		<!-- 订单数量 -->
+      <result column="ordernum" property="ordernum"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- cookie -->
+      <result column="cookie" property="cookie"/>
+		<!-- 关注sku -->
+      <result column="followsku" property="followsku"/>
+		<!-- 购物车 -->
+      <result column="cart" property="cart"/>
+		<!-- 订单退货数量 -->
+      <result column="returnordernum" property="returnordernum"/>
+		<!-- 订单取消数量 -->
+      <result column="cancelordernum" property="cancelordernum"/>
+		<!-- 订单换货数量 -->
+      <result column="exchangeordernum" property="exchangeordernum"/>
+		<!-- 订单支付数量 -->
+      <result column="payordernum" property="payordernum"/>
+		<!-- 关注店铺 -->
+      <result column="followshop" property="followshop"/>
+   </resultMap>
+   
+  <!-- 保存用户购物车统计信息 -->
+  <insert id="saveCart" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,cart)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.cart})
+		</foreach>
+		ON DUPLICATE KEY UPDATE cart=VALUES(cart)
+  </insert>
+   
+  <!-- 保存用户关注商品统计信息 -->
+  <insert id="saveFollowSKU" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,followsku)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.followsku})
+		</foreach>
+		ON DUPLICATE KEY UPDATE followsku=VALUES(followsku)
+  </insert>
+   
+  <!-- 保存用户关注店铺统计信息 -->
+  <insert id="saveFollowShop" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,followshop)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.followshop})
+		</foreach>
+		ON DUPLICATE KEY UPDATE followshop=VALUES(followshop)
+  </insert>
+   
+  <!-- 保存用户访问量统计信息 -->
+  <insert id="saveVisitnum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,visitnum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.visitnum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE visitnum=VALUES(visitnum)
+  </insert>
+   
+  <!-- 保存用户Cookie统计信息 -->
+  <insert id="saveCookie" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,cookie)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.cookie})
+		</foreach>
+		ON DUPLICATE KEY UPDATE cookie=VALUES(cookie)
+  </insert>
+   
+  <!-- 保存用户购买数量统计信息 -->
+  <insert id="savePurchaseNum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,purchasenum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.purchasenum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE purchasenum=VALUES(purchasenum)
+  </insert>
+   
+  <!-- 保存用户购买金额统计信息 -->
+  <insert id="saveAmount" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,amount)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.amount})
+		</foreach>
+		ON DUPLICATE KEY UPDATE amount=VALUES(amount)
+  </insert>
+   
+  <!-- 保存用户支付金额统计信息 -->
+  <insert id="savePayAmount" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,payamount)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.payamount})
+		</foreach>
+		ON DUPLICATE KEY UPDATE payamount=VALUES(payamount)
+  </insert>
+   
+  
+  
+  
+  
+  
+   
+  <!-- 保存用户取消订单统计信息 -->
+  <insert id="saveQuXiaoDingDan" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,cancelordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.cancelordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE cancelordernum=VALUES(cancelordernum)
+  </insert>
+   
+  <!-- 保存用户退货统计信息 -->
+  <insert id="saveTuiHuo" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,returnordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.returnordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE returnordernum=VALUES(returnordernum)
+  </insert>
+   
+  <!-- 保存用户换货统计信息 -->
+  <insert id="saveHuanHUo" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,exchangeordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.exchangeordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE exchangeordernum=VALUES(exchangeordernum)
+  </insert>
+   
+  <!-- 保存用户订单支付数量统计信息 -->
+  <insert id="savePayOrderNum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_user_data_${nowYearMonth}
+			(cdate,userid,type,payordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.userid},#{item.type},#{item.payordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE payordernum=VALUES(payordernum)
+  </insert>
+	
+</mapper>

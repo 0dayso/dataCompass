@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 商城渠道(channel)Mapper -->
+<mapper namespace="channelMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    id,name ,pickup ,contacts ,phone ,cdate ,updateuser ,updatetime ,status 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.channel.Channel" id="ChannelReturnMap">
+		<!-- id -->
+      <id column="id" property="id"/>
+		<!-- 名称 -->
+      <result column="name" property="name"/>
+		<!-- 对接人 -->
+      <result column="pickup" property="pickup"/>
+		<!-- 联系人 -->
+      <result column="contacts" property="contacts"/>
+		<!-- 联系电话 -->
+      <result column="phone" property="phone"/>
+		<!-- 创建时间 -->
+      <result column="cdate" property="cdate"/>
+		<!-- 修改人 -->
+      <result column="updateuser" property="updateuser"/>
+		<!-- 修改时间 -->
+      <result column="updatetime" property="updatetime"/>
+		<!-- 状态(0：正常；1：冻结；2：关闭) -->
+      <result column="status" property="status"/>
+   </resultMap>
+   
+  
+  <insert id="saveChannelList" parameterType="java.util.List">
+		INSERT INTO Channel(id,name,cdate,updatetime,status)
+		VALUES
+		<foreach collection="list" item="item" index="index" separator=",">
+			 (#{item.id}, #{item.name},NOW(),NOW(),#{item.status})
+		</foreach>
+		ON DUPLICATE KEY UPDATE name=VALUES(name) ,updatetime=VALUES(updatetime) ,status=VALUES(status)
+  </insert>
+  
+   
+  <insert id="saveChannel" parameterType="com.shifeng.entity.channel.Channel">
+		INSERT INTO 
+			Channel
+			(id,name,cdate,updatetime,status)
+		VALUES
+			 (#{id}, #{name},NOW(),NOW(),#{status})
+	    ON DUPLICATE KEY UPDATE 
+	    	name=VALUES(name) ,updatetime=VALUES(updatetime) ,status=VALUES(status)		 
+  </insert>
+  
+	
+</mapper>

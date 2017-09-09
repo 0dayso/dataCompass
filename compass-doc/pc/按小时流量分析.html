@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0060)https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>按小时流量分析</title>
+<link rel="stylesheet" href="./按小时流量分析_files/jQuery_table_jui.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/ODP.css">
+<link rel="stylesheet" href="./按小时流量分析_files/datePicker.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/thickbox.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/model.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/common.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/extra.css">
+<style type="text/css">
+.filterLbl{
+	margin:0px;
+}
+</style>
+<script type="text/javascript">
+// 图表导出需要的上下文信息
+var context_path = "";
+var table_global = [];
+//过滤json日期列数据的条件
+var timeFilterInfos=["AVG","TOTAL" ];
+</script>
+<script type="text/javascript" src="./按小时流量分析_files/jquery.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/jquery.validate.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/jquery.dataTables.js" charset="gb2312"></script>
+<script type="text/javascript" src="./按小时流量分析_files/FixedHeader.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/popModal.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/thickbox.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.prototype.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.extends.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.base.js"></script><script type="text/javascript" src="./按小时流量分析_files/jTips.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.tool.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.constants.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.render.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.integrate.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.parser.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.adapter.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.dataset.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.common.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/datepicker.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.fixTableHeader.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/highcharts.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/model.blockui.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/viewFlowForHour.core.js"></script>
+
+<style type="text/css" id="tipsCSS">.Jtips{position:relative;float:left}.Jtips .Jtips-close{position:absolute;color:#f60;font:12px "simsun";cursor:pointer;}.Jtips .Jtips-arr{position:absolute;background-image:url(//misc.360buyimg.com/purchase/trade/skin/i/arrow.gif);background-repeat:no-repeat;overflow:hidden}.Jtips.Jtips-top{padding-bottom:5px}.Jtips.Jtips-top .Jtips-close{right:1px;top:0}.Jtips.Jtips-top .Jtips-arr{left:30px;bottom:0;width:11px;height:6px;background-position:0 -5px;_bottom:-1px}.Jtips.Jtips-bottom{padding-top:5px}.Jtips.Jtips-bottom .Jtips-close{right:1px;top:5px}.Jtips.Jtips-bottom .Jtips-arr{top:0;left:30px;width:11px;height:6px;background-position:0 0}.Jtips.Jtips-left{padding-right:5px}.Jtips.Jtips-left .Jtips-close{right:6px;top:1px}.Jtips.Jtips-left .Jtips-arr{right:0;top:30px;width:6px;height:11px;background-position:-5px 0}.Jtips.Jtips-right{padding-left:5px}.Jtips.Jtips-right .Jtips-close{right:1px;top:1px}.Jtips.Jtips-right .Jtips-arr{top:30px;left:0;width:6px;height:11px;background-position:0 0}.Jtips .Jtips-con{word-break:break-all;word-wrap:break-word;float:left;padding:10px;background:#fffdee;border:1px solid #edd28b;color:#333;-moz-box-shadow:0 0 2px 2px #eee;-webkit-box-shadow:0 0 2px 2px #eee;box-shadow:0 0 2px 2px #eee;line-height:150%;overflow:hidden}.Jtips .Jtips-con a,.Jtips .Jtips-con a:visited{color:#005fab;text-decoration:none}.Jtips .Jtips-con a:hover{text-decoration:underline}.Jtips.Jtips-leftBottom{padding-bottom:5px}.Jtips.Jtips-leftBottom .Jtips-close{right:1px;top:5px}.Jtips.Jtips-leftBottom .Jtips-arr{top:-5px;right:10px;width:11px;height:6px;background-position:0 0}</style></head>
+<body>
+	<script type="text/javascript" src="./按小时流量分析_files/wl.js"></script>
+	
+
+
+   
+
+ 
+
+
+
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/thickbox.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/common.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/odp.popdialog.css">
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/odp.channel.css">
+<script type="text/javascript" src="./按小时流量分析_files/model.common.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/thickbox.js"></script>
+<script type="text/javascript" src="./按小时流量分析_files/odp.channel.js"></script>
+<script type="text/javascript">
+	var curGroup = "ShopAnalysis";
+	var userClientStr = "";
+	var userClientCookieStr = "";
+	var context_path = "";
+	var ifTmpLoginIn = "false";
+
+	function odplogOut(){
+		document.cookie = 'sysbar-hide=0' + ';path=/;';
+		window.top.location="/logout.jsp";
+	}
+	
+	function tutorialClose(divID, setCookie){
+		$(".more-setting-title,.more-setting .bracket").css({
+	        "color":"#48a7e7"
+	    });
+	    $(".more-setting .more-status").css({
+	        "background-position-x":"0"
+	    }).removeClass("orange");
+		
+		$("#" + divID).hide();
+		//点击我知道了
+		if(setCookie == "setCookie"){
+			
+		}
+	}
+	function tutorialCloseShow(result){}
+	
+	function setUserCookie(params, fun){
+		$.ajax({
+			url : "/setUserSetCookie.action",
+			type : "post",
+			dataType : "json",
+			data : params,
+			success : fun,
+			error :  function(XMLHttpRequest, s, errorThrown) {
+	            if(XMLHttpRequest.readyState!=0){
+	            	if(s=="timeout"){
+	 				   // 请求超时
+	 				}else{// 请求发生异常
+	 					
+	 				}
+	            }
+	        }
+		});
+	}
+	function setJingMaiCookieResult(result){
+		$("#sys-infor").hide();
+		$("#sys-links").hide();
+	}
+	
+	$(document).ready(function() {
+		$("#nav li.curr").removeClass("curr");
+		$("#"+curGroup).addClass("curr");
+		if(ifTmpLoginIn == "true"){
+			$("#userShield").hide();
+		}
+		$("#tutorial-1").hide();
+		
+		$.ajax({
+			url : "/getProductEdition.action",
+			type : "post",
+			dataType : "json",
+			success : renderEditionInfo,
+			error :  function(XMLHttpRequest, s, errorThrown) {
+	            if(XMLHttpRequest.readyState!=0){
+	            	if(s=="timeout"){
+	 				   // 请求超时
+	 				}else{// 请求发生异常
+	 					
+	 				}
+	            }
+	        }
+		});
+		
+		//判断是否嵌套在京麦工作台
+		if(userClientStr == "jingmai"){
+			//京麦首次登陆写入cookie
+			var params = "str1=1";
+			setUserCookie(params, setJingMaiCookieResult);
+		}else{
+		}
+		if(userClientCookieStr == "1"){
+			$("#sys-infor").hide();
+			$("#sys-links").hide();
+		}else{
+			$("#sys-infor").show();
+			$("#sys-links").show();
+		}
+
+		$(".i-jingmai").parent("a").bind("mouseover",function(){
+			$("#erweima").show();
+		}).bind("mouseout",function(){
+			$("#erweima").hide();
+		});
+		
+		function hiddenSys(){
+			$("#sys-b-bar").show();
+			$("#sysBarContent").css("display", "none");
+			$("#sysBarContentHidden").show();
+			$("#sys-b-bar").css("right", "-32px");
+		}
+
+		function showSys(){
+			$("#sys-b-bar").show();
+			$("#sysBarContent").show();
+			$("#sysBarContentHidden").hide();
+			$("#sys-b-bar").css("right", "0px");
+		}
+		
+		//控制图片链接
+		/* var adLink = "http://item.jd.com/11844136.html";
+		var adImgSrc = context_path + "/skin/inner/banner-sale.png";
+		var bannerBg = "#d20b1b";
+		var adCloseImgSrc = context_path + "/skin/inner/closeBtn-sale.png"; */
+		/* var newLinkTime = new Date("2016-01-04 10:00:00").getTime();
+		if(new Date().getTime() >= newLinkTime) {
+			adLink = "http://item.jd.com/11844136.html";
+			adImgSrc = context_path + "/skin/ad/banner-sale.png";
+			bannerBg = "#d20b1b";
+			adCloseImgSrc = context_path + "/skin/ad/closeBtn-sale.png";
+		} */
+		/* $("#adLink").attr("href", adLink);
+		$("#adImg").attr("src", adImgSrc);
+		$(".banner-wrap").css("background", bannerBg);
+		$(".close-btn").css("background", "url('"+adCloseImgSrc+"') 0px 0px no-repeat");
+		$(".close-btn").hover(function(){
+			$(this).css("background-position", "0px -24px");
+		}, function(){
+			$(this).css("background-position", "0px 0px");
+		});
+		if(getCookie("sysad-hide") != "1") {
+			$(".banner-wrap").show();
+		} */
+		
+		//关闭广告图片
+		/* $('.close-btn').click(function(){
+			$('.banner-wrap').slideUp('fast');
+			var date = new Date();
+			var expireDate = new Date(date.getFullYear(),date.getMonth(),date.getDate(),23,59,59);
+			document.cookie = 'sysad-hide=1' + ';path=/;' + "expires=" + expireDate.toGMTString();
+		}); */
+		
+		//弹出层
+
+		var newStartTimes = new Date();
+		var newEndTimes = new Date();
+		newStartTimes.setFullYear(2016, 04, 20);
+		newEndTimes.setFullYear(2016, 05, 03);
+		newStartTimes.setHours(8,40);
+		newEndTimes.setHours(8,40);
+		var newStartTime =Date.parse(newStartTimes);
+		var newEndTime = Date.parse(newEndTimes);
+		var day = Date.parse(new Date());
+		if(day >= newStartTime && day <= newEndTime){
+			if(getCookie("sysshow-hide") != "1") {
+				$("#odpModel .pop-dialogWindow").css("height",($(document).height())+"px");
+//				$("#odpModel .dialogContainer").css("left",(($(window).width()-660)/2)+"px");
+//				$("#odpModel .dialogContainer").css("top",((screen.height-660)/2) +"px");
+				$("#odpModel").show();
+			}
+
+		}
+
+	});
+	
+	function renderEditionInfo(result){
+		if(result){
+			var resultData = result.edition;
+			
+			var ver = resultData.versionRf;
+	        if(ver){
+	        	var sysbarHide = getCookie("sysbar-hide");
+	        	if(sysbarHide != 1){
+	        		showSys();
+	        	} else{
+	        		hiddenSys();
+	        	}
+	        	if(ver!=""){
+		            $("#VerMark").html('<span class="version '+ver.toLowerCase()+'">'+resultData.versionZh+'</span>');
+		            if(ver.toLowerCase() == "odp_elementary"){//初级版不显示咚咚
+		            }else{//中级版以上显示咚咚
+		            }
+	        	}
+	        }
+	        $("#shopNameTip").html('<a>欢迎:'+resultData.shopName+'</a>');
+	        
+	        var rawVer=resultData.rawVersion;//
+	        if(rawVer!=""){
+	        	$("#businessHref").attr("href","http://market.shop.jd.com/vas/vendor/venderApp_myApp.action");
+	        	$("#businessHref").text("[升级/续费]");
+	        }else{
+	        	$("#businessHref").attr("href","http://market.shop.jd.com/vas/more/moreApp_moreApp.action?pt=JD-ODP");
+	        	$("#businessHref").text("[订购]");
+	        }
+		}
+	}
+	
+	function getCookie(name) {
+	    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+	    if (arr != null) return unescape(arr[2]);
+	    return null;
+	}
+
+	function getOs()
+	{
+		var OsObject = "";
+		if(navigator.userAgent.indexOf("MSIE")>0) {
+			return "MSIE";
+		}
+		if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
+			return "Firefox";
+		}
+		if(isSafari=navigator.userAgent.indexOf("Safari")>0) {
+			return "Safari";
+		}
+		if(isCamino=navigator.userAgent.indexOf("Camino")>0){
+			return "Camino";
+		}
+		if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){
+			return "Gecko";
+		}
+
+	}
+
+	//关闭弹层
+	function closeShow(){
+		$('#odpModel').hide();
+		var date = new Date();
+		if(getOs() =='Firefox'){
+			var expireDate = new Date();
+			expireDate.setMonth(5);
+			expireDate.setFullYear(2016);
+			expireDate.setDate(4);
+		}else{
+			var expireDate = new Date(2016,06,03,08,00,00);
+		}
+
+		document.cookie = 'sysshow-hide=1' + ';path=/;' + "expires=" + expireDate.toGMTString();
+	}
+	
+</script>
+<link rel="stylesheet" type="text/css" href="./按小时流量分析_files/userset.css">
+<link rel="shortcut icon" href="https://pop.jd.com/favicon.ico">
+<!-- <div class="banner-wrap" style="display:none">
+	<div class="inner-wrap">
+		<a class="close-btn"></a>
+		<a id="adLink" target="_blank"><img id="adImg"></a>
+	</div>
+</div> -->
+<div id="header">
+    <div id="logo">
+        <a href="">京东数据罗盘</a>
+        <div id="VerMark"><span class="version odp_advanced">高级版</span></div>
+        <div id="NowVersion" style="position: relative; left: 8px; top: 24px; cursor: pointer;"><span onclick="javascript:window.open(&#39;http://luopan.jd.com/log.jsp&#39;)">V1.6.2</span></div>
+    </div>
+    <div id="sys-infor" style="">
+    	<!-- 
+        <span><a href="http://luopan.jd.com/help-new.jsp" target="_blank" style="color: #c63333; font-weight: bold">新功能介绍</a></span>
+    	 -->
+        
+        <span id="shopNameTip"><a>欢迎:世峰户外商城旗舰店</a></span>
+        
+        	<span class="more-setting">
+					<span class="more-title">
+						<span class="bracket">[</span>
+						<span class="more-setting-title">设置
+						  
+						<div style="display: inline-block; position: absolute; ">
+							 
+							<div id="ust1" class="_userset1_odp_web_usermenu">
+						    	  <div id="tutorial-1" style="left: -63px; display: none;">
+								        <a href="javascript:tutorialClose('tutorial-1','setCookie');" class="close-btn"></a>
+								        <a class="close-icon" href="javascript:tutorialClose('tutorial-1','');"></a>
+								   </div>
+						    </div>
+						    <!--
+						    <div id="ust2" class="_userset2_odp_web_usermenu">
+							    <div id="tutorial-2" style="left:-50px;display:none">
+									<a class="close-btn" href="javascript:tutorialClose('tutorial-2','setCookie');"></a>
+									<a class="close-icon" href="javascript:tutorialClose('tutorial-2','');"></a>
+								</div>
+							</div>
+							 -->
+						</div>
+						
+						</span><em class="more-status"></em>
+						<span class="bracket">]</span>
+					</span>
+					<span class="more-content">
+						<span class="cover"></span>
+						<a href="https://pop.jd.com/userset/usermenu/usermenu.jsp">快捷菜单</a>
+						<a id="userShield" href="https://pop.jd.com/userset/usershield/usershield.jsp">屏蔽自主访问</a>
+						<!--<a href="javascript:void(0)" onclick="venderVersionTimeQuery()">罗盘订购查询</a>-->
+					</span>
+			</span>
+		<a id="businessHref" href="http://market.shop.jd.com/vas/vendor/venderApp_myApp.action" target="_blank">[升级/续费]</a>
+		
+        <!-- <a id="noticeButton" href="javascript:void(0);" class="ml2">[公告]</a> -->
+		<a id="noticeButton" href="https://pop.jd.com/common/noticeAll.jsp" class="ml2">[公告]</a>
+		<a href="http://luopan.jd.com/log.jsp" class="ml2" target="_blank">[更新日志]</a>
+        
+        <a href="http://luopan.jd.com/help-new.jsp" target="_blank"><i class="i-help"></i>[帮助]</a>
+        
+        <a href="javascript:void(0);" onclick="odplogOut();return false;" class="ml2">[退出]</a>
+    </div>
+    
+    <ul id="sys-links" style="">
+    	<li>
+            <a href="https://yisou.jd.com/" target="_blank">
+                <i class="i-easysearch"></i>
+                <span>京东易搜</span>
+            	<div class="icon-links"></div>
+            	<div style="background: url(&#39;/skin/i/icon-links-new.png&#39;) no-repeat scroll 0px 0px transparent; cursor: default; height: 15px; line-height: 15px; width: 25px; position: relative; display: block; left: 35px; top: -25px;z-index: 2;"></div>
+            	<div style="float: left; z-index: 9999; position: absolute; border: 1px solid rgb(212, 212, 212); text-align: center; background-color: rgb(255, 255, 255); padding-top: 6px; top: 37px; display: none; height: 105px; width: 112px; left: -2px;" id="erweima"><img width="100" height="100" src="./按小时流量分析_files/jingmai.png"></div>
+            </a>
+        </li>
+        <li>
+            <a href="http://jm.jd.com/mobile/download.html" target="_blank">
+                <i class="i-jingmai"></i>
+                <span>京麦工作台</span>
+            	<div class="icon-links"></div>
+            	<div style="background: url(&#39;/skin/i/saoyisao.png&#39;) no-repeat scroll 0px 0px transparent; cursor: default; height: 20px; line-height: 20px; width: 50px; position: relative; display: block; left: 40px; top: -30px;z-index: 1;"></div>
+            	<div style="float: left; z-index: 9999; position: absolute; border: 1px solid rgb(212, 212, 212); text-align: center; background-color: rgb(255, 255, 255); padding-top: 6px; top: 37px; display: none; height: 105px; width: 112px; left: -2px;" id="erweima"><img width="100" height="100" src="./按小时流量分析_files/jingmai.png"></div>
+            </a>
+        </li>
+        <li>
+            <a href="http://shop.jd.com/" target="_blank">
+                <i class="i-shop"></i>
+                <span>商家后台</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://jzt.jd.com/" target="_blank" style="width:60px">
+                <i class="i-express"></i>
+                <span>京准通</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://loan.jd.com/from=datacompass" target="_blank">
+                <i class="i-jxd"></i>
+                <span>京小贷</span>
+            </a>
+        </li>
+        <!-- <li>
+            <a href="http://mjbbs.jd.com" target="_blank">
+                <i class="i-forum"></i>
+                <span>卖家论坛</span>
+            </a>
+        </li> -->
+    </ul>
+    
+    <ul id="nav"><li id="ShopAnalysis" class="curr"><a href="https://pop.jd.com/model/shopOverview/opermodel.jsp"><span>店铺分析</span></a></li><li id="IndustryData"><a href="https://pop.jd.com/model/realTimeBusiness/realTimeOverviewChnl.jsp"><span>行业分析</span></a></li><li id="JDLaboratory"><a href="https://pop.jd.com/model/sexAnlys/sexAnlys.jsp"><span>京东实验室</span></a></li><li id="ThemeAnalysis"><a href="https://pop.jd.com/model/shopDiagnosis/shopDiagnosis.jsp"><span>主题分析</span></a></li></ul>
+</div>
+
+<div id="odpModel" class="pop-dialogWindow" style="display:none">
+		<div class="pop-dialogWindow pop-opacity" style="height: 1500px;position:fixed;"></div>
+        <div class="dialogContainer" style="top: 150px; margin:0 auto; width: 450px; height: 300px;position:relative;border:0px;">
+        	<a onclick="closeShow()" class="closeShow-btn"></a>
+			<a href="http://mjbbs.jd.com/thread-59180-1-1.html" target="_blank" onclick="closeShow()"><img src="./按小时流量分析_files/shop_diagnosis.jpg"></a>
+        </div>
+</div>
+	<div id="container">
+		
+
+
+
+ 
+<div id="menu">
+	<div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-report">&nbsp;</i><span>经营报告</span></a><div class="lev2"><a id="1-1" href="https://pop.jd.com/model/shopOverview/opermodel.jsp"><i>&nbsp;</i><span>经营概况</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-rtInsight">&nbsp;</i><span>实时洞察</span></a><div class="lev2"><a id="1-2Chnl" href="https://pop.jd.com/model/realTime/realtimedatav2Chnl.jsp"><i>&nbsp;</i><span>实时经营概况</span><em class="new"></em></a><a id="RTVisitorChnl" href="https://pop.jd.com/model/realTime/rtvisitorsChnl.jsp"><i>&nbsp;</i><span>实时访客</span><em class="new"></em></a><a id="rtSaleDetailsChnl" href="https://pop.jd.com/model/realTime/rtBoard.jsp"><i>&nbsp;</i><span>实时榜单</span><em class="new"></em></a><a id="shopRealTimeFlowChnl" href="https://pop.jd.com/model/shoprealtimeflow/shopRealTimeFlowChnl.jsp"><i>&nbsp;</i><span>实时流量来源</span><em class="new"></em></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-sale">&nbsp;</i><span>销售分析</span></a><div class="lev2"><a id="2-1" href="https://pop.jd.com/model/productStatic/prostatic.jsp"><i>&nbsp;</i><span>商品统计排行</span></a><a id="2-2" href="https://pop.jd.com/model/salesDetail/salemodel.jsp"><i>&nbsp;</i><span>商品销售明细</span></a><a id="2-4" href="https://pop.jd.com/model/salesStat/salesstat.jsp"><i>&nbsp;</i><span>商品销量分析</span></a><a id="OrderDetailCount" href="https://pop.jd.com/model/operModelm/shopOrderDetail.jsp"><i>&nbsp;</i><span>订单明细统计</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-flow">&nbsp;</i><span>PC流量分析</span></a><div class="lev2" style="display: block;"><a id="3-1" href="https://pop.jd.com/model/viewProfile/viewprofile.jsp"><i>&nbsp;</i><span>流量概况</span></a><a id="viewFlowForHour" href="./按小时流量分析_files/按小时流量分析.html" class="curr"><i>&nbsp;</i><span>按小时流量分析</span></a><a id="viewFlowForDay" href="https://pop.jd.com/model/viewFlowForDay/viewFlowForDay.jsp"><i>&nbsp;</i><span>按天流量分析</span></a><a id="viewFlow" href="https://pop.jd.com/model/viewFlow/viewFlow.jsp"><i>&nbsp;</i><span>流量来源分析</span></a><a id="visitorFlow" href="https://pop.jd.com/model/visitorFlow/visitorFlow.jsp"><i>&nbsp;</i><span>访客来源分析</span></a><a id="shopProFlow" href="https://pop.jd.com/model/shopProFlow/shopProFlow.jsp"><i>&nbsp;</i><span>商品页流量分析</span><em class="new"></em></a><a id="SourceDealStatistics" href="https://pop.jd.com/model/sourceDealStatistics/sourceDealStatistics.jsp"><i>&nbsp;</i><span>来源成交分析</span></a><a id="3-4" href="https://pop.jd.com/model/viewFrequency/viewFrequency.jsp"><i>&nbsp;</i><span>访问频次分布</span></a><a id="9-3" href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp"><i>&nbsp;</i><span>关键词分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-mobileAnalysis">&nbsp;</i><span>无线流量分析</span><em class="new"></em></a><div class="lev2"><a id="viewprofileMobileNew" href="https://pop.jd.com/model/viewprofileMobileNew/viewprofileMobileNew.jsp"><i>&nbsp;</i><span>流量概况</span></a><a id="viewTrendAnalyseMobile" href="https://pop.jd.com/model/viewTrendAnalyseMobile/viewTrendAnalyseMoblie.jsp"><i>&nbsp;</i><span>流量趋势分析</span></a><a id="mobileViewFlow" href="https://pop.jd.com/model/mobileViewFlow/mobileViewFlow.jsp"><i>&nbsp;</i><span>流量来源分析</span></a><a id="shopProFlowMobile" href="https://pop.jd.com/model/viewProAnalyseMobile/shopProFlowMobile.jsp"><i>&nbsp;</i><span>商品页流量分析</span></a><a id="mobileKeyWords" href="https://pop.jd.com/model/mobileKeyWords/mobileKeyWords.jsp"><i>&nbsp;</i><span>关键词分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-level">&nbsp;</i><span>商家评级</span></a><div class="lev2"><a id="venderRateNew" href="https://pop.jd.com/model/venderRate/venderRateNew.jsp"><i>&nbsp;</i><span>店铺动态评分</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-trim">&nbsp;</i><span>装修分析</span></a><div class="lev2"><a id="10-1" href="https://pop.jd.com/model/userheatpage/userheatpages.jsp"><i>&nbsp;</i><span>热力图分析</span></a><a id="10-2" href="https://pop.jd.com/model/decoTrendAnal/decoTrendAnal.jsp"><i>&nbsp;</i><span>装修趋势分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-client">&nbsp;</i><span>客户分析</span></a><div class="lev2"><a id="4-0" href="https://pop.jd.com/model/custBuy/custBuy.jsp"><i>&nbsp;</i><span>买家分析</span></a><a id="4-1" href="https://pop.jd.com/model/custScale/custScale.jsp"><i>&nbsp;</i><span>客户规模分析</span></a><a id="4-2" href="https://pop.jd.com/model/custArea/custarea.jsp"><i>&nbsp;</i><span>区域分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-mark">&nbsp;</i><span>营销分析</span></a><div class="lev2"><a id="5-3" href="https://pop.jd.com/model/proCoup/procoup.jsp"><i>&nbsp;</i><span>促销分析</span></a><a id="5-2-1" href="https://pop.jd.com/model/teamSale/teamSale.jsp"><i>&nbsp;</i><span>团购分析</span></a><a id="actAppList" href="https://pop.jd.com/model/actAppList/actAppList.jsp"><i>&nbsp;</i><span>活动页分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-delivery">&nbsp;</i><span>承诺时效分析</span></a><div class="lev2"><a id="deliveryPromiseAnalysis" href="https://pop.jd.com/model/deliveryPromise/deliveryPromise.jsp"><i>&nbsp;</i><span>承诺时效分析</span><em class="new"></em></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-ats">&nbsp;</i><span>售后服务</span></a><div class="lev2"><a id="tradeDisputes" href="https://pop.jd.com/model/shopDisputes/tradeDisputes.jsp"><i>&nbsp;</i><span>交易纠纷</span><em class="new"></em></a><a id="8-1" href="https://pop.jd.com/model/shopService/shopService.jsp"><i>&nbsp;</i><span>售后概况</span></a><a id="8-2" href="https://pop.jd.com/model/shopReDetails/shopReDetails.jsp"><i>&nbsp;</i><span>售后明细</span></a></div></div>
+	
+	<!-- 
+	<div class="lev1 pic">
+		<a title="用户手册" href="/common/compassHelpdoc.html" target="_blank"><i>&nbsp;</i><span><img src="/images/mainpage/userManual.png" alt="用户手册" border="0" /></span></a>		
+	</div>	
+		
+	 -->
+	
+</div>
+
+		<div id="content">
+			<div id="main">
+				<div class="btn-con mb10">
+					<div class="fl">
+						<span class="ft-0" id="PageTitle">按小时流量分析</span>
+					</div>
+				</div>
+				<div id="moduleNotice" style="display: none;"></div>
+				<!--tab start-->
+				<div class="tab cxt">
+					<ul class="clearfix titH2">
+						<li><a href="javascript:void(0)" class="selected" be="tab1"><span>流量查看</span></a>
+						</li>
+						<li><a href="javascript:void(0)" be="tab2" func="initTab2"><span>流量对比</span></a>
+						</li>
+					</ul>
+				</div>
+				<div id="tab1" class="tab-con cxt" custwidth="1676" style="width: 1676px; display: block;">
+					<div id="date1" class="mt10"><span class="filterLbl"></span><span id="date1Calendar" class="widget"><div class="widgetField" style="width: 170px;"><input id="CurDate" type="hidden" name="filter.date" value="2016-11-15" style="width: 125px;"><input id="date1DateSeg" type="text" class="cursorPointer" readonly="readonly" style="width: 125px;"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"></a></div><div class="widgetCalendar" style="width: 578px;"><div class="c-box"><div id="date1Dimension" class="embedDimension"><ul><li val="!month!week" class="sel" style="border-right-width: 0px; border-right-style: none;">按日查看</li></ul></div><div class="Picker"><div class="Calendar"><div class="datepicker" id="datepicker_494" style="display: block; position: relative; width: 491px; height: 233px;"><div class="datepickerBorderT"></div><div class="datepickerBorderB"></div><div class="datepickerBorderL"></div><div class="datepickerBorderR"></div><div class="datepickerBorderTL"></div><div class="datepickerBorderTR"></div><div class="datepickerBorderBL"></div><div class="datepickerBorderBR"></div><div class="datepickerContainer" style="width: 471px; height: 213px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table cellspacing="0" cellpadding="0" class="datepickerViewDays"><thead><tr><th class="datepickerGoPrev"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>◀</span></a></th><th colspan="6" class="datepickerMonth"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十一月, 2016</span></a></th><th class="datepickerGoNext"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>▶</span></a></th></tr><tr class="datepickerDoW"><th class="datepickerWeek"><span>周</span></th><th><span>一</span></th><th><span>二</span></th><th><span>三</span></th><th><span>四</span></th><th><span>五</span></th><th><span>六</span></th><th><span>日</span></th></tr></thead><tbody class="datepickerMonths"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>二</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>三</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>四</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>五</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>六</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>七</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>八</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>九</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十二</span></a></td></tr></tbody><tbody class="datepickerDays"><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>44</span></a></th><td class="datepickerNotInMonth"><a class="hand"><span val="308">31</span></a></td><td class=""><a class="hand"><span val="309">1</span></a></td><td class=""><a class="hand"><span val="310">2</span></a></td><td class=""><a class="hand"><span val="311">3</span></a></td><td class=""><a class="hand"><span val="312">4</span></a></td><td class="datepickerSaturday"><a class="hand"><span val="313">5</span></a></td><td class="datepickerSunday"><a class="hand"><span val="314">6</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>45</span></a></th><td class=""><a class="hand"><span val="315">7</span></a></td><td class=""><a class="hand"><span val="316">8</span></a></td><td class=""><a class="hand"><span val="317">9</span></a></td><td class=""><a class="hand"><span val="318">10</span></a></td><td class=""><a class="hand"><span val="319">11</span></a></td><td class="datepickerSaturday"><a class="hand"><span val="320">12</span></a></td><td class="datepickerSunday"><a class="hand"><span val="321">13</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>46</span></a></th><td class=""><a class="hand"><span val="322">14</span></a></td><td class="datepickerSelected"><a class="hand"><span val="323">15</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="324">16</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="325">17</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="326">18</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="327">19</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="328">20</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>47</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="329">21</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="330">22</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="331">23</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="332">24</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="333">25</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="334">26</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="335">27</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>48</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="336">28</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="337">29</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="338">30</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="339">1</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="340">2</span></a></td><td class="datepickerNotInMonth datepickerSaturday datepickerDisabled"><a class="hand"><span val="341">3</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="342">4</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>49</span></a></th><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="343">5</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="344">6</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="345">7</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="346">8</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="347">9</span></a></td><td class="datepickerNotInMonth datepickerSaturday datepickerDisabled"><a class="hand"><span val="348">10</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="349">11</span></a></td></tr></tbody><tbody class="datepickerYears"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2010</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2011</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2012</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2013</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2014</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2015</span></a></td><td colspan="2" class="datepickerSelected"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2016</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2017</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2018</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2019</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2020</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2021</span></a></td></tr></tbody></table></td><td class="datepickerSpace"><div></div></td><td><table cellspacing="0" cellpadding="0" class="datepickerViewDays"><thead><tr><th class="datepickerGoPrev"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>◀</span></a></th><th colspan="6" class="datepickerMonth"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十二月, 2016</span></a></th><th class="datepickerGoNext"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>▶</span></a></th></tr><tr class="datepickerDoW"><th class="datepickerWeek"><span>周</span></th><th><span>一</span></th><th><span>二</span></th><th><span>三</span></th><th><span>四</span></th><th><span>五</span></th><th><span>六</span></th><th><span>日</span></th></tr></thead><tbody class="datepickerMonths"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>二</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>三</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>四</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>五</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>六</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>七</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>八</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>九</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>十二</span></a></td></tr></tbody><tbody class="datepickerDays"><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>48</span></a></th><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="336">28</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="337">29</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="338">30</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="339">1</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="340">2</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="341">3</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="342">4</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>49</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="343">5</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="344">6</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="345">7</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="346">8</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="347">9</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="348">10</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="349">11</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>50</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="350">12</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="351">13</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="352">14</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="353">15</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="354">16</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="355">17</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="356">18</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>51</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="357">19</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="358">20</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="359">21</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="360">22</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="361">23</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="362">24</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="363">25</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>52</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="364">26</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="365">27</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="366">28</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="367">29</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="368">30</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="369">31</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="370">1</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#" class="week_range"><span>1</span></a></th><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="7">2</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="8">3</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="9">4</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="10">5</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="11">6</span></a></td><td class="datepickerNotInMonth datepickerSaturday datepickerDisabled"><a class="hand"><span val="12">7</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="13">8</span></a></td></tr></tbody><tbody class="datepickerYears"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2010</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2011</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2012</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2013</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2014</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2015</span></a></td><td colspan="2" class="datepickerSelected"><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2016</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2017</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2018</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2019</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2020</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#"><span>2021</span></a></td></tr></tbody></table></td></tr></tbody></table></div></div></div><div class="clr"></div><div class="c-btn"><span class="message warn"></span><a class="btn query" href="javascript:void(0);" id="query_button" onclick="">确定</a><a class="btn cancel ml5 mr10" href="javascript:void(0);" id="cancel_button">取消</a></div></div></div></div></span><span class="rapidSel ml15" style="line-height: 36px;"><input type="hidden" id="date1CalendarRapidSel"><label class="filterLbl" for="">快速查看</label><span class="radiobox" desc="昨天" ref="!month!week" val="0"><input type="radio" class="p-ib pointer ml5" id="widgetRapidSel0" name="widgetRapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="widgetRapidSel0">昨天</label><span class="radiobox" desc="前天" ref="!month!week" val="0"><input type="radio" class="p-ib pointer ml5" id="widgetRapidSel1" name="widgetRapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="widgetRapidSel1">前天</label></span></div>
+					<div class="chartOuterBorder mt20">
+						<div class="wrap-tools" id="chart1Bar" style="float: none; height: 16px; line-height: 16px;"><div id="chart1Legend" class="checkbox-con fl mr10"><span class="f-checkbox pointer f-checkbox-check" idx="0" id="LegendPV"></span><span class="f-checkbox-label mr15" for="LegendPV" style="color: #99cc33">浏览量</span><span class="f-checkbox pointer f-checkbox-check" idx="1" id="LegendUV"></span><span class="f-checkbox-label mr15" for="LegendUV" style="color: #FF9933">访客数</span></div></div><div id="chart1" style="border: 1px solid rgb(212, 212, 212);"><div id="chart1Chart" style="height:300px"><div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 1642px; height: 300px; text-align: left; font-family: &#39;Lucida Grande&#39;, &#39;Lucida Sans Unicode&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; top: 0px;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1642" height="300"><defs><clippath id="highcharts-1"><rect rx="0" ry="0" fill="none" x="0" y="0" width="1590" height="229" stroke-width="0.000001"></rect></clippath></defs><rect rx="0" ry="0" fill="#fafafa" x="0" y="0" width="1642" height="300" stroke-width="0.000001" stroke="#4572A7"></rect><image preserveAspectRatio="none" x="42" y="40" width="1590" height="229" href="/images/platform/mainform/WatermarkBig.png"></image><text x="801" y="25" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:16px;color:#656565;font:bold 14px 微软雅黑;fill:#656565;" text-anchor="middle" class="highcharts-title" zIndex="1"><tspan style="font-weight:bold" x="801">经营流量</tspan><tspan dx="3"> 2016-11-15</tspan></text><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"><path d="M 42 269.5 L 1632 269.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 236.5 L 1632 236.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 204.5 L 1632 204.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 171.5 L 1632 171.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 138.5 L 1632 138.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 105.5 L 1632 105.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 73.5 L 1632 73.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 40.5 L 1632 40.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path></g><path d="M 80.5 40 L 80.5 268.99546220487406" fill="none" stroke-width="1" stroke="#C0C0C0" zIndex="2" visibility="hidden"></path><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" clip-path="url(https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#highcharts-1)" visibility="visible" transform="translate(42,40)"><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 224.74714285714288 113.57142857142856 224.09285714285716 C 143.85714285714283 223.43857142857144 159 222.45714285714286 189.28571428571428 222.45714285714286 C 219.57142857142858 222.45714285714286 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 227.36428571428573 416.4285714285714 219.18571428571428 C 446.71428571428567 211.00714285714284 461.85714285714283 215.26000000000002 492.1428571428571 184.8357142857143 C 522.4285714285713 154.41142857142862 537.5714285714286 96.83428571428567 567.8571428571428 67.06428571428572 C 598.1428571428571 37.29428571428565 613.2857142857143 35.985714285714295 643.5714285714286 35.985714285714295 C 673.8571428571429 35.985714285714295 689 132.82 719.2857142857142 165.20714285714286 C 749.5714285714284 197.59428571428572 764.7142857142856 188.4342857142857 794.9999999999999 197.92142857142858 C 825.2857142857141 207.4085714285714 840.4285714285713 212.64285714285714 870.7142857142857 212.64285714285714 C 901 212.64285714285714 916.1428571428571 212.64285714285714 946.4285714285713 201.19285714285715 C 976.7142857142856 189.74285714285716 991.8571428571428 145.57857142857142 1022.1428571428571 145.57857142857142 C 1052.4285714285713 145.57857142857142 1067.5714285714284 145.57857142857142 1097.8571428571427 152.12142857142857 C 1128.1428571428569 158.6642857142857 1143.2857142857142 215.9142857142857 1173.5714285714284 215.9142857142857 C 1203.8571428571427 215.9142857142857 1219 184.8357142857143 1249.2857142857142 184.8357142857143 C 1279.5714285714287 184.8357142857143 1294.7142857142858 207.7357142857143 1325 211.00714285714287 C 1355.2857142857142 214.27857142857144 1370.4285714285713 212.31571428571428 1400.7142857142856 214.27857142857144 C 1431 216.2414285714286 1446.1428571428569 220.82142857142858 1476.4285714285713 220.82142857142858 C 1506.7142857142856 220.82142857142858 1552.142857142857 219.18571428571428 1552.142857142857 219.18571428571428" fill="none" stroke="rgb(0, 0, 0)" stroke-width="5" isShadow="true" stroke-opacity="0.05" transform="translate(1,1)"></path><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 224.74714285714288 113.57142857142856 224.09285714285716 C 143.85714285714283 223.43857142857144 159 222.45714285714286 189.28571428571428 222.45714285714286 C 219.57142857142858 222.45714285714286 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 227.36428571428573 416.4285714285714 219.18571428571428 C 446.71428571428567 211.00714285714284 461.85714285714283 215.26000000000002 492.1428571428571 184.8357142857143 C 522.4285714285713 154.41142857142862 537.5714285714286 96.83428571428567 567.8571428571428 67.06428571428572 C 598.1428571428571 37.29428571428565 613.2857142857143 35.985714285714295 643.5714285714286 35.985714285714295 C 673.8571428571429 35.985714285714295 689 132.82 719.2857142857142 165.20714285714286 C 749.5714285714284 197.59428571428572 764.7142857142856 188.4342857142857 794.9999999999999 197.92142857142858 C 825.2857142857141 207.4085714285714 840.4285714285713 212.64285714285714 870.7142857142857 212.64285714285714 C 901 212.64285714285714 916.1428571428571 212.64285714285714 946.4285714285713 201.19285714285715 C 976.7142857142856 189.74285714285716 991.8571428571428 145.57857142857142 1022.1428571428571 145.57857142857142 C 1052.4285714285713 145.57857142857142 1067.5714285714284 145.57857142857142 1097.8571428571427 152.12142857142857 C 1128.1428571428569 158.6642857142857 1143.2857142857142 215.9142857142857 1173.5714285714284 215.9142857142857 C 1203.8571428571427 215.9142857142857 1219 184.8357142857143 1249.2857142857142 184.8357142857143 C 1279.5714285714287 184.8357142857143 1294.7142857142858 207.7357142857143 1325 211.00714285714287 C 1355.2857142857142 214.27857142857144 1370.4285714285713 212.31571428571428 1400.7142857142856 214.27857142857144 C 1431 216.2414285714286 1446.1428571428569 220.82142857142858 1476.4285714285713 220.82142857142858 C 1506.7142857142856 220.82142857142858 1552.142857142857 219.18571428571428 1552.142857142857 219.18571428571428" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" isShadow="true" stroke-opacity="0.1" transform="translate(1,1)"></path><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 224.74714285714288 113.57142857142856 224.09285714285716 C 143.85714285714283 223.43857142857144 159 222.45714285714286 189.28571428571428 222.45714285714286 C 219.57142857142858 222.45714285714286 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 227.36428571428573 416.4285714285714 219.18571428571428 C 446.71428571428567 211.00714285714284 461.85714285714283 215.26000000000002 492.1428571428571 184.8357142857143 C 522.4285714285713 154.41142857142862 537.5714285714286 96.83428571428567 567.8571428571428 67.06428571428572 C 598.1428571428571 37.29428571428565 613.2857142857143 35.985714285714295 643.5714285714286 35.985714285714295 C 673.8571428571429 35.985714285714295 689 132.82 719.2857142857142 165.20714285714286 C 749.5714285714284 197.59428571428572 764.7142857142856 188.4342857142857 794.9999999999999 197.92142857142858 C 825.2857142857141 207.4085714285714 840.4285714285713 212.64285714285714 870.7142857142857 212.64285714285714 C 901 212.64285714285714 916.1428571428571 212.64285714285714 946.4285714285713 201.19285714285715 C 976.7142857142856 189.74285714285716 991.8571428571428 145.57857142857142 1022.1428571428571 145.57857142857142 C 1052.4285714285713 145.57857142857142 1067.5714285714284 145.57857142857142 1097.8571428571427 152.12142857142857 C 1128.1428571428569 158.6642857142857 1143.2857142857142 215.9142857142857 1173.5714285714284 215.9142857142857 C 1203.8571428571427 215.9142857142857 1219 184.8357142857143 1249.2857142857142 184.8357142857143 C 1279.5714285714287 184.8357142857143 1294.7142857142858 207.7357142857143 1325 211.00714285714287 C 1355.2857142857142 214.27857142857144 1370.4285714285713 212.31571428571428 1400.7142857142856 214.27857142857144 C 1431 216.2414285714286 1446.1428571428569 220.82142857142858 1476.4285714285713 220.82142857142858 C 1506.7142857142856 220.82142857142858 1552.142857142857 219.18571428571428 1552.142857142857 219.18571428571428" fill="none" stroke="rgb(0, 0, 0)" stroke-width="1" isShadow="true" stroke-opacity="0.15000000000000002" transform="translate(1,1)"></path><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 224.74714285714288 113.57142857142856 224.09285714285716 C 143.85714285714283 223.43857142857144 159 222.45714285714286 189.28571428571428 222.45714285714286 C 219.57142857142858 222.45714285714286 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 227.36428571428573 416.4285714285714 219.18571428571428 C 446.71428571428567 211.00714285714284 461.85714285714283 215.26000000000002 492.1428571428571 184.8357142857143 C 522.4285714285713 154.41142857142862 537.5714285714286 96.83428571428567 567.8571428571428 67.06428571428572 C 598.1428571428571 37.29428571428565 613.2857142857143 35.985714285714295 643.5714285714286 35.985714285714295 C 673.8571428571429 35.985714285714295 689 132.82 719.2857142857142 165.20714285714286 C 749.5714285714284 197.59428571428572 764.7142857142856 188.4342857142857 794.9999999999999 197.92142857142858 C 825.2857142857141 207.4085714285714 840.4285714285713 212.64285714285714 870.7142857142857 212.64285714285714 C 901 212.64285714285714 916.1428571428571 212.64285714285714 946.4285714285713 201.19285714285715 C 976.7142857142856 189.74285714285716 991.8571428571428 145.57857142857142 1022.1428571428571 145.57857142857142 C 1052.4285714285713 145.57857142857142 1067.5714285714284 145.57857142857142 1097.8571428571427 152.12142857142857 C 1128.1428571428569 158.6642857142857 1143.2857142857142 215.9142857142857 1173.5714285714284 215.9142857142857 C 1203.8571428571427 215.9142857142857 1219 184.8357142857143 1249.2857142857142 184.8357142857143 C 1279.5714285714287 184.8357142857143 1294.7142857142858 207.7357142857143 1325 211.00714285714287 C 1355.2857142857142 214.27857142857144 1370.4285714285713 212.31571428571428 1400.7142857142856 214.27857142857144 C 1431 216.2414285714286 1446.1428571428569 220.82142857142858 1476.4285714285713 220.82142857142858 C 1506.7142857142856 220.82142857142858 1552.142857142857 219.18571428571428 1552.142857142857 219.18571428571428" fill="none" stroke="#99cc33" stroke-width="2"></path><circle cx="1552.142857142857" cy="219.18571428571428" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1476.4285714285713" cy="220.82142857142858" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1400.7142857142856" cy="214.27857142857144" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1325" cy="211.00714285714287" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1249.2857142857142" cy="184.8357142857143" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1173.5714285714284" cy="215.9142857142857" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1097.8571428571427" cy="152.12142857142857" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1022.1428571428571" cy="145.57857142857142" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="946.4285714285713" cy="201.19285714285715" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="870.7142857142857" cy="212.64285714285714" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="794.9999999999999" cy="197.92142857142858" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="719.2857142857142" cy="165.20714285714286" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="643.5714285714286" cy="35.985714285714295" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="567.8571428571428" cy="67.06428571428572" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="492.1428571428571" cy="184.8357142857143" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="416.4285714285714" cy="219.18571428571428" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="340.71428571428567" cy="227.36428571428573" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="265" cy="227.36428571428573" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="189.28571428571428" cy="222.45714285714286" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="113.57142857142856" cy="224.09285714285716" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="37.857142857142854" cy="225.72857142857143" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle></g><g class="highcharts-series" clip-path="url(https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#highcharts-1)" visibility="visible" transform="translate(42,40)"><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 225.72857142857143 113.57142857142856 225.72857142857143 C 143.85714285714283 225.72857142857143 159 224.09285714285716 189.28571428571428 224.09285714285716 C 219.57142857142858 224.09285714285716 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 226.0557142857143 416.4285714285714 222.45714285714286 C 446.71428571428567 218.85857142857145 461.85714285714283 209.37142857142857 492.1428571428571 209.37142857142857 C 522.4285714285713 209.37142857142857 537.5714285714286 209.37142857142857 567.8571428571428 209.37142857142857 C 598.1428571428571 209.37142857142857 613.2857142857143 202.82857142857142 643.5714285714286 202.82857142857142 C 673.8571428571429 202.82857142857142 689 224.09285714285716 719.2857142857142 224.09285714285716 C 749.5714285714284 224.09285714285716 764.7142857142856 217.54999999999998 794.9999999999999 215.9142857142857 C 825.2857142857141 214.27857142857144 840.4285714285713 214.27857142857144 870.7142857142857 214.27857142857144 C 901 214.27857142857144 916.1428571428571 214.27857142857144 946.4285714285713 214.27857142857144 C 976.7142857142856 214.27857142857144 991.8571428571428 199.55714285714285 1022.1428571428571 199.55714285714285 C 1052.4285714285713 199.55714285714285 1067.5714285714284 199.55714285714285 1097.8571428571427 204.46428571428572 C 1128.1428571428569 209.37142857142857 1143.2857142857142 224.09285714285716 1173.5714285714284 224.09285714285716 C 1203.8571428571427 224.09285714285716 1219 215.9142857142857 1249.2857142857142 215.9142857142857 C 1279.5714285714287 215.9142857142857 1294.7142857142858 222.45714285714286 1325 222.45714285714286 C 1355.2857142857142 222.45714285714286 1370.4285714285713 222.45714285714286 1400.7142857142856 222.45714285714286 C 1431 222.45714285714286 1446.1428571428569 222.45714285714286 1476.4285714285713 222.45714285714286 C 1506.7142857142856 222.45714285714286 1552.142857142857 225.72857142857143 1552.142857142857 225.72857142857143" fill="none" stroke="rgb(0, 0, 0)" stroke-width="5" isShadow="true" stroke-opacity="0.05" transform="translate(1,1)"></path><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 225.72857142857143 113.57142857142856 225.72857142857143 C 143.85714285714283 225.72857142857143 159 224.09285714285716 189.28571428571428 224.09285714285716 C 219.57142857142858 224.09285714285716 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 226.0557142857143 416.4285714285714 222.45714285714286 C 446.71428571428567 218.85857142857145 461.85714285714283 209.37142857142857 492.1428571428571 209.37142857142857 C 522.4285714285713 209.37142857142857 537.5714285714286 209.37142857142857 567.8571428571428 209.37142857142857 C 598.1428571428571 209.37142857142857 613.2857142857143 202.82857142857142 643.5714285714286 202.82857142857142 C 673.8571428571429 202.82857142857142 689 224.09285714285716 719.2857142857142 224.09285714285716 C 749.5714285714284 224.09285714285716 764.7142857142856 217.54999999999998 794.9999999999999 215.9142857142857 C 825.2857142857141 214.27857142857144 840.4285714285713 214.27857142857144 870.7142857142857 214.27857142857144 C 901 214.27857142857144 916.1428571428571 214.27857142857144 946.4285714285713 214.27857142857144 C 976.7142857142856 214.27857142857144 991.8571428571428 199.55714285714285 1022.1428571428571 199.55714285714285 C 1052.4285714285713 199.55714285714285 1067.5714285714284 199.55714285714285 1097.8571428571427 204.46428571428572 C 1128.1428571428569 209.37142857142857 1143.2857142857142 224.09285714285716 1173.5714285714284 224.09285714285716 C 1203.8571428571427 224.09285714285716 1219 215.9142857142857 1249.2857142857142 215.9142857142857 C 1279.5714285714287 215.9142857142857 1294.7142857142858 222.45714285714286 1325 222.45714285714286 C 1355.2857142857142 222.45714285714286 1370.4285714285713 222.45714285714286 1400.7142857142856 222.45714285714286 C 1431 222.45714285714286 1446.1428571428569 222.45714285714286 1476.4285714285713 222.45714285714286 C 1506.7142857142856 222.45714285714286 1552.142857142857 225.72857142857143 1552.142857142857 225.72857142857143" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" isShadow="true" stroke-opacity="0.1" transform="translate(1,1)"></path><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 225.72857142857143 113.57142857142856 225.72857142857143 C 143.85714285714283 225.72857142857143 159 224.09285714285716 189.28571428571428 224.09285714285716 C 219.57142857142858 224.09285714285716 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 226.0557142857143 416.4285714285714 222.45714285714286 C 446.71428571428567 218.85857142857145 461.85714285714283 209.37142857142857 492.1428571428571 209.37142857142857 C 522.4285714285713 209.37142857142857 537.5714285714286 209.37142857142857 567.8571428571428 209.37142857142857 C 598.1428571428571 209.37142857142857 613.2857142857143 202.82857142857142 643.5714285714286 202.82857142857142 C 673.8571428571429 202.82857142857142 689 224.09285714285716 719.2857142857142 224.09285714285716 C 749.5714285714284 224.09285714285716 764.7142857142856 217.54999999999998 794.9999999999999 215.9142857142857 C 825.2857142857141 214.27857142857144 840.4285714285713 214.27857142857144 870.7142857142857 214.27857142857144 C 901 214.27857142857144 916.1428571428571 214.27857142857144 946.4285714285713 214.27857142857144 C 976.7142857142856 214.27857142857144 991.8571428571428 199.55714285714285 1022.1428571428571 199.55714285714285 C 1052.4285714285713 199.55714285714285 1067.5714285714284 199.55714285714285 1097.8571428571427 204.46428571428572 C 1128.1428571428569 209.37142857142857 1143.2857142857142 224.09285714285716 1173.5714285714284 224.09285714285716 C 1203.8571428571427 224.09285714285716 1219 215.9142857142857 1249.2857142857142 215.9142857142857 C 1279.5714285714287 215.9142857142857 1294.7142857142858 222.45714285714286 1325 222.45714285714286 C 1355.2857142857142 222.45714285714286 1370.4285714285713 222.45714285714286 1400.7142857142856 222.45714285714286 C 1431 222.45714285714286 1446.1428571428569 222.45714285714286 1476.4285714285713 222.45714285714286 C 1506.7142857142856 222.45714285714286 1552.142857142857 225.72857142857143 1552.142857142857 225.72857142857143" fill="none" stroke="rgb(0, 0, 0)" stroke-width="1" isShadow="true" stroke-opacity="0.15000000000000002" transform="translate(1,1)"></path><path d="M 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 225.72857142857143 113.57142857142856 225.72857142857143 C 143.85714285714283 225.72857142857143 159 224.09285714285716 189.28571428571428 224.09285714285716 C 219.57142857142858 224.09285714285716 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 226.0557142857143 416.4285714285714 222.45714285714286 C 446.71428571428567 218.85857142857145 461.85714285714283 209.37142857142857 492.1428571428571 209.37142857142857 C 522.4285714285713 209.37142857142857 537.5714285714286 209.37142857142857 567.8571428571428 209.37142857142857 C 598.1428571428571 209.37142857142857 613.2857142857143 202.82857142857142 643.5714285714286 202.82857142857142 C 673.8571428571429 202.82857142857142 689 224.09285714285716 719.2857142857142 224.09285714285716 C 749.5714285714284 224.09285714285716 764.7142857142856 217.54999999999998 794.9999999999999 215.9142857142857 C 825.2857142857141 214.27857142857144 840.4285714285713 214.27857142857144 870.7142857142857 214.27857142857144 C 901 214.27857142857144 916.1428571428571 214.27857142857144 946.4285714285713 214.27857142857144 C 976.7142857142856 214.27857142857144 991.8571428571428 199.55714285714285 1022.1428571428571 199.55714285714285 C 1052.4285714285713 199.55714285714285 1067.5714285714284 199.55714285714285 1097.8571428571427 204.46428571428572 C 1128.1428571428569 209.37142857142857 1143.2857142857142 224.09285714285716 1173.5714285714284 224.09285714285716 C 1203.8571428571427 224.09285714285716 1219 215.9142857142857 1249.2857142857142 215.9142857142857 C 1279.5714285714287 215.9142857142857 1294.7142857142858 222.45714285714286 1325 222.45714285714286 C 1355.2857142857142 222.45714285714286 1370.4285714285713 222.45714285714286 1400.7142857142856 222.45714285714286 C 1431 222.45714285714286 1446.1428571428569 222.45714285714286 1476.4285714285713 222.45714285714286 C 1506.7142857142856 222.45714285714286 1552.142857142857 225.72857142857143 1552.142857142857 225.72857142857143" fill="none" stroke="#FF9933" stroke-width="2"></path><path d="M 1552 221.5 L 1556 225.5 1552 229.5 1548 225.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 1476.5 218.5 L 1480.5 222.5 1476.5 226.5 1472.5 222.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 1400.5 218.5 L 1404.5 222.5 1400.5 226.5 1396.5 222.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 1325 218.5 L 1329 222.5 1325 226.5 1321 222.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 1249.5 212 L 1253.5 216 1249.5 220 1245.5 216 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 1173.5 220 L 1177.5 224 1173.5 228 1169.5 224 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 1098 200.5 L 1102 204.5 1098 208.5 1094 204.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 1022 195.5 L 1026 199.5 1022 203.5 1018 199.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 946.5 210.5 L 950.5 214.5 946.5 218.5 942.5 214.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 870.5 210.5 L 874.5 214.5 870.5 218.5 866.5 214.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 795 212 L 799 216 795 220 791 216 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 719.5 220 L 723.5 224 719.5 228 715.5 224 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 643.5 199 L 647.5 203 643.5 207 639.5 203 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 568 205.5 L 572 209.5 568 213.5 564 209.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 492 205.5 L 496 209.5 492 213.5 488 209.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 416.5 218.5 L 420.5 222.5 416.5 226.5 412.5 222.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 340.5 223.5 L 344.5 227.5 340.5 231.5 336.5 227.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 265 223.5 L 269 227.5 265 231.5 261 227.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 189.5 220 L 193.5 224 189.5 228 185.5 224 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 113.5 221.5 L 117.5 225.5 113.5 229.5 109.5 225.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path><path d="M 38 221.5 L 42 225.5 38 229.5 34 225.5 Z" fill="#FF9933" stroke="#FFFFFF" stroke-width="0.000001"></path></g></g><rect rx="0" ry="0" fill="none" x="42.5" y="40.5" width="1589" height="228" stroke-width="1" stroke="#CCCCCC" zIndex="4"></rect><g class="highcharts-axis" zIndex="7"><text x="79.85714285714286" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 79.85714285714286 282)"><tspan x="79.85714285714286">0-1点</tspan></text><text x="458.4285714285714" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 458.4285714285714 282)"><tspan x="458.4285714285714">8-9点</tspan></text><text x="836.9999999999999" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 836.9999999999999 282)"><tspan x="836.9999999999999">13-14点</tspan></text><text x="1215.5714285714284" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 1215.5714285714284 282)"><tspan x="1215.5714285714284">18-19点</tspan></text><text x="1594.142857142857" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 1594.142857142857 282)"><tspan x="1594.142857142857">23-24点</tspan></text><path d="M 80.5 268.99546220487406 L 80.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 458.5 268.99546220487406 L 458.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 837.5 268.99546220487406 L 837.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 1216.5 268.99546220487406 L 1216.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 1594.5 268.99546220487406 L 1594.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path></g><g class="highcharts-axis" zIndex="7"><text x="34" y="273.5954622048741" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">0</tspan></text><text x="34" y="240.88117649058833" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">20</tspan></text><text x="34" y="208.1668907763026" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">40</tspan></text><text x="34" y="175.45260506201691" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">60</tspan></text><text x="34" y="142.7383193477312" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">80</tspan></text><text x="34" y="110.0240336334455" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">100</tspan></text><text x="34" y="77.30974791915978" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">120</tspan></text><text x="34" y="44.59546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">140</tspan></text></g><g class="highcharts-tooltip" zIndex="8" visibility="hidden" transform="translate(88,199)"><rect rx="5" ry="5" fill="none" x="7" y="7" width="129" height="58" stroke-width="5" fill-opacity="0.85" isShadow="true" stroke="rgb(0, 0, 0)" stroke-opacity="0.05" transform="translate(1,1)"></rect><rect rx="5" ry="5" fill="none" x="7" y="7" width="129" height="58" stroke-width="3" fill-opacity="0.85" isShadow="true" stroke="rgb(0, 0, 0)" stroke-opacity="0.1" transform="translate(1,1)"></rect><rect rx="5" ry="5" fill="none" x="7" y="7" width="129" height="58" stroke-width="1" fill-opacity="0.85" isShadow="true" stroke="rgb(0, 0, 0)" stroke-opacity="0.15000000000000002" transform="translate(1,1)"></rect><rect rx="5" ry="5" fill="rgb(255,255,255)" x="7" y="7" width="129" height="58" stroke-width="2" fill-opacity="0.85" stroke="#99cc33"></rect><text x="12" y="24" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#333333;padding:0;white-space:nowrap;fill:#333333;" zIndex="1"><tspan style="fill: rgb(255, 0, 0); visibility: hidden;" x="12">时间段:&amp;nbsp;</tspan><tspan style="fill: rgb(255, 0, 0); visibility: hidden;" dx="3">0-1点</tspan><tspan style="fill: rgb(153, 204, 51); visibility: hidden;" dy="16" x="12">浏览量: </tspan><tspan style="font-weight: bold; visibility: hidden;" dx="3">2</tspan><tspan style="fill: rgb(255, 153, 51); visibility: hidden;" dy="16" x="12">访客数: </tspan><tspan style="font-weight: bold; visibility: hidden;" dx="3">2</tspan></text></g><text x="1632" y="295" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:10px;cursor:pointer;color:#909090;fill:#909090;" text-anchor="end" zIndex="8"><tspan x="1632"> </tspan></text><g class="highcharts-tracker" zIndex="9" transform="translate(42,40)"><path d="M 27.857142857142854 225.72857142857143 L 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 224.74714285714288 113.57142857142856 224.09285714285716 C 143.85714285714283 223.43857142857144 159 222.45714285714286 189.28571428571428 222.45714285714286 C 219.57142857142858 222.45714285714286 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 227.36428571428573 416.4285714285714 219.18571428571428 C 446.71428571428567 211.00714285714284 461.85714285714283 215.26000000000002 492.1428571428571 184.8357142857143 C 522.4285714285713 154.41142857142862 537.5714285714286 96.83428571428567 567.8571428571428 67.06428571428572 C 598.1428571428571 37.29428571428565 613.2857142857143 35.985714285714295 643.5714285714286 35.985714285714295 C 673.8571428571429 35.985714285714295 689 132.82 719.2857142857142 165.20714285714286 C 749.5714285714284 197.59428571428572 764.7142857142856 188.4342857142857 794.9999999999999 197.92142857142858 C 825.2857142857141 207.4085714285714 840.4285714285713 212.64285714285714 870.7142857142857 212.64285714285714 C 901 212.64285714285714 916.1428571428571 212.64285714285714 946.4285714285713 201.19285714285715 C 976.7142857142856 189.74285714285716 991.8571428571428 145.57857142857142 1022.1428571428571 145.57857142857142 C 1052.4285714285713 145.57857142857142 1067.5714285714284 145.57857142857142 1097.8571428571427 152.12142857142857 C 1128.1428571428569 158.6642857142857 1143.2857142857142 215.9142857142857 1173.5714285714284 215.9142857142857 C 1203.8571428571427 215.9142857142857 1219 184.8357142857143 1249.2857142857142 184.8357142857143 C 1279.5714285714287 184.8357142857143 1294.7142857142858 207.7357142857143 1325 211.00714285714287 C 1355.2857142857142 214.27857142857144 1370.4285714285713 212.31571428571428 1400.7142857142856 214.27857142857144 C 1431 216.2414285714286 1446.1428571428569 220.82142857142858 1476.4285714285713 220.82142857142858 C 1506.7142857142856 220.82142857142858 1552.142857142857 219.18571428571428 1552.142857142857 219.18571428571428 L 1562.142857142857 219.18571428571428" fill="none" isTracker="true" stroke-opacity="0.000001" stroke="rgb(192,192,192)" stroke-width="22" visibility="visible" zIndex="1" style=""></path><path d="M 27.857142857142854 225.72857142857143 L 37.857142857142854 225.72857142857143 C 37.857142857142854 225.72857142857143 83.28571428571428 225.72857142857143 113.57142857142856 225.72857142857143 C 143.85714285714283 225.72857142857143 159 224.09285714285716 189.28571428571428 224.09285714285716 C 219.57142857142858 224.09285714285716 234.7142857142857 227.36428571428573 265 227.36428571428573 C 295.2857142857143 227.36428571428573 310.4285714285714 227.36428571428573 340.71428571428567 227.36428571428573 C 370.99999999999994 227.36428571428573 386.1428571428571 226.0557142857143 416.4285714285714 222.45714285714286 C 446.71428571428567 218.85857142857145 461.85714285714283 209.37142857142857 492.1428571428571 209.37142857142857 C 522.4285714285713 209.37142857142857 537.5714285714286 209.37142857142857 567.8571428571428 209.37142857142857 C 598.1428571428571 209.37142857142857 613.2857142857143 202.82857142857142 643.5714285714286 202.82857142857142 C 673.8571428571429 202.82857142857142 689 224.09285714285716 719.2857142857142 224.09285714285716 C 749.5714285714284 224.09285714285716 764.7142857142856 217.54999999999998 794.9999999999999 215.9142857142857 C 825.2857142857141 214.27857142857144 840.4285714285713 214.27857142857144 870.7142857142857 214.27857142857144 C 901 214.27857142857144 916.1428571428571 214.27857142857144 946.4285714285713 214.27857142857144 C 976.7142857142856 214.27857142857144 991.8571428571428 199.55714285714285 1022.1428571428571 199.55714285714285 C 1052.4285714285713 199.55714285714285 1067.5714285714284 199.55714285714285 1097.8571428571427 204.46428571428572 C 1128.1428571428569 209.37142857142857 1143.2857142857142 224.09285714285716 1173.5714285714284 224.09285714285716 C 1203.8571428571427 224.09285714285716 1219 215.9142857142857 1249.2857142857142 215.9142857142857 C 1279.5714285714287 215.9142857142857 1294.7142857142858 222.45714285714286 1325 222.45714285714286 C 1355.2857142857142 222.45714285714286 1370.4285714285713 222.45714285714286 1400.7142857142856 222.45714285714286 C 1431 222.45714285714286 1446.1428571428569 222.45714285714286 1476.4285714285713 222.45714285714286 C 1506.7142857142856 222.45714285714286 1552.142857142857 225.72857142857143 1552.142857142857 225.72857142857143 L 1562.142857142857 225.72857142857143" fill="none" isTracker="true" stroke-opacity="0.000001" stroke="rgb(192,192,192)" stroke-width="22" visibility="visible" zIndex="1" style=""></path></g></svg><span style="font-family: &#39;Lucida Grande&#39;, &#39;Lucida Sans Unicode&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; color: rgb(51, 51, 51); padding: 0px; white-space: nowrap; fill: rgb(51, 51, 51); position: absolute; top: 209.969px; left: 100px; visibility: hidden;"><span style="color:#F00">时间段:&nbsp;</span><span style="color:#F00">0-1点</span><br><span style="color:#99cc33">浏览量: </span><b>2</b><br><span style="color:#FF9933">访客数: </span><b>2</b></span></div></div></div>
+					</div>
+					<div class="chartOuterBorder mt20">
+						<div class="wrap-tools" id="chart2Bar" style="float: none; height: 16px; line-height: 16px;"><div id="chart2Legend" class="checkbox-con fl mr10"><span class="f-checkbox pointer f-checkbox-check" idx="0" id="LegendAvgStayTime"></span><span class="f-checkbox-label mr15" for="LegendAvgStayTime" style="color: #99cc33">平均停留时间</span></div></div><div id="chart2" style="border: 1px solid rgb(212, 212, 212);"><div id="chart2Chart" style="height:300px"><div class="highcharts-container" id="highcharts-2" style="position: relative; overflow: hidden; width: 1642px; height: 300px; text-align: left; font-family: &#39;Lucida Grande&#39;, &#39;Lucida Sans Unicode&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; top: 0px;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1642" height="300"><defs><clippath id="highcharts-3"><rect rx="0" ry="0" fill="none" x="0" y="0" width="1590" height="229" stroke-width="0.000001"></rect></clippath></defs><rect rx="0" ry="0" fill="#fafafa" x="0" y="0" width="1642" height="300" stroke-width="0.000001" stroke="#4572A7"></rect><image preserveAspectRatio="none" x="42" y="40" width="1590" height="229" href="/images/platform/mainform/WatermarkBig.png"></image><text x="801" y="25" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:16px;color:#656565;font:bold 14px 微软雅黑;fill:#656565;" text-anchor="middle" class="highcharts-title" zIndex="1"><tspan style="font-weight:bold" x="801">经营流量</tspan><tspan dx="3"> 2016-11-15</tspan></text><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"><path d="M 42 269.5 L 1632 269.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 231.5 L 1632 231.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 193.5 L 1632 193.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 154.5 L 1632 154.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 116.5 L 1632 116.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 78.5 L 1632 78.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path><path d="M 42 40.5 L 1632 40.5" fill="none" stroke="#dddddd" stroke-width="1" zIndex="1"></path></g><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" clip-path="url(https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp#highcharts-3)" visibility="visible" transform="translate(42,40)"><path d="M 37.857142857142854 224.80166666666668 C 37.857142857142854 224.80166666666668 83.28571428571428 172.13166666666666 113.57142857142856 172.13166666666666 C 143.85714285714283 172.13166666666666 159 194.26833333333335 189.28571428571428 194.26833333333335 C 219.57142857142858 194.26833333333335 234.7142857142857 194.26833333333335 265 191.59666666666666 C 295.2857142857143 188.92499999999998 310.4285714285714 38.166666666666686 340.71428571428567 38.166666666666686 C 370.99999999999994 38.166666666666686 386.1428571428571 137.2473356628418 416.4285714285714 137.2473356628418 C 446.71428571428567 137.2473356628418 461.85714285714283 97.19777389526368 492.1428571428571 97.19777389526368 C 522.4285714285713 97.19777389526368 537.5714285714286 124.3775351969401 567.8571428571428 124.3775351969401 C 598.1428571428571 124.3775351969401 613.2857142857143 124.3775351969401 643.5714285714286 115.72678904215495 C 673.8571428571429 107.0760428873698 689 65.64666666666668 719.2857142857142 65.64666666666668 C 749.5714285714284 65.64666666666668 764.7142857142856 107.35459910329178 794.9999999999999 134.885487798055 C 825.2857142857141 162.41637649281816 840.4285714285713 203.3011101404826 870.7142857142857 203.3011101404826 C 901 203.3011101404826 916.1428571428571 131.4932709681193 946.4285714285713 106.17272939046224 C 976.7142857142856 80.85218781280517 991.8571428571428 76.69840225219727 1022.1428571428571 76.69840225219727 C 1052.4285714285713 76.69840225219727 1067.5714285714284 88.26346249898276 1097.8571428571427 105.0346713256836 C 1128.1428571428569 121.80588015238445 1143.2857142857142 149.08627621968589 1173.5714285714284 160.5544463857015 C 1203.8571428571427 172.02261655171714 1219 168.15506177266442 1249.2857142857142 172.02261655171714 C 1279.5714285714287 175.89017133076987 1294.7142857142858 177.92391025797528 1325 179.89222028096518 C 1355.2857142857142 181.8605303039551 1370.4285714285713 181.86416666666668 1400.7142857142856 181.86416666666668 C 1431 181.86416666666668 1446.1428571428569 151.33083333333332 1476.4285714285713 151.33083333333332 C 1506.7142857142856 151.33083333333332 1552.142857142857 198.84833333333333 1552.142857142857 198.84833333333333" fill="none" stroke="rgb(0, 0, 0)" stroke-width="5" isShadow="true" stroke-opacity="0.05" transform="translate(1,1)"></path><path d="M 37.857142857142854 224.80166666666668 C 37.857142857142854 224.80166666666668 83.28571428571428 172.13166666666666 113.57142857142856 172.13166666666666 C 143.85714285714283 172.13166666666666 159 194.26833333333335 189.28571428571428 194.26833333333335 C 219.57142857142858 194.26833333333335 234.7142857142857 194.26833333333335 265 191.59666666666666 C 295.2857142857143 188.92499999999998 310.4285714285714 38.166666666666686 340.71428571428567 38.166666666666686 C 370.99999999999994 38.166666666666686 386.1428571428571 137.2473356628418 416.4285714285714 137.2473356628418 C 446.71428571428567 137.2473356628418 461.85714285714283 97.19777389526368 492.1428571428571 97.19777389526368 C 522.4285714285713 97.19777389526368 537.5714285714286 124.3775351969401 567.8571428571428 124.3775351969401 C 598.1428571428571 124.3775351969401 613.2857142857143 124.3775351969401 643.5714285714286 115.72678904215495 C 673.8571428571429 107.0760428873698 689 65.64666666666668 719.2857142857142 65.64666666666668 C 749.5714285714284 65.64666666666668 764.7142857142856 107.35459910329178 794.9999999999999 134.885487798055 C 825.2857142857141 162.41637649281816 840.4285714285713 203.3011101404826 870.7142857142857 203.3011101404826 C 901 203.3011101404826 916.1428571428571 131.4932709681193 946.4285714285713 106.17272939046224 C 976.7142857142856 80.85218781280517 991.8571428571428 76.69840225219727 1022.1428571428571 76.69840225219727 C 1052.4285714285713 76.69840225219727 1067.5714285714284 88.26346249898276 1097.8571428571427 105.0346713256836 C 1128.1428571428569 121.80588015238445 1143.2857142857142 149.08627621968589 1173.5714285714284 160.5544463857015 C 1203.8571428571427 172.02261655171714 1219 168.15506177266442 1249.2857142857142 172.02261655171714 C 1279.5714285714287 175.89017133076987 1294.7142857142858 177.92391025797528 1325 179.89222028096518 C 1355.2857142857142 181.8605303039551 1370.4285714285713 181.86416666666668 1400.7142857142856 181.86416666666668 C 1431 181.86416666666668 1446.1428571428569 151.33083333333332 1476.4285714285713 151.33083333333332 C 1506.7142857142856 151.33083333333332 1552.142857142857 198.84833333333333 1552.142857142857 198.84833333333333" fill="none" stroke="rgb(0, 0, 0)" stroke-width="3" isShadow="true" stroke-opacity="0.1" transform="translate(1,1)"></path><path d="M 37.857142857142854 224.80166666666668 C 37.857142857142854 224.80166666666668 83.28571428571428 172.13166666666666 113.57142857142856 172.13166666666666 C 143.85714285714283 172.13166666666666 159 194.26833333333335 189.28571428571428 194.26833333333335 C 219.57142857142858 194.26833333333335 234.7142857142857 194.26833333333335 265 191.59666666666666 C 295.2857142857143 188.92499999999998 310.4285714285714 38.166666666666686 340.71428571428567 38.166666666666686 C 370.99999999999994 38.166666666666686 386.1428571428571 137.2473356628418 416.4285714285714 137.2473356628418 C 446.71428571428567 137.2473356628418 461.85714285714283 97.19777389526368 492.1428571428571 97.19777389526368 C 522.4285714285713 97.19777389526368 537.5714285714286 124.3775351969401 567.8571428571428 124.3775351969401 C 598.1428571428571 124.3775351969401 613.2857142857143 124.3775351969401 643.5714285714286 115.72678904215495 C 673.8571428571429 107.0760428873698 689 65.64666666666668 719.2857142857142 65.64666666666668 C 749.5714285714284 65.64666666666668 764.7142857142856 107.35459910329178 794.9999999999999 134.885487798055 C 825.2857142857141 162.41637649281816 840.4285714285713 203.3011101404826 870.7142857142857 203.3011101404826 C 901 203.3011101404826 916.1428571428571 131.4932709681193 946.4285714285713 106.17272939046224 C 976.7142857142856 80.85218781280517 991.8571428571428 76.69840225219727 1022.1428571428571 76.69840225219727 C 1052.4285714285713 76.69840225219727 1067.5714285714284 88.26346249898276 1097.8571428571427 105.0346713256836 C 1128.1428571428569 121.80588015238445 1143.2857142857142 149.08627621968589 1173.5714285714284 160.5544463857015 C 1203.8571428571427 172.02261655171714 1219 168.15506177266442 1249.2857142857142 172.02261655171714 C 1279.5714285714287 175.89017133076987 1294.7142857142858 177.92391025797528 1325 179.89222028096518 C 1355.2857142857142 181.8605303039551 1370.4285714285713 181.86416666666668 1400.7142857142856 181.86416666666668 C 1431 181.86416666666668 1446.1428571428569 151.33083333333332 1476.4285714285713 151.33083333333332 C 1506.7142857142856 151.33083333333332 1552.142857142857 198.84833333333333 1552.142857142857 198.84833333333333" fill="none" stroke="rgb(0, 0, 0)" stroke-width="1" isShadow="true" stroke-opacity="0.15000000000000002" transform="translate(1,1)"></path><path d="M 37.857142857142854 224.80166666666668 C 37.857142857142854 224.80166666666668 83.28571428571428 172.13166666666666 113.57142857142856 172.13166666666666 C 143.85714285714283 172.13166666666666 159 194.26833333333335 189.28571428571428 194.26833333333335 C 219.57142857142858 194.26833333333335 234.7142857142857 194.26833333333335 265 191.59666666666666 C 295.2857142857143 188.92499999999998 310.4285714285714 38.166666666666686 340.71428571428567 38.166666666666686 C 370.99999999999994 38.166666666666686 386.1428571428571 137.2473356628418 416.4285714285714 137.2473356628418 C 446.71428571428567 137.2473356628418 461.85714285714283 97.19777389526368 492.1428571428571 97.19777389526368 C 522.4285714285713 97.19777389526368 537.5714285714286 124.3775351969401 567.8571428571428 124.3775351969401 C 598.1428571428571 124.3775351969401 613.2857142857143 124.3775351969401 643.5714285714286 115.72678904215495 C 673.8571428571429 107.0760428873698 689 65.64666666666668 719.2857142857142 65.64666666666668 C 749.5714285714284 65.64666666666668 764.7142857142856 107.35459910329178 794.9999999999999 134.885487798055 C 825.2857142857141 162.41637649281816 840.4285714285713 203.3011101404826 870.7142857142857 203.3011101404826 C 901 203.3011101404826 916.1428571428571 131.4932709681193 946.4285714285713 106.17272939046224 C 976.7142857142856 80.85218781280517 991.8571428571428 76.69840225219727 1022.1428571428571 76.69840225219727 C 1052.4285714285713 76.69840225219727 1067.5714285714284 88.26346249898276 1097.8571428571427 105.0346713256836 C 1128.1428571428569 121.80588015238445 1143.2857142857142 149.08627621968589 1173.5714285714284 160.5544463857015 C 1203.8571428571427 172.02261655171714 1219 168.15506177266442 1249.2857142857142 172.02261655171714 C 1279.5714285714287 175.89017133076987 1294.7142857142858 177.92391025797528 1325 179.89222028096518 C 1355.2857142857142 181.8605303039551 1370.4285714285713 181.86416666666668 1400.7142857142856 181.86416666666668 C 1431 181.86416666666668 1446.1428571428569 151.33083333333332 1476.4285714285713 151.33083333333332 C 1506.7142857142856 151.33083333333332 1552.142857142857 198.84833333333333 1552.142857142857 198.84833333333333" fill="none" stroke="#99cc33" stroke-width="2"></path><circle cx="1552.142857142857" cy="198.84833333333333" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1476.4285714285713" cy="151.33083333333332" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1400.7142857142856" cy="181.86416666666668" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1325" cy="179.89222028096518" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1249.2857142857142" cy="172.02261655171714" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1173.5714285714284" cy="160.5544463857015" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1097.8571428571427" cy="105.0346713256836" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="1022.1428571428571" cy="76.69840225219727" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="946.4285714285713" cy="106.17272939046224" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="870.7142857142857" cy="203.3011101404826" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="794.9999999999999" cy="134.885487798055" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="719.2857142857142" cy="65.64666666666668" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="643.5714285714286" cy="115.72678904215495" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="567.8571428571428" cy="124.3775351969401" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="492.1428571428571" cy="97.19777389526368" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="416.4285714285714" cy="137.2473356628418" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="340.71428571428567" cy="38.166666666666686" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="265" cy="191.59666666666666" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="189.28571428571428" cy="194.26833333333335" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="113.57142857142856" cy="172.13166666666666" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle><circle cx="37.857142857142854" cy="224.80166666666668" r="4" stroke="#FFFFFF" stroke-width="0.000001" fill="#99cc33"></circle></g></g><rect rx="0" ry="0" fill="none" x="42.5" y="40.5" width="1589" height="228" stroke-width="1" stroke="#CCCCCC" zIndex="4"></rect><g class="highcharts-axis" zIndex="7"><text x="79.85714285714286" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 79.85714285714286 282)"><tspan x="79.85714285714286">0-1点</tspan></text><text x="458.4285714285714" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 458.4285714285714 282)"><tspan x="458.4285714285714">8-9点</tspan></text><text x="836.9999999999999" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 836.9999999999999 282)"><tspan x="836.9999999999999">13-14点</tspan></text><text x="1215.5714285714284" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 1215.5714285714284 282)"><tspan x="1215.5714285714284">18-19点</tspan></text><text x="1594.142857142857" y="282.99546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="middle" transform="rotate(0.005 1594.142857142857 282)"><tspan x="1594.142857142857">23-24点</tspan></text><path d="M 80.5 268.99546220487406 L 80.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 458.5 268.99546220487406 L 458.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 837.5 268.99546220487406 L 837.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 1216.5 268.99546220487406 L 1216.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path><path d="M 1594.5 268.99546220487406 L 1594.5 273.99546220487406" fill="none" stroke="#C0D0E0" stroke-width="1"></path></g><g class="highcharts-axis" zIndex="7"><text x="34" y="273.5954622048741" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">0</tspan></text><text x="34" y="235.42879553820737" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">50</tspan></text><text x="34" y="197.26212887154074" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">100</tspan></text><text x="34" y="159.09546220487405" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">150</tspan></text><text x="34" y="120.9287955382074" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">200</tspan></text><text x="34" y="82.76212887154074" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">250</tspan></text><text x="34" y="44.59546220487406" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;width:775px;color:#666;line-height:14px;font:normal 13px Verdana, sans-serif;fill:#666;" text-anchor="end"><tspan x="34">300</tspan></text></g><g class="highcharts-axis" zIndex="7"></g><g class="highcharts-tooltip" zIndex="8" visibility="hidden"><rect rx="5" ry="5" fill="none" x="7" y="7" width="0" height="0" stroke-width="5" fill-opacity="0.85" isShadow="true" stroke="rgb(0, 0, 0)" stroke-opacity="0.05" transform="translate(1,1)"></rect><rect rx="5" ry="5" fill="none" x="7" y="7" width="0" height="0" stroke-width="3" fill-opacity="0.85" isShadow="true" stroke="rgb(0, 0, 0)" stroke-opacity="0.1" transform="translate(1,1)"></rect><rect rx="5" ry="5" fill="none" x="7" y="7" width="0" height="0" stroke-width="1" fill-opacity="0.85" isShadow="true" stroke="rgb(0, 0, 0)" stroke-opacity="0.15000000000000002" transform="translate(1,1)"></rect><rect rx="5" ry="5" fill="rgb(255,255,255)" x="7" y="7" width="0" height="0" stroke-width="2" fill-opacity="0.85"></rect><text x="12" y="24" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#333333;padding:0;white-space:nowrap;fill:#333333;" zIndex="1"><tspan x="12" style="visibility: hidden;"> </tspan></text></g><text x="1632" y="295" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:10px;cursor:pointer;color:#909090;fill:#909090;" text-anchor="end" zIndex="8"><tspan x="1632"> </tspan></text><g class="highcharts-tracker" zIndex="9" transform="translate(42,40)"><path d="M 27.857142857142854 224.80166666666668 L 37.857142857142854 224.80166666666668 C 37.857142857142854 224.80166666666668 83.28571428571428 172.13166666666666 113.57142857142856 172.13166666666666 C 143.85714285714283 172.13166666666666 159 194.26833333333335 189.28571428571428 194.26833333333335 C 219.57142857142858 194.26833333333335 234.7142857142857 194.26833333333335 265 191.59666666666666 C 295.2857142857143 188.92499999999998 310.4285714285714 38.166666666666686 340.71428571428567 38.166666666666686 C 370.99999999999994 38.166666666666686 386.1428571428571 137.2473356628418 416.4285714285714 137.2473356628418 C 446.71428571428567 137.2473356628418 461.85714285714283 97.19777389526368 492.1428571428571 97.19777389526368 C 522.4285714285713 97.19777389526368 537.5714285714286 124.3775351969401 567.8571428571428 124.3775351969401 C 598.1428571428571 124.3775351969401 613.2857142857143 124.3775351969401 643.5714285714286 115.72678904215495 C 673.8571428571429 107.0760428873698 689 65.64666666666668 719.2857142857142 65.64666666666668 C 749.5714285714284 65.64666666666668 764.7142857142856 107.35459910329178 794.9999999999999 134.885487798055 C 825.2857142857141 162.41637649281816 840.4285714285713 203.3011101404826 870.7142857142857 203.3011101404826 C 901 203.3011101404826 916.1428571428571 131.4932709681193 946.4285714285713 106.17272939046224 C 976.7142857142856 80.85218781280517 991.8571428571428 76.69840225219727 1022.1428571428571 76.69840225219727 C 1052.4285714285713 76.69840225219727 1067.5714285714284 88.26346249898276 1097.8571428571427 105.0346713256836 C 1128.1428571428569 121.80588015238445 1143.2857142857142 149.08627621968589 1173.5714285714284 160.5544463857015 C 1203.8571428571427 172.02261655171714 1219 168.15506177266442 1249.2857142857142 172.02261655171714 C 1279.5714285714287 175.89017133076987 1294.7142857142858 177.92391025797528 1325 179.89222028096518 C 1355.2857142857142 181.8605303039551 1370.4285714285713 181.86416666666668 1400.7142857142856 181.86416666666668 C 1431 181.86416666666668 1446.1428571428569 151.33083333333332 1476.4285714285713 151.33083333333332 C 1506.7142857142856 151.33083333333332 1552.142857142857 198.84833333333333 1552.142857142857 198.84833333333333 L 1562.142857142857 198.84833333333333" fill="none" isTracker="true" stroke-opacity="0.000001" stroke="rgb(192,192,192)" stroke-width="22" visibility="visible" zIndex="1" style=""></path></g></svg><span style="font-family: &#39;Lucida Grande&#39;, &#39;Lucida Sans Unicode&#39;, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; color: rgb(51, 51, 51); padding: 0px; white-space: nowrap; fill: rgb(51, 51, 51); position: absolute; top: 0px; left: 0px; visibility: hidden;"></span></div></div></div>
+					</div>
+					<div class="tableBorder mt20 tableNoBottomBorder">
+						<div class="mb10 mt10 ml10 mr10" id="table1Bar" style="height: 30px; float: none;"><div class="fr"><label class="key-search fl"><i></i><input class="ks-no" title="请输入关键字" value="请输入关键字" type="text"></label></div></div><div id="table1" class="grid-wrap"><div id="table1Tbl_wrapper" class="dataTables_wrapper" role="grid"><div class="dataTables_filter" id="table1Tbl_filter" style="height: 0px; margin: 0px; padding: 0px;"></div><table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="table1Tbl" title=""><thead><tr role="row"><th tabindex="0" class="t-l" rowspan="1" colspan="1" aria-sort="descending" aria-label="&lt;label name=&quot;TimeIDTh&quot;&gt;日期&lt;/label&gt;: activate to sort column ascending" style="white-space: normal;"><span class="sortIco sorting_desc"><label name="TimeIDTh">日期</label></span><div class="resizeBar">&nbsp;</div></th><th tabindex="0" class="t-r" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;店铺各页面被用户访问的次数。用户多次打开或刷新同一个页面，浏览量累加。&quot;&gt;&lt;/i&gt;&lt;label name=&quot;PVTh&quot;&gt;浏览量&lt;/label&gt;: activate to sort column descending" style="white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="店铺各页面被用户访问的次数。用户多次打开或刷新同一个页面，浏览量累加。"></i><label name="PVTh">浏览量</label></span><div class="resizeBar">&nbsp;</div></th><th tabindex="0" class="t-r" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;店铺各页面的访问人数。00:00-24:00内，同一访客多次访问只被计算一次。&quot;&gt;&lt;/i&gt;&lt;label name=&quot;UVTh&quot;&gt;访客数&lt;/label&gt;: activate to sort column descending" style="white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="店铺各页面的访问人数。00:00-24:00内，同一访客多次访问只被计算一次。"></i><label name="UVTh">访客数</label></span><div class="resizeBar">&nbsp;</div></th><th tabindex="0" class="t-l" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;用户在页面内的停留时间/浏览量，平均页面停留表示用户每次访问在页面停留的时间的均值。单位为秒。&quot;&gt;&lt;/i&gt;&lt;label name=&quot;AvgStayTimeTh&quot;&gt;平均停留时间&lt;/label&gt;: activate to sort column descending" style="white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="用户在页面内的停留时间/浏览量，平均页面停留表示用户每次访问在页面停留的时间的均值。单位为秒。"></i><label name="AvgStayTimeTh">平均停留时间</label></span><div class="resizeBar">&nbsp;</div></th></tr></thead><tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td class="t-l sorting_1">23-24点</td><td class="t-r">6</td><td class="t-r">2</td><td class="t-l">0分40秒</td></tr><tr class="even"><td class="t-l sorting_1">22-23点</td><td class="t-r">5</td><td class="t-r">4</td><td class="t-l">1分42秒</td></tr><tr class="odd"><td class="t-l sorting_1">21-22点</td><td class="t-r">9</td><td class="t-r">4</td><td class="t-l">1分2秒</td></tr><tr class="even"><td class="t-l sorting_1">20-21点</td><td class="t-r">11</td><td class="t-r">4</td><td class="t-l">1分4秒</td></tr><tr class="odd"><td class="t-l sorting_1">19-20点</td><td class="t-r">27</td><td class="t-r">8</td><td class="t-l">1分15秒</td></tr><tr class="even"><td class="t-l sorting_1">18-19点</td><td class="t-r">8</td><td class="t-r">3</td><td class="t-l">1分30秒</td></tr><tr class="odd"><td class="t-l sorting_1">17-18点</td><td class="t-r">47</td><td class="t-r">15</td><td class="t-l">2分42秒</td></tr><tr class="even"><td class="t-l sorting_1">16-17点</td><td class="t-r">51</td><td class="t-r">18</td><td class="t-l">3分20秒</td></tr><tr class="odd"><td class="t-l sorting_1">15-16点</td><td class="t-r">17</td><td class="t-r">9</td><td class="t-l">2分41秒</td></tr><tr class="even"><td class="t-l sorting_1">14-15点</td><td class="t-r">10</td><td class="t-r">9</td><td class="t-l">0分34秒</td></tr><tr class="odd"><td class="t-l sorting_1">13-14点</td><td class="t-r">19</td><td class="t-r">8</td><td class="t-l">2分3秒</td></tr><tr class="even"><td class="t-l sorting_1">12-13点</td><td class="t-r">39</td><td class="t-r">3</td><td class="t-l">3分34秒</td></tr><tr class="odd"><td class="t-l sorting_1">11-12点</td><td class="t-r">118</td><td class="t-r">16</td><td class="t-l">2分28秒</td></tr><tr class="even"><td class="t-l sorting_1">10-11点</td><td class="t-r">99</td><td class="t-r">12</td><td class="t-l">2分17秒</td></tr><tr class="odd"><td class="t-l sorting_1">9-10点</td><td class="t-r">27</td><td class="t-r">12</td><td class="t-l">2分53秒</td></tr><tr class="even"><td class="t-l sorting_1">8-9点</td><td class="t-r">6</td><td class="t-r">4</td><td class="t-l">2分0秒</td></tr><tr class="odd"><td class="t-l sorting_1">7-8点</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-l">4分10秒</td></tr><tr class="even"><td class="t-l sorting_1">6-7点</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-l">0分49秒</td></tr><tr class="odd"><td class="t-l sorting_1">2-3点</td><td class="t-r">4</td><td class="t-r">3</td><td class="t-l">0分46秒</td></tr><tr class="even"><td class="t-l sorting_1">1-2点</td><td class="t-r">3</td><td class="t-r">2</td><td class="t-l">1分15秒</td></tr><tr class="odd"><td class="t-l sorting_1">0-1点</td><td class="t-r">2</td><td class="t-r">2</td><td class="t-l">0分6秒</td></tr></tbody></table><div id="table1Tbl_wrapper" class="dataTables_wrapper dataTables_fixed" role="grid" style="display: none; position: fixed; width: 1674px; left: 217px; top: 0px;"><table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="table1Tbl" title=""><thead><tr role="row"><th tabindex="0" class="t-l" rowspan="1" colspan="1" aria-sort="descending" aria-label="&lt;label name=&quot;TimeIDTh&quot;&gt;日期&lt;/label&gt;: activate to sort column ascending" style="white-space: normal;"><span class="sortIco sorting_desc"><label name="TimeIDTh">日期</label></span><div class="resizeBar">&nbsp;</div></th><th tabindex="0" class="t-r" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;店铺各页面被用户访问的次数。用户多次打开或刷新同一个页面，浏览量累加。&quot;&gt;&lt;/i&gt;&lt;label name=&quot;PVTh&quot;&gt;浏览量&lt;/label&gt;: activate to sort column descending" style="white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="店铺各页面被用户访问的次数。用户多次打开或刷新同一个页面，浏览量累加。"></i><label name="PVTh">浏览量</label></span><div class="resizeBar">&nbsp;</div></th><th tabindex="0" class="t-r" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;店铺各页面的访问人数。00:00-24:00内，同一访客多次访问只被计算一次。&quot;&gt;&lt;/i&gt;&lt;label name=&quot;UVTh&quot;&gt;访客数&lt;/label&gt;: activate to sort column descending" style="white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="店铺各页面的访问人数。00:00-24:00内，同一访客多次访问只被计算一次。"></i><label name="UVTh">访客数</label></span><div class="resizeBar">&nbsp;</div></th><th tabindex="0" class="t-l" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;用户在页面内的停留时间/浏览量，平均页面停留表示用户每次访问在页面停留的时间的均值。单位为秒。&quot;&gt;&lt;/i&gt;&lt;label name=&quot;AvgStayTimeTh&quot;&gt;平均停留时间&lt;/label&gt;: activate to sort column descending" style="white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="用户在页面内的停留时间/浏览量，平均页面停留表示用户每次访问在页面停留的时间的均值。单位为秒。"></i><label name="AvgStayTimeTh">平均停留时间</label></span><div class="resizeBar">&nbsp;</div></th></tr></thead></table></div></div></div>
+					</div>
+				</div>
+                <div id="tab2" class="tab-con cxt" custwidth="1676" style="width: 1676px; display: none;">
+                    <div id="date2" class="fl mt10"></div>
+                    <div class="fl ml5 mr5 mt10" style="font-size: 12px; line-height: 35px;"><label>与</label></div>
+                    <div id="date3" class="fl mt10"></div>
+                    <div id="select1" class="fl ml15 mt10" style="height: 34px;line-height: 34px">
+                        <label class="filterLbl">选择对比类型</label>
+                        <span class="radiobox r-checked" val="PV" desc="浏览量">
+                            <input type="radio">
+                        </span>
+                        <label class="pointer" style="color: #333333">浏览量</label>
+                        <span class="radiobox" val="UV" desc="访客数">
+                            <input type="radio">
+                        </span>
+                        <label class="pointer" style="color: #333333">访客数</label>
+                        <a id="Compare" href="javascript:void(0);" class="btn ml10"><span>开始对比</span></a>
+                    </div>
+                    <div class="clr"></div>
+                    <div class="chartOuterBorder mt20">
+                    	<div id="chart4"></div>
+                    </div>
+                    <div class="tableBorder mt20 tableNoBottomBorder">
+                    	<div id="table2"></div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#sysBarContent a").mouseenter(function(){
+		var barId = $(this).attr("id");
+		if(barId == "bar-1"){
+			hideTipBar(barId);
+		} else {
+			showTipBar(barId);
+		}
+	});
+	$("#sysBarContent a").mouseleave(function(){
+		var barId = $(this).attr("id");
+		if(barId == "bar-1"){
+			showTipBar(barId);
+		} else {
+			hideTipBar(barId);
+		}
+	});
+});
+
+function hiddenSys(){
+	$("#sys-b-bar").show();
+	$("#sysBarContent").css("display", "none");
+	$("#sysBarContentHidden").show();
+	$("#sys-b-bar").css("right", "-32px");
+}
+
+function showSys(){
+	$("#sys-b-bar").show();
+	$("#sysBarContent").show();
+	$("#sysBarContentHidden").hide();
+	$("#sys-b-bar").css("right", "0px");
+}
+
+function clickShowSys(){
+	document.cookie = 'sysbar-hide=0' + ';path=/;';
+	showSys();
+}
+
+function clickHiddenSys(){
+	document.cookie = 'sysbar-hide=1' + ';path=/;';
+	hiddenSys();
+}
+
+function showTipBar(barId){
+	if(barId != "bar-1"){
+		$("#" + barId).attr("class", "sys-bar-hover");
+	} else{
+		$("#" + barId).attr("class", "sys-bar");
+		$("#bar-1-span-1").text("常");
+		$("#bar-1-span-1").css("width","8px");
+		$("#bar-1-span-3").text("问");
+		$("#bar-1-span-3").css("width","8px");
+	}
+	$("." + barId + "-span").css("display", "inline-block");
+	$("#" + barId + "-img").hide();
+	if(barId == "bar-2" || barId == "bar-3" || barId == "bar-4"){
+		$("#" + barId + "-span").css("margin-top", "4px");
+		$("#" + barId).css("line-height", "16px");
+	}
+	if(barId == "bar-2"){
+		$("#jingmaiTip").show();
+	}
+}
+
+function hideTipBar(barId){
+	if(barId != "bar-1"){
+		$("#" + barId).attr("class", "sys-bar");
+	} else {
+		$("#" + barId).attr("class", "sys-bar-hover");
+	}
+	$("." + barId + "-span").hide();
+	$("#" + barId + "-img").show();
+	if(barId == "bar-2"){
+		$("#jingmaiTip").hide();
+	}
+}
+
+function getCookie(name) {
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    if (arr != null) return unescape(arr[2]);
+    return null;
+}
+
+window.onload = function(){
+	  var i = 2;
+	  setInterval(function(){
+		  if($("#bar-1-img").css("display") == "none"){
+			  if(i == 2){
+				  $("#bar-1-span-1").text("常");
+				  $("#bar-1-span-1").css("width","8px");
+			  }
+			  if(i == 3){
+				  $("#bar-1-span-2").text("见");
+			  }
+			  if(i == 4){
+				  $("#bar-1-span-3").text("问");
+				  $("#bar-1-span-3").css("width","8px");
+			  }
+			  if(i == 5){
+				  i = 1;
+				  $(".bar-1-span").hide();
+				  $("#bar-1-span-1").html("常&nbsp;&nbsp;&nbsp;<br/>");
+				  $("#bar-1-span-1").css("width","auto");
+				  $("#bar-1-span-2").html("见<br/>");
+				  $("#bar-1-span-3").html("问&nbsp;&nbsp;&nbsp;");
+				  $("#bar-1-span-3").css("width","auto");
+			  } 
+			  $("#bar-1-span-" + i).fadeIn();
+			  $("#bar-1-span-" + i).css("display","inline-block");
+			  i++;
+		  }
+	  },800);
+	};
+</script>
+<div id="footer">
+	<div>
+		<p>Copyright©2004-2016&nbsp;JD.com京东商城&nbsp;版权所有    <a title="京东网上商城-综合网购首选，正品行货，机打发票，售后上门取件，省钱又放心" target="_blank" href="http://www.jd.com/">京东商城</a>旗下数据产品</p>
+		<p>京ICP证070359号 北京市公安局朝阳分局备案编号110105014669</p>
+	</div>
+</div>
+<div id="sys-b-bar-hidden">	
+</div>
+<div id="sys-b-bar" style="height: 135px; top: 588.5px; right: 0px;">	
+	<div id="sysBarContentHidden" style="display:none;margin-top:25px;">
+		<a class="to-sys-hidden" href="javascript:void(0)" onclick="clickShowSys();">
+			<img style="margin-top:5px;margin-left:1px;" src="./按小时流量分析_files/sys-b-bar-show.png">
+		</a>
+	</div>
+	<div id="jingmaiTip" style="display:none">
+		<img src="./按小时流量分析_files/jingmai.png">
+		<span style="font-size:16px;font-family:Microsoft YaHei;color:#666666;display:block;margin-top:14px">京麦移动罗盘</span>
+	</div>
+	<div id="sysBarContent" style="">
+		<a id="bar-1" href="http://luopan.jd.com/help-new.jsp" target="_blank" style="line-height:16px;" class="sys-bar">
+			<img id="bar-1-img" style="display:none" src="./按小时流量分析_files/bar-1.png">
+			<div>
+				<span id="bar-1-span-1" class="bar-1-span" style="display: inline-block; margin-top: 4px; width: 8px;">常</span>
+				<span id="bar-1-span-2" class="bar-1-span" style="display: inline-block;">见</span>
+			</div>
+			<div>
+				<span id="bar-1-span-3" class="bar-1-span" style="display: inline-block; width: 8px;">问</span>
+				<span id="bar-1-span-4" class="bar-1-span" style="display: inline-block; opacity: 0.190453;">题</span>
+			</div>
+		</a>
+		<a id="bar-2" href="javascript:void(0)" class="sys-bar">
+			<img id="bar-2-img" src="./按小时流量分析_files/bar-2.png">
+			<span id="bar-2-span" class="bar-2-span">移动<br>罗盘</span>
+		</a>
+		<a id="bar-3" href="javascript:void(0)" class="sys-bar toHelper">
+			<img id="bar-3-img" src="./按小时流量分析_files/bar-3.png">
+			<span id="bar-3-span" class="bar-3-span">问题<br>反馈</span>
+		</a>
+		<a id="bar-4" class="sys-bar" href="javascript:void(0)" onclick="clickHiddenSys()">
+			<img id="bar-4-img" src="./按小时流量分析_files/bar-4.png">
+			<span id="bar-4-span" class="bar-4-span">点击<br>收起</span>
+		</a>
+	</div>
+</div>
+
+<div id="sys-feedbackDiv" style="top: 506px;">
+	<form id="feedbackForm" method="post">
+		<div class="title"><label>问题反馈</label><span class="mClose2 cursorPointer" id="closeBtn"></span></div>
+		<div class="content">
+			<div class="mt15 mb5 ml15"><label><font color="red">*</font>产品问题反馈(此处用于给我们留言您对产品的建议和意见，如有具体问题咨询，请发邮件至opendata@jd.com):</label></div>
+			<textarea name="popFeedback.feedback" id="popFeedback_feedback" value=""></textarea>
+		</div>
+		<div class="warnMessageDiv" id="warnMessageDiv">
+			<i></i><span class="warnMessageContent">反馈内容不能为空</span>
+		</div>
+		<div class="contact">
+			<div class="ml15 mt15"><label>联系方式(选填):</label></div>
+			<div>
+				<span style="float: left;"><input type="text" name="popFeedback.contact" id="popFeedback_contact" value=""></span>
+				<span class="warnMessageDiv_contact"><i></i>联系方式不要超过128个字</span>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<div class="btnDiv">
+			<span style="margin-right:5px">
+			<a class="btn submit" href="javascript:void(0);" id="feedbackSubmit"><span>提&nbsp;&nbsp;交</span></a>
+			</span>
+			<span style="margin-left:5px">
+			<a class="btn_cancel cancel" href="javascript:void(0);" id="feedbackCancel"><span>取&nbsp;&nbsp;消</span></a>
+			</span>
+		</div>
+		<input type="hidden" name="popFeedback.popId" id="popFeedback_popId" value="0">
+		<input type="hidden" name="popFeedback.shopId" id="popFeedback_shopId" value="0">
+		<input type="hidden" name="popFeedback.pageName" id="popFeedback_pageName" value="店铺分析-&gt;PC流量分析-&gt;按小时流量分析">
+		<input type="hidden" name="popFeedback.popName" id="popFeedback_popName" value="">
+	</form>
+</div>
+<div id="sys-feedbackSubmitDiv" style="top: 746px;">
+	<div class="title"><span class="pop_close"></span></div>
+	<div class="content">
+		<label><img src="./按小时流量分析_files/ok_div.png">&nbsp;&nbsp;&nbsp;感谢您的反馈</label>
+	</div>
+</div>
+<!-- sysFooter end -->
+
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png);"></div><div id="tip-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png) repeat-x;"></div><div id="tip-right-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png);"></div><div id="tip-right" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png) repeat-y;"></div><div id="tip-right-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png);"></div><div id="tip-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png) repeat-x;"></div><div id="tip-left-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png);"></div><div id="tip-left" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png);"></div><div id="tip-arrow-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png);"></div></div></body></html>

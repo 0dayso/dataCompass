@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 商家费用(op_shop_cost_detail)Mapper -->
+<mapper namespace="op_shop_cost_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    ctime,shopid ,shopname ,ip ,type ,county ,status ,source ,money 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.detailed.Op_shop_cost_detail" id="Op_shop_cost_detailReturnMap">
+		<!-- 创建时间 -->
+      <id column="ctime" property="ctime"/>
+		<!-- 商家id -->
+      <result column="shopid" property="shopid"/>
+		<!-- 商家名称 -->
+      <result column="shopname" property="shopname"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 省市 -->
+      <result column="county" property="county"/>
+		<!-- 1商家保证金 2平台使用费 3广告费 -->
+      <result column="status" property="status"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 金额 -->
+      <result column="money" property="money"/>
+   </resultMap>
+   
+   	<!-- 保存商家费用明细-->
+   <insert id="saveDetail"  parameterType="java.util.Map">
+		INSERT INTO 
+			op_shop_cost_detail_${nowYearMonth}
+			(ctime,shopid ,shopname ,ip ,type ,county ,status ,source ,money )
+		VALUES
+		<foreach collection="detailList" item="item" index="index" separator=",">
+ 			(#{item.ctime},#{item.shopid},#{item.shopname},#{item.ip},#{item.type},#{item.county},#{item.status},#{item.source},#{item.money} )
+ 		</foreach>
+  </insert>
+   
+  
+	
+</mapper>

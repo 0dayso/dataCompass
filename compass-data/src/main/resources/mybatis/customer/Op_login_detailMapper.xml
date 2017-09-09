@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 登录详细(op_login_detail)Mapper -->
+<mapper namespace="op_login_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    ctime,userid ,username ,ip ,type ,county ,status ,source 
+    </sql>
+
+    <resultMap type="com.shifeng.customer.entity.Op_login_detail" id="Op_login_detailReturnMap">
+		<!-- 创建时间 -->
+      <id column="ctime" property="ctime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- 用户名称 -->
+      <result column="username" property="username"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 省市 -->
+      <result column="county" property="county"/>
+		<!-- 登录状态(1成功2 失败) -->
+      <result column="status" property="status"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+   </resultMap>
+
+	<!-- 查询所有登录详细 -->
+	<select id="findAllop_login_detailPage" parameterType="Page" resultMap="Op_login_detailReturnMap">
+		select
+			ctime ,
+			userid ,
+			username ,
+			ip ,
+			type ,
+			county ,
+			status ,
+			source
+		from op_login_detail_${t.tableName}
+		where 1=1
+		<if test="t.startDate!=null and t.startDate!=''">
+		    and date(ctime) >= #{t.startDate}
+		</if>
+		<if test="t.endDate!=null and t.endDate!=''">
+		    and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+		</if>
+		<if test="t.userid!=null and t.userid!=''">
+		    and userid = #{t.userid}
+		</if>
+		<if test="t.ip!=null and t.ip!=''">
+		    and ip = #{t.ip}
+		</if>
+		<if test="t.county!=null and t.county!=''">
+		    and county = #{t.county}
+		</if>
+		<if test="t.webtype!=null and t.webtype!=''">
+		    and type = #{t.webtype}
+		</if>
+		<if test="t.status>0">
+		    and status = #{t.status}
+		</if>
+		
+		order by ctime desc
+	</select>
+
+</mapper>

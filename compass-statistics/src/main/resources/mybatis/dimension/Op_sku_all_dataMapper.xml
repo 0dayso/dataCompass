@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- sku总统计表(op_sku_all_data)Mapper -->
+<mapper namespace="op_sku_all_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    sku,productid ,type ,follow ,cart ,cdate 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.dimension.Op_sku_all_data" id="Op_sku_all_dataReturnMap">
+		<!-- sku -->
+      <id column="sku" property="sku"/>
+		<!-- 产品id -->
+      <result column="productid" property="productid"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 关注 -->
+      <result column="follow" property="follow"/>
+		<!-- 购物车 -->
+      <result column="cart" property="cart"/>
+		<!-- 创建日期 -->
+      <result column="cdate" property="cdate"/>
+   </resultMap>
+   
+  <!-- 保存SKU总的购物车统计数据 -->
+  <insert id="saveCart" parameterType="java.util.Map">
+		INSERT INTO 
+			op_sku_all_data_${nowYearMonth}
+			(cdate,sku,type,cart)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.sku},#{item.type},#{item.cart})
+		</foreach>
+		ON DUPLICATE KEY UPDATE cart=VALUES(cart)
+  </insert>
+   
+  <!-- 保存SKU总的关注统计数据 -->
+  <insert id="saveFollowSKU" parameterType="java.util.Map">
+		INSERT INTO 
+			op_sku_all_data_${nowYearMonth}
+			(cdate,sku,type,follow)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.sku},#{item.type},#{item.follow})
+		</foreach>
+		ON DUPLICATE KEY UPDATE follow=VALUES(follow)
+  </insert>
+   
+  
+	
+</mapper>

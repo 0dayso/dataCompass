@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 关注店铺明细(op_follow_shop_detail)Mapper -->
+<mapper namespace="op_follow_shop_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    	ctime,userid ,ip ,shopId ,url ,source ,status ,type ,county 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.detailed.Op_follow_shop_detail" id="Op_follow_shop_detailReturnMap">
+		<!-- 创建时间 -->
+      <id column="ctime" property="ctime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 店铺id -->
+      <result column="shopId" property="shopId"/>
+		<!-- url -->
+      <result column="url" property="url"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 关注1 取消2 -->
+      <result column="status" property="status"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 省市 -->
+      <result column="county" property="county"/>
+   </resultMap>
+   
+   
+   	<!-- 保存关注商品明细-->
+   <insert id="saveDetail"  parameterType="java.util.Map">
+		INSERT INTO 
+			op_follow_shop_detail_${nowYearMonth}
+			(ctime,userid ,ip ,shopId ,url ,source ,status ,type ,county  )
+		VALUES
+		<foreach collection="detailList" item="item" index="index" separator=",">
+			(#{item.ctime},#{item.userid},#{item.ip},#{item.shopId},#{item.url},#{item.source},#{item.status},#{item.type},#{item.county})
+ 		</foreach>
+  </insert>
+  
+	
+</mapper>

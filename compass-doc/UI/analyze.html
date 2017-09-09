@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    	html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend { margin: 0; padding: 0;}
+		ol,ul,li{ list-style:none; list-style-position:outside;}
+		:focus { outline: 0 none;}
+		a,img {border: 0 none;}
+		img {vertical-align: middle;}
+		a,a:hover{text-decoration:none;}
+		table{border-collapse:collapse;border-spacing:0;}
+		address, caption, cite, code, dfn, em, th, var, b, i, s{font-style:normal;font-weight:normal;}
+		body{font-size:14px; font-family: 'Microsoft Yahei', 'Helvetica Neue', 'Luxi Sans', 'DejaVu Sans', Tahoma, 'Hiragino Sans GB', STHeiti; color:#6c6c6c;background: #fff;}
+		.fl{float:left;display:inline}
+		.fr{float:right;display:inline;}
+		.boxw{width:1200px;margin:0 auto;}
+		.topDivbtm{border-bottom: 1px solid #e4e4e4;}
+		.clearfix:before, .clearfix:after {content: ".";display: block;height: 0;visibility: hidden;}
+		.clearfix:after {clear: both;}
+		.clearfix {zoom: 1;}
+        body,i,b,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        i,b{
+            font-style:normal;
+            font-weight: normal;
+        }
+        body{
+            min-width: 952px;
+            overflow-x: hidden;
+			background: #2a2b2f;
+        }
+        .body_right{
+            width: 100%;
+            background: #2a2b2f;
+            float: left;
+        }
+        .right_top{
+            height: 30px;
+            padding: 30px 34px;
+        }
+        .font_RT{
+            color: #ccc;
+            font-size: 24px;
+        }
+        .all{
+            font-size: 18px;
+            color: #ccc;
+            padding: 8px 42px;
+            border-radius: 5px;
+        }
+        .background_B{
+            background: #028be6;
+            color: #ccc !important;
+        }
+        .background_bluck{
+            background: #3b3c42;
+            color: #028be6;
+        }
+        .updata_number{
+            color: #f74c31;
+        }
+        .updata_time{
+            font-size: 14px;
+            color: #999999;
+            margin-left: 10px;
+            padding: 5px 20px;
+        }
+        /*  中部  */
+        input[type="checkbox"]{
+            visibility: hidden;
+        }
+        input[type="checkbox"]+label {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 5px;
+            text-align: left;
+            color: #ccc;
+            font-size: 14px;
+            -webkit-box-sizing: border-box;
+        }
+
+        label::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: #2a2b2f;
+            border: 1px solid #0f5a8d;
+            vertical-align: middle;
+            -webkit-border-radius: 50%;
+            margin-right: 5px;
+        }
+        .CB_radius{
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #0b6099;
+            position: absolute;
+            left: 3px;
+            top: 4px;
+        }
+        .position_R{
+            position: relative;
+        }
+        .right_middle{
+            margin-top: 24px;
+            padding: 0 34px;
+        }
+        .inputA{
+            background: none;
+            width: 14.6%;
+            border: 1px solid #0a5f98;
+            height: 35px;
+            border-radius: 5px;
+            padding: 0 10px;
+            color: #ccc;
+        }
+        .font{
+            font-size: 18px;
+            color: #999;
+        }
+        .mL15{
+            margin-left: 15px;
+        }
+        .right_button{
+            margin-top: 26px;
+            margin-right: 34px;
+            margin-left: 34px;
+            border-radius: 5px;
+            background: #202022;
+        }
+        .button_top{
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            font-size: 0;
+        }
+
+        .button_top>span{
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            color: #666666;
+            overflow: hidden;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+        .button_top>span>i{
+            font-size: 16px;
+            color: #666;
+            float: right;
+        }
+        .button_top>span:nth-child(1){
+            width: 5%;
+        }
+        .button_top>span:nth-child(2){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(3){
+            width: 40%;
+        }
+        .button_top>span:nth-child(4){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(5){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(6){
+            width: 16%;
+        }
+        .button_top>span:nth-child(7){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(8){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(9){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(10){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(11){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(12){
+            width: 7.8%;
+        }
+        .button_top>span:nth-child(13){
+            width: 7.8%;
+        }
+        .fontBule{
+            font-size: 14px !important;
+            color: #0b6099 !important;
+        }
+        .fontWhite{
+            font-size: 14px !important;
+            color: #cccccc !important;
+        }
+        .page{
+            width: 100%;
+            height: 60px;
+            background: #2a2b2f;
+        }
+        .paging{
+            float: right;
+            margin-right: 45px;
+        }
+        .homePage{
+            line-height: 60px;
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: 1px solid #444444;
+            color: #bbbbbb;
+            font-size: 12px;
+            background: #3b3c42;
+        }
+        .scroll_x{
+            overflow-x: auto;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+<div class="body_right">
+    <div class="right_top">
+        <!--  RT--right_top  -->
+        <span class="font_RT">订单明细统计<i class="updata_time">更新时间：2016-11-9 14:17:10 最近更新<b class="updata_number">99</b>条记录</i></span>
+
+    </div>
+
+    <div class="right_middle">
+        <span class="font">&nbsp;订单编号：<input type="text" placeholder="请输入编号" class="inputA"/></span>
+        <span class="font mL15">&nbsp;商品编号：<input type="text" placeholder="请输入编号" class="inputA"/></span>
+        <span class="font mL15">订单类型&nbsp;&nbsp;<input type="text" placeholder="所有" class="inputA"/></span>
+    </div>
+
+    <div class="right_middle">
+        <span class="font">&nbsp;店铺名称：<input type="text" placeholder="全部" class="inputA"/></span>
+        <span class="font mL15">&nbsp;店铺编号：<input type="text" placeholder="请输入编号" class="inputA"/></span>
+        <span class="all background_B" style="font-size: 14px;margin-left: 14.6%;">查询</span>
+    </div>
+
+    <div class="right_middle">
+        <form class="" style="display: inline-block">
+            <input type="checkbox" value="guangpan" name="choose" id="guangpan">
+            <label for="guangpan" class="position_R"><i class="CB_radius" id="CB_radius1"></i>店铺整体</label>
+            <input type="checkbox" value="guangpan1" name="choose" id="guangpan1">
+            <label for="guangpan1" class="position_R"><i class="CB_radius" id="CB_radius2" style="display: none;"></i>pc端</label>
+            <input type="checkbox" value="guangpan2" name="choose" id="guangpan2">
+            <label for="guangpan2" class="position_R"><i class="CB_radius" id="CB_radius3"  style="display: none;"></i>移动端整体</label>
+            <input type="checkbox" value="guangpan3" name="choose" id="guangpan3">
+            <label for="guangpan3" class="position_R"><i class="CB_radius" id="CB_radius4"  style="display: none;"></i>M端</label>
+            <input type="checkbox" value="guangpan4" name="choose" id="guangpan4">
+            <label for="guangpan4" class="position_R"><i class="CB_radius" id="CB_radius5"  style="display: none;"></i>APP</label>
+            <input type="checkbox" value="guangpan5" name="choose" id="guangpan5">
+            <label for="guangpan5" class="position_R"><i class="CB_radius" id="CB_radius6"  style="display: none;"></i>微信</label>
+            <input type="checkbox" value="guangpan6" name="choose" id="guangpan6">
+            <label for="guangpan6" class="position_R"><i class="CB_radius" id="CB_radius7"  style="display: none;"></i>微信</label>
+        </form>
+        <span class="all background_B" style="font-size: 14px;float: right">下载</span>
+    </div>
+
+    <div class="right_button scroll_x">
+        <div class="button_top">
+            <span>序号<i>|</i></span>
+            <span>订单编号<i>|</i></span>
+            <span>商品编号<i>|</i></span>
+            <span>商品名称<i>|</i></span>
+            <span>商品价格<i>|</i></span>
+            <span>下单商品件数<i>|</i></span>
+            <span>优惠金额<i>|</i></span>
+            <span>运费<i>|</i></span>
+            <span>下单金额<i>|</i></span>
+            <span>下单单量<i>|</i></span>
+            <span>下单时间<i>|</i></span>
+            <span>付款时间<i>|</i></span>
+            <span>付款方式</span>
+        </div>
+        <div class="button_top">
+            <span class="fontWhite">1</span>
+            <span class="fontWhite">世峰搜索</span>
+            <span class="fontBule">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S【图片 价格 品牌 报价】</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+        </div>
+        <div class="button_top">
+            <span class="fontWhite">1</span>
+            <span class="fontWhite">世峰搜索</span>
+            <span class="fontBule">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S【图片 价格 品牌 报价】</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+        </div>
+        <div class="button_top">
+            <span class="fontWhite">1</span>
+            <span class="fontWhite">世峰搜索</span>
+            <span class="fontBule">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S【图片 价格 品牌 报价】</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+        </div>
+        <div class="button_top">
+            <span class="fontWhite">1</span>
+            <span class="fontWhite">世峰搜索</span>
+            <span class="fontBule">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S【图片 价格 品牌 报价】</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontWhite">陕西-西安</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+            <span class="fontBule">洱海</span>
+            <span class="fontWhite">9999</span>
+        </div>
+    </div>
+    <div class="page">
+        <div class="paging">
+            <span class="homePage">首页</span>
+            <span class="homePage">上页</span>
+            <span class="homePage">1</span>
+            <span class="homePage">2</span>
+            <span class="homePage">3</span>
+            <span class="homePage">4</span>
+            <span class="homePage">5</span>
+            <span class="homePage">下页</span>
+            <span class="homePage">尾页</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

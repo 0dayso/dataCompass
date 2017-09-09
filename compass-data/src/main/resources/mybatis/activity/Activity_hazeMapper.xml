@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 活动/雾霾(activity_haze)Mapper -->
+<mapper namespace="activity_hazeMapper">
+	<!--mybatis ehcache缓存配置 -->
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+	<!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+
+	<sql id="Base_Column_List">
+		ip,ctime ,source ,sku ,county ,status
+	</sql>
+
+	<resultMap type="com.shifeng.activity.entity.Activity_haze" id="Activity_hazeReturnMap">
+		<!-- ip -->
+		<id column="ip" property="ip" />
+		<!-- 时间 -->
+		<result column="ctime" property="ctime" />
+		<!-- 来源 -->
+		<result column="source" property="source" />
+		<!-- 商品sku -->
+		<result column="sku" property="sku" />
+		<!-- 省市 -->
+		<result column="county" property="county" />
+		<!-- 状态（1打开次数，2填写人数数，3转发次数，4点击商品次数） -->
+		<result column="status" property="status" />
+	</resultMap>
+
+	<!-- 查询活动/雾霾明细 -->
+	<select id="findAllactivity_hazePage" parameterType="Page" resultMap="Activity_hazeReturnMap">
+		select
+			ip ,
+			ctime ,
+			source ,
+			ah.sku ,
+			mp.name productName,
+			county ,
+			status
+		from activity_haze ah
+		left join mall_product mp on mp.sku = ah.sku
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND date(ctime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.sku!=null and t.sku!=''">
+            AND ah.sku = #{t.sku}
+        </if>
+        <if  test="t.ip!=null and t.ip!=''">
+            AND ip = #{t.ip}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND county like CONCAT("%",#{t.county},"%")
+        </if>
+        <if test="t.status>0">
+            AND status = #{t.status}
+        </if>
+	</select>
+	
+	<select id="findAllActivityHazeData" parameterType="Page" resultMap="Activity_hazeReturnMap">
+	    select
+			ip ,
+			Date(ctime) ctime,
+			source ,
+			ah.sku ,
+			mp.name productName,
+			county ,
+			status ,
+			SUM(CASE status WHEN 1 THEN 1 ELSE 0 END) opencount,
+			SUM(CASE status WHEN 2 THEN 1 ELSE 0 END) writecount,
+			SUM(CASE status WHEN 3 THEN 1 ELSE 0 END) transpond,
+			CASE WHEN ah.sku>0 THEN SUM(CASE STATUS WHEN 4 THEN 1 ELSE 0 END) ELSE 0 END clickcount
+		from activity_haze ah
+		left join mall_product mp on mp.sku = ah.sku
+		where 1=1
+	    <if test="t.startDate != null and t.startDate != ''">
+            AND date(ctime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+		
+        GROUP BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,DATE(ctime)
+            </if>
+            <if test="t.rowFieldVO.isShowCounty==1">
+                ,county
+            </if>
+            <if test="t.rowFieldVO.isShowSku==1">
+                ,ah.sku
+            </if>
+            
+         ORDER BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,ctime asc
+            </if>
+	</select>
+	
+
+</mapper>

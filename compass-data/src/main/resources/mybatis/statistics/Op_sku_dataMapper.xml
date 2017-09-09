@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- sku统计表(op_sku_data)Mapper -->
+<mapper namespace="op_sku_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    cdate,sku ,productid ,visitnum ,purchasenum ,amount ,payamount ,ordernum ,uv ,type ,shopId ,visitusernum ,cookie ,follow ,cart ,returnordernum ,cancelordernum ,exchangeordernum ,payordernum 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_sku_data" id="Op_sku_dataReturnMap">
+		<!-- 创建日期 -->
+      <id column="cdate" property="cdate"/>
+		<!-- sku -->
+      <result column="sku" property="sku"/>
+		<!-- 产品id -->
+      <result column="productid" property="productid"/>
+		<!-- 访问量 -->
+      <result column="visitnum" property="visitnum"/>
+		<!-- 购买数量 -->
+      <result column="purchasenum" property="purchasenum"/>
+		<!-- 下单金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 支付金额 -->
+      <result column="payamount" property="payamount"/>
+		<!-- 订单数量 -->
+      <result column="ordernum" property="ordernum"/>
+		<!-- 访客数 -->
+      <result column="uv" property="uv"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 店铺id -->
+      <result column="shopId" property="shopId"/>
+		<!-- 访问用户数 -->
+      <result column="visitusernum" property="visitusernum"/>
+		<!-- cookie -->
+      <result column="cookie" property="cookie"/>
+		<!-- 关注 -->
+      <result column="follow" property="follow"/>
+		<!-- 购物车 -->
+      <result column="cart" property="cart"/>
+		<!-- 订单退货数量 -->
+      <result column="returnordernum" property="returnordernum"/>
+		<!-- 订单取消数量 -->
+      <result column="cancelordernum" property="cancelordernum"/>
+		<!-- 订单换货数量 -->
+      <result column="exchangeordernum" property="exchangeordernum"/>
+		<!-- 订单支付数量 -->
+      <result column="payordernum" property="payordernum"/>
+   </resultMap>
+
+	<!-- 查询所有sku统计表 -->
+	<select id="findAllSkuDataPage" parameterType="Page" resultMap="Op_sku_dataReturnMap">
+		select
+			op.cdate ,
+			op.sku ,
+			op.type ,
+			op.shopId ,
+			SUM(visitnum) visitnum,
+			SUM(purchasenum) purchasenum,
+            ROUND(SUM(amount),2) amount,
+            ROUND(SUM(payamount),2) payamount,
+            SUM(ordernum) ordernum,
+            SUM(uv) uv,
+            SUM(visitusernum) visitusernum,
+            SUM(cookie) cookie,
+			SUM(follow) follow,
+			SUM(cart) cart,
+			SUM(returnordernum) returnordernum,
+			SUM(cancelordernum) cancelordernum,
+			SUM(exchangeordernum) exchangeordernum,
+			SUM(payordernum) payordernum,
+			ms.sName shopName,
+			mp.name productName
+		from op_sku_data_${t.tableName} op
+		left join mall_shop ms on ms.sId = op.shopId
+		left join mall_product mp on mp.sku = op.sku
+		
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND op.cdate  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and op.cdate <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND op.type = #{t.webtype}
+        </if>
+        <if  test="t.shopId!=null and t.shopId!=''">
+            AND op.shopId = #{t.shopId}
+        </if>
+        GROUP BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,op.cdate
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,op.type
+            </if>
+            <if test="t.rowFieldVO.isShowShop==1">
+                ,op.shopId
+            </if>
+            <if test="t.rowFieldVO.isShowSku==1">
+                ,op.sku
+            </if>
+            
+         ORDER BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,op.cdate ASC
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,op.type ASC
+            </if>
+            <if test="t.rowFieldVO.isShowShop==1">
+                ,op.shopId ASC
+            </if>
+            <if test="t.rowFieldVO.isShowSku==1">
+                ,op.sku ASC
+            </if>
+            
+	</select>
+
+	
+</mapper>

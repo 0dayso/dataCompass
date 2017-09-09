@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 商品销量明细 -->
+<mapper namespace="sellProductDetailMapper">
+	
+	<resultMap type="com.shifeng.sell.dto.productDetail.ShowProductDetailDTO" id="selectProductIdsResultMap">
+		<result column="productId" property="productId" />
+		<result column="tableName" property="tableName" />
+	
+		<collection property="skus" ofType="com.shifeng.sell.dto.productDetail.ShowProductSkuDetailDTO" column="{productId=productId,tableName=tableName}" 
+			select="sellProductDetailMapper.selectProductDetailById">
+		</collection>
+	</resultMap>
+	
+	<!-- 查询商品id集合 -->
+	<select id="selectProductIdsPage" parameterType="Page" 
+		resultMap="selectProductIdsResultMap">
+		<!-- 暂时取购买明细表的商品ID，等待商城商品数据获取之后再替换 (进行订单量排序)-->
+		select op.productId,mp.name productName,'${t.tableName}' tableName 
+		from op_purchase_detail${t.tableName} op
+		left join mall_product mp on op.productId = mp.pid
+		where op.productid is not null 
+		<if test="t.type != -1">
+			<choose>
+				<when test="t.type == 0">and type = 0</when>
+				<otherwise>and type in (1,2,3)</otherwise>
+			</choose>
+		</if>
+		group by op.productid
+	</select>
+	
+	<!-- 根据商品ID查询sku集合信息 -->
+	<select id="selectProductDetailById" parameterType="java.util.HashMap" 
+		resultType="com.shifeng.sell.dto.productDetail.ShowProductSkuDetailDTO">
+		select purchase.sku skuId,mp.color,mp.spec,sum(purchase.amount) amount,sum(purchase.number) pOrderNum,
+			   count(purchase.userid) pOrderUserNum,pv.pv,userNum.pUserNum
+		from op_purchase_detail${tableName} purchase
+		left join mall_product mp on purchase.sku = mp.sku
+		left join (
+		
+			select sku,count(sku) pv
+			from op_visit_detail${tableName}
+			where sku in 
+			(
+				select sku from op_purchase_detail${tableName}
+				where sku is not null 
+				and productid=#{productId}
+				group by sku<!--  查询该商品对应的sku集合 -->
+			)
+			group by sku<!--  查询该sku在【访问明细表】的浏览量 -->
+			)
+		pv on pv.sku = purchase.sku
+		
+		
+		
+		left join (
+			select sku,count(userid) pUserNum
+			from op_visit_detail${tableName}
+			where sku in 
+			(
+				select sku from op_purchase_detail${tableName}
+				where sku is not null 
+				and productid=#{productId}
+				group by sku<!--  查询该商品对应的sku集合 -->
+			)
+			and userid != 0
+			group by sku<!--  查询该sku在【访问明细表】的访客数 -->
+		)
+		userNum on userNum.sku = purchase.sku
+		
+		where purchase.sku is not null 
+		and purchase.productid=#{productId}
+		group by purchase.sku
+		order by amount desc
+
+	</select>
+	
+	
+	
+	
+	
+</mapper>

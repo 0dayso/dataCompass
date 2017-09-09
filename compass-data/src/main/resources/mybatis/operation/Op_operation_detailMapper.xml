@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 后台操作详情(op_operation_detail)Mapper -->
+<mapper namespace="op_operation_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    ctime,userid ,username ,ip ,opttype ,optcontent ,optmodel ,optsystem ,type ,county 
+    </sql>
+
+    <resultMap type="com.shifeng.operation.entity.Op_operation_detail" id="Op_operation_detailReturnMap">
+		<!-- 创建时间 -->
+      <id column="ctime" property="ctime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- 用户名称 -->
+      <result column="username" property="username"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 操作类型（1 增加 2修改 3删除 4 查询） -->
+      <result column="opttype" property="opttype"/>
+		<!-- 操作内容 -->
+      <result column="optcontent" property="optcontent"/>
+		<!-- 操作模块 -->
+      <result column="optmodel" property="optmodel"/>
+		<!-- 操作系统（1 商家 2商城后台。。。） -->
+      <result column="optsystem" property="optsystem"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 省市 -->
+      <result column="county" property="county"/>
+   </resultMap>
+
+	<!-- 查询所有后台操作详情 -->
+	<select id="findAllop_operation_detailPage" parameterType="Page" resultMap="Op_operation_detailReturnMap">
+		select
+			ctime ,
+			userid ,
+			username ,
+			ip ,
+			opttype ,
+			optcontent ,
+			optmodel ,
+			optsystem ,
+			type ,
+			county 
+		from op_operation_detail_${t.tableName}
+		where 1=1
+		<if test="t.startDate!=null and t.startDate!=''">
+		    and date(ctime) >= #{t.startDate}
+		</if>
+		<if test="t.endDate!=null and t.endDate!=''">
+		    and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+		</if>
+		<if test="t.userid!=null and t.userid!='' and t.userid>0">
+		    and userid = #{t.userid}
+		</if>
+		<if test="t.ip!=null and t.ip!=''">
+		    and ip = #{t.ip}
+		</if>
+		<if test="t.county!=null and t.county!=''">
+		    and county = #{t.county}
+		</if>
+		<if test="t.opttype!=null and t.opttype!='' and t.opttype>0">
+		    and opttype = #{t.opttype}
+		</if>
+		<if test="t.optsystem!=null and t.optsystem!='' and t.optsystem>0">
+		    and optsystem = #{t.optsystem}
+		</if>
+		
+		<if test="t.type!=null and t.type!='' and t.type>=0">
+		    and type = #{t.type}
+		</if>
+		
+		order by ctime desc
+	</select>
+
+	
+</mapper>

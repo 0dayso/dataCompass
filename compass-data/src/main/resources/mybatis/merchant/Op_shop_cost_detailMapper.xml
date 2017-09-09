@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 商家费用(op_shop_cost_detail)Mapper -->
+<mapper namespace="op_shop_cost_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    ctime,shopid ,shopname ,ip ,type ,county ,status ,source ,money 
+    </sql>
+
+    <resultMap type="com.shifeng.merchant.entity.Op_shop_cost_detail" id="Op_shop_cost_detailReturnMap">
+		<!-- 创建时间 -->
+      <id column="ctime" property="ctime"/>
+		<!-- 商家id -->
+      <result column="shopid" property="shopid"/>
+		<!-- 商家名称 -->
+      <result column="shopname" property="shopname"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 省市 -->
+      <result column="county" property="county"/>
+		<!-- 1商家保证金 2平台使用费 3广告费 -->
+      <result column="status" property="status"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 金额 -->
+      <result column="money" property="money"/>
+   </resultMap>
+
+	<!-- 查询所有商家费用 -->
+	<select id="findAllop_shop_cost_detailPage" parameterType="Page" resultMap="Op_shop_cost_detailReturnMap">
+		select
+			ctime ,
+			shopid ,
+			shopname ,
+			ip ,
+			type ,
+			county ,
+			status ,
+			source ,
+			money 
+		from op_shop_cost_detail_${t.tableName}
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND date(ctime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+		<if  test="t.ip!=null and t.ip!=''">
+            AND ip = #{t.ip}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND type = #{t.webtype}
+        </if>
+		<if test="t.status>0">
+		    AND status = #{t.status}
+		</if>
+		<if  test="t.shopId!=null and t.shopId!=''">
+            AND shopId = #{t.shopId}
+        </if>
+        <if  test="t.shopname!=null and t.shopname!=''">
+            AND shopname = #{t.shopname}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND county = #{t.county}
+        </if>
+		
+	</select>
+
+	<select id="findAllShopcostDataPage" parameterType="Page" resultType="com.shifeng.merchant.dto.ShopCostDTO">
+	    select
+			DATE(ctime) ctime,
+			shopid ,
+			shopname ,
+			type ,
+			county ,
+			status ,
+			ROUND(SUM(money) ,2) money,
+			COUNT(0) count
+		from op_shop_cost_detail_${t.tableName}
+		where 1=1
+	    <if test="t.startDate != null and t.startDate != ''">
+            AND date(ctime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(ctime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND type = #{t.webtype}
+        </if>
+		<if test="t.status>0">
+		    AND status = #{t.status}
+		</if>
+        GROUP BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,DATE(ctime)
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,type
+            </if>
+            <if test="t.rowFieldVO.isShowShop==1">
+                ,shopId
+            </if>
+            <if test="t.rowFieldVO.isShowCounty==1">
+                ,county
+            </if>
+            <if test="t.rowFieldVO.isShowStatus==1">
+                ,status
+            </if>
+            
+         ORDER BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,ctime ASC
+            </if>
+            <if test="t.rowFieldVO.isShowCounty==1">
+                ,county ASC
+            </if>
+            <if test="t.rowFieldVO.isShowShop==1">
+                ,shopId ASC
+            </if>
+            <if test="t.rowFieldVO.isShowStatus==1">
+                ,status ASC
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,type ASC
+            </if>
+	</select>
+	
+	
+</mapper>

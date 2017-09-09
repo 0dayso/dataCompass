@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 地区统计表(op_county_data)Mapper -->
+<mapper namespace="op_county_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    cdate,visitnum ,purchasenum ,amount ,registernum ,payamount ,ordernum ,uv ,type ,visitusernum ,cookie ,county ,follow ,cart ,returnordernum ,cancelordernum ,exchangeordernum ,payordernum ,followshop 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_county_data" id="Op_county_dataReturnMap">
+		<!-- 创建日期 -->
+      <id column="cdate" property="cdate"/>
+		<!-- 访问量 -->
+      <result column="visitnum" property="visitnum"/>
+		<!-- 购买数量 -->
+      <result column="purchasenum" property="purchasenum"/>
+		<!-- 下单金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 注册量 -->
+      <result column="registernum" property="registernum"/>
+		<!-- 支付金额 -->
+      <result column="payamount" property="payamount"/>
+		<!-- 订单数量 -->
+      <result column="ordernum" property="ordernum"/>
+		<!-- 访客数 -->
+      <result column="uv" property="uv"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 访问用户数 -->
+      <result column="visitusernum" property="visitusernum"/>
+		<!-- cookie -->
+      <result column="cookie" property="cookie"/>
+		<!-- 地区 -->
+      <result column="county" property="county"/>
+		<!-- 关注 -->
+      <result column="follow" property="follow"/>
+		<!-- 购物车 -->
+      <result column="cart" property="cart"/>
+		<!-- 订单退货数量 -->
+      <result column="returnordernum" property="returnordernum"/>
+		<!-- 订单取消数量 -->
+      <result column="cancelordernum" property="cancelordernum"/>
+		<!-- 订单换货数量 -->
+      <result column="exchangeordernum" property="exchangeordernum"/>
+		<!-- 订单支付数量 -->
+      <result column="payordernum" property="payordernum"/>
+		<!-- 关注店铺 -->
+      <result column="followshop" property="followshop"/>
+   </resultMap>
+
+	<!-- 查询所有地区统计表 -->
+	<select id="findAllCountyDataPage" parameterType="Page" resultMap="Op_county_dataReturnMap">
+		select
+			cdate ,
+			county ,
+			type ,
+			SUM(visitnum) visitnum,
+			SUM(purchasenum) purchasenum,
+            ROUND(SUM(amount),2) amount,
+            ROUND(SUM(payamount),2) payamount,
+            SUM(ordernum) ordernum,
+            SUM(registernum) registernum,
+            SUM(uv) uv,
+            SUM(visitusernum) visitusernum,
+            SUM(cookie) cookie,
+			SUM(follow) follow,
+			SUM(cart) cart,
+			SUM(followshop) followshop,
+			SUM(returnordernum) returnordernum,
+			SUM(cancelordernum) cancelordernum,
+			SUM(exchangeordernum) exchangeordernum,
+			SUM(payordernum) payordernum
+		from op_county_data_${t.tableName}
+		
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND cdate >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and cdate <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND type = #{t.webtype}
+        </if>
+        GROUP BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,cdate
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,type
+            </if>
+            <if test="t.rowFieldVO.isShowCounty==1">
+                ,county
+            </if>
+            
+         ORDER BY ''
+            <if test="t.rowFieldVO.isShowDate==1">
+                ,cdate ASC
+            </if>
+            <if test="t.rowFieldVO.isShowType==1">
+                ,type ASC
+            </if>
+	</select>
+
+	
+</mapper>

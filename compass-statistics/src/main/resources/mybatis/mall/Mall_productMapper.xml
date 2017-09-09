@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 商城商品(mall_product)Mapper -->
+<mapper namespace="mall_productMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    sku,pId ,name ,pic ,color ,spec ,number ,marketPrice ,price ,shopId
+    </sql>
+
+    <resultMap type="com.shifeng.entity.mall.Mall_product" id="Mall_productReturnMap">
+		<!-- 商品sku id -->
+      <id column="sku" property="sku"/>
+		<!-- 商品id -->
+      <result column="pId" property="pId"/>
+		<!-- 商品名称 -->
+      <result column="name" property="name"/>
+		<!-- 商品图片 -->
+      <result column="pic" property="pic"/>
+		<!-- 商品颜色 -->
+      <result column="color" property="color"/>
+		<!-- 商品规格 -->
+      <result column="spec" property="spec"/>
+		<!-- 商品编号 -->
+      <result column="number" property="number"/>
+		<!-- 商品市场价格 -->
+      <result column="marketPrice" property="marketPrice"/>
+		<!-- 商品销售价格 -->
+      <result column="price" property="price"/>
+		<!-- 店铺id -->
+      <result column="shopId" property="shopId"/>
+   </resultMap>
+   
+   
+  <!--  获取待同步的商品列表 -->
+   <select id="getStaySyncProductPage" parameterType="page" resultType="com.shifeng.entity.mall.Mall_product">
+   	 	select
+			Pro_Rules.Id sku,Pro_Rules.PId pId,Pro_Rules.Price price,
+			Pro_Rules.PMarketPrice marketPrice,Pro_Rules.PNumber number,Product.PName name,Product.PState pState,
+			P_Images.IPath pic,r1.RDescribe color,r2.RDescribe spec,P_Images.iColor
+			,Product.SId shopId <!-- ,SellerInfo.SShopName sShopName -->
+		from [Pro_Rules] with (nolock) 
+		        inner join [Product] with (nolock) on   [Pro_Rules].[PId]=[Product].[PId]
+		        inner join [P_Images] with (nolock) on [Pro_Rules].[PId] = [P_Images].[PId]
+		        <!-- left  join [SellerInfo] with (nolock) on [SellerInfo].[SId] = [Product].[SId] -->
+		        left  join [Rules] r1 with (nolock) on r1.[RId] = [Pro_Rules].[ColorId]
+		        left  join [Rules] r2 with (nolock) on r2.[RId] = [Pro_Rules].[SpecId]
+   </select>
+   
+   
+   <insert id="saveSyncProduct" parameterType="java.util.List">
+   		insert into 
+   			mall_product
+   			( sku,pId ,name ,pic ,color ,spec ,number ,marketPrice ,price ,shopId)
+   		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.sku},#{item.pId },#{item.name },#{item.pic },#{item.color },#{item.spec}
+			,#{item.number},#{item.marketPrice},#{item.price},#{item.shopId} )
+ 		</foreach>
+   		ON DUPLICATE KEY UPDATE 
+   			pId=VALUES(pId),name=VALUES(name),pic=VALUES(pic),color=VALUES(color),shopId=VALUES(shopId)
+   			,spec=VALUES(spec),number=VALUES(number),marketPrice=VALUES(marketPrice),price=VALUES(price)
+   		
+   </insert>
+   
+  
+	
+</mapper>

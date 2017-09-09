@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 商品销量明细 -->
+<mapper namespace="realTimeVisitorMapper">
+
+
+	<!-- 实时访客 -->
+	<select id="currentTimeVisitUserPage" parameterType="Page"
+		 resultType="com.shifeng.truetime.dto.realTimeVisitor.RealTimeVisitorResultDTO">
+		SELECT op.userid,mu.account userName,op.visittime,op.url,op.county,temp.visitNum,op.source
+		FROM op_visit_detail${t.tableName} op
+		left join mall_user mu on op.userid = mu.userid
+		left join
+		(
+			select userid,count(userid) visitNum from op_visit_detail${t.tableName}
+			where userid != 0
+			group by userid
+		)
+		temp on temp.userid = op.userid
+		where 
+		op.userid != 0
+		and op.type = #{t.type}
+		<if test="t.channelid != null and t.channelid != ''">
+		and channelid = #{t.channelid}
+		</if>
+		order by visittime desc
+
+	</select>
+
+
+</mapper>

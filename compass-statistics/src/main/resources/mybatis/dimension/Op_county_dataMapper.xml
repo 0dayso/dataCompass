@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 地区统计表(op_county_data)Mapper -->
+<mapper namespace="op_county_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    cdate,visitnum ,purchasenum ,amount ,registernum ,payamount ,ordernum ,uv ,type ,visitusernum ,cookie ,county ,follow ,cart ,returnordernum ,cancelordernum ,exchangeordernum ,payordernum 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.dimension.Op_county_data" id="Op_county_dataReturnMap">
+		<!-- 创建日期 -->
+      <id column="cdate" property="cdate"/>
+		<!-- 访问量 -->
+      <result column="visitnum" property="visitnum"/>
+		<!-- 购买数量 -->
+      <result column="purchasenum" property="purchasenum"/>
+		<!-- 下单金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 注册量 -->
+      <result column="registernum" property="registernum"/>
+		<!-- 支付金额 -->
+      <result column="payamount" property="payamount"/>
+		<!-- 订单数量 -->
+      <result column="ordernum" property="ordernum"/>
+		<!-- 访客数 -->
+      <result column="uv" property="uv"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 访问用户数 -->
+      <result column="visitusernum" property="visitusernum"/>
+		<!-- cookie -->
+      <result column="cookie" property="cookie"/>
+		<!-- 地区 -->
+      <result column="county" property="county"/>
+		<!-- 关注 -->
+      <result column="follow" property="follow"/>
+		<!-- 购物车 -->
+      <result column="cart" property="cart"/>
+		<!-- 订单退货数量 -->
+      <result column="returnordernum" property="returnordernum"/>
+		<!-- 订单取消数量 -->
+      <result column="cancelordernum" property="cancelordernum"/>
+		<!-- 订单换货数量 -->
+      <result column="exchangeordernum" property="exchangeordernum"/>
+		<!-- 订单支付数量 -->
+      <result column="payordernum" property="payordernum"/>
+   </resultMap>
+   
+  <!-- 保存地区购物车统计数据 -->
+  <insert id="saveCart" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,cart)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.cart})
+		</foreach>
+		ON DUPLICATE KEY UPDATE cart=VALUES(cart)
+  </insert>
+   
+  <!-- 保存地区关注商品统计数据 -->
+  <insert id="saveFollowSKU" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,follow)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.follow})
+		</foreach>
+		ON DUPLICATE KEY UPDATE follow=VALUES(follow)
+  </insert>
+   
+  <!-- 保存地区关注店铺统计数据 -->
+  <insert id="saveFollowShop" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,followshop)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.followshop})
+		</foreach>
+		ON DUPLICATE KEY UPDATE followshop=VALUES(followshop)
+  </insert>
+   
+  <!-- 保存地区访问量统计数据 -->
+  <insert id="saveVisitNum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,visitnum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.visitnum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE visitnum=VALUES(visitnum)
+  </insert>
+   
+  <!-- 保存地区Cookie统计数据 -->
+  <insert id="saveCookie" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,cookie)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.cookie})
+		</foreach>
+		ON DUPLICATE KEY UPDATE cookie=VALUES(cookie)
+  </insert>
+   
+  <!-- 保存地区购买数量统计数据 -->
+  <insert id="savePurchaseNum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,purchasenum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.purchasenum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE purchasenum=VALUES(purchasenum)
+  </insert>
+   
+  <!-- 保存地区购买金额统计数据 -->
+  <insert id="saveAmount" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,amount)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.amount})
+		</foreach>
+		ON DUPLICATE KEY UPDATE amount=VALUES(amount)
+  </insert>
+   
+  <!-- 保存地区支付金额统计数据 -->
+  <insert id="savePayAmount" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,payamount)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.payamount})
+		</foreach>
+		ON DUPLICATE KEY UPDATE payamount=VALUES(payamount)
+  </insert>
+  
+  
+   
+  <!-- 保存地区支取消订单计数据 -->
+  <insert id="saveQuXiaoDingDan" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,cancelordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.cancelordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE cancelordernum=VALUES(cancelordernum)
+  </insert>
+  
+   
+  <!-- 保存地区退货统计数据 -->
+  <insert id="saveTuiHuo" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,returnordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.returnordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE returnordernum=VALUES(returnordernum)
+  </insert>
+  
+   
+  <!-- 保存地区换货统计数据 -->
+  <insert id="saveHuanHUo" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,exchangeordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.exchangeordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE exchangeordernum=VALUES(exchangeordernum)
+  </insert>
+  
+   
+  <!-- 保存地区订单支付数量统计数据 -->
+  <insert id="savePayOrderNum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,payordernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.payordernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE payordernum=VALUES(payordernum)
+  </insert>
+  
+   
+  <!-- 保存地区访客统计数据 -->
+  <insert id="saveUv" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,uv)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.uv})
+		</foreach>
+		ON DUPLICATE KEY UPDATE uv=VALUES(uv)
+  </insert>
+  
+   
+  <!-- 保存地区访问用户数统计数据 -->
+  <insert id="saveVisitUserNum" parameterType="java.util.Map">
+		INSERT INTO 
+			op_county_data_${nowYearMonth}
+			(cdate,county,type,visitusernum)
+		VALUES
+		<foreach collection="insertList" item="item" index="index" separator=",">
+			 (#{item.cdate},#{item.county},#{item.type},#{item.visitusernum})
+		</foreach>
+		ON DUPLICATE KEY UPDATE visitusernum=VALUES(visitusernum)
+  </insert>
+   
+  
+	
+</mapper>

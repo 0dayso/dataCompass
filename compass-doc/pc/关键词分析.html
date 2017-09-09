@@ -1,0 +1,690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0054)https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>关键词分析</title>
+<script type="text/javascript">
+    // 图表导出需要的上下文信息
+    var context_path = "";
+    var url = "/interDataModel/getVisitKeyWordInitData.action";
+</script>
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/ODP.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/datePicker.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/jQuery_table_jui.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/model.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/odp.popdialog.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/extra.css">
+<style type="text/css">
+.addSKUID{
+    right: 105px;
+    position: relative;
+    top: 15px;
+}
+</style>
+<script type="text/javascript" src="./关键词分析_files/jquery.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.prototype.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.extends.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.base.js"></script><script type="text/javascript" src="./关键词分析_files/jTips.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.common.js"></script>
+<script type="text/javascript" src="./关键词分析_files/jquery.dataTables.js" charset="gb2312"></script>
+<script type="text/javascript" src="./关键词分析_files/model.zbinfo.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.blockui.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.tool.js"></script>
+<script type="text/javascript" src="./关键词分析_files/datepicker.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.constants.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.render.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.integrate.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.parser.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.adapter.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.dataset.js"></script>
+<script type="text/javascript" src="./关键词分析_files/popModal.js"></script>
+<script type="text/javascript" src="./关键词分析_files/model.fixTableHeader.js"></script>
+<script type="text/javascript" src="./关键词分析_files/visitKeyWord.core.js"></script>
+<style type="text/css" id="tipsCSS">.Jtips{position:relative;float:left}.Jtips .Jtips-close{position:absolute;color:#f60;font:12px "simsun";cursor:pointer;}.Jtips .Jtips-arr{position:absolute;background-image:url(//misc.360buyimg.com/purchase/trade/skin/i/arrow.gif);background-repeat:no-repeat;overflow:hidden}.Jtips.Jtips-top{padding-bottom:5px}.Jtips.Jtips-top .Jtips-close{right:1px;top:0}.Jtips.Jtips-top .Jtips-arr{left:30px;bottom:0;width:11px;height:6px;background-position:0 -5px;_bottom:-1px}.Jtips.Jtips-bottom{padding-top:5px}.Jtips.Jtips-bottom .Jtips-close{right:1px;top:5px}.Jtips.Jtips-bottom .Jtips-arr{top:0;left:30px;width:11px;height:6px;background-position:0 0}.Jtips.Jtips-left{padding-right:5px}.Jtips.Jtips-left .Jtips-close{right:6px;top:1px}.Jtips.Jtips-left .Jtips-arr{right:0;top:30px;width:6px;height:11px;background-position:-5px 0}.Jtips.Jtips-right{padding-left:5px}.Jtips.Jtips-right .Jtips-close{right:1px;top:1px}.Jtips.Jtips-right .Jtips-arr{top:30px;left:0;width:6px;height:11px;background-position:0 0}.Jtips .Jtips-con{word-break:break-all;word-wrap:break-word;float:left;padding:10px;background:#fffdee;border:1px solid #edd28b;color:#333;-moz-box-shadow:0 0 2px 2px #eee;-webkit-box-shadow:0 0 2px 2px #eee;box-shadow:0 0 2px 2px #eee;line-height:150%;overflow:hidden}.Jtips .Jtips-con a,.Jtips .Jtips-con a:visited{color:#005fab;text-decoration:none}.Jtips .Jtips-con a:hover{text-decoration:underline}.Jtips.Jtips-leftBottom{padding-bottom:5px}.Jtips.Jtips-leftBottom .Jtips-close{right:1px;top:5px}.Jtips.Jtips-leftBottom .Jtips-arr{top:-5px;right:10px;width:11px;height:6px;background-position:0 0}</style></head>
+<body style="cursor: default;">
+	<script type="text/javascript" src="./关键词分析_files/wl.js"></script>
+	
+
+
+   
+
+ 
+
+
+
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/thickbox.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/common.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/odp.popdialog.css">
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/odp.channel.css">
+<script type="text/javascript" src="./关键词分析_files/model.common.js"></script>
+<script type="text/javascript" src="./关键词分析_files/thickbox.js"></script>
+<script type="text/javascript" src="./关键词分析_files/odp.channel.js"></script>
+<script type="text/javascript">
+	var curGroup = "ShopAnalysis";
+	var userClientStr = "";
+	var userClientCookieStr = "";
+	var context_path = "";
+	var ifTmpLoginIn = "false";
+
+	function odplogOut(){
+		document.cookie = 'sysbar-hide=0' + ';path=/;';
+		window.top.location="/logout.jsp";
+	}
+	
+	function tutorialClose(divID, setCookie){
+		$(".more-setting-title,.more-setting .bracket").css({
+	        "color":"#48a7e7"
+	    });
+	    $(".more-setting .more-status").css({
+	        "background-position-x":"0"
+	    }).removeClass("orange");
+		
+		$("#" + divID).hide();
+		//点击我知道了
+		if(setCookie == "setCookie"){
+			
+		}
+	}
+	function tutorialCloseShow(result){}
+	
+	function setUserCookie(params, fun){
+		$.ajax({
+			url : "/setUserSetCookie.action",
+			type : "post",
+			dataType : "json",
+			data : params,
+			success : fun,
+			error :  function(XMLHttpRequest, s, errorThrown) {
+	            if(XMLHttpRequest.readyState!=0){
+	            	if(s=="timeout"){
+	 				   // 请求超时
+	 				}else{// 请求发生异常
+	 					
+	 				}
+	            }
+	        }
+		});
+	}
+	function setJingMaiCookieResult(result){
+		$("#sys-infor").hide();
+		$("#sys-links").hide();
+	}
+	
+	$(document).ready(function() {
+		$("#nav li.curr").removeClass("curr");
+		$("#"+curGroup).addClass("curr");
+		if(ifTmpLoginIn == "true"){
+			$("#userShield").hide();
+		}
+		$("#tutorial-1").hide();
+		
+		$.ajax({
+			url : "/getProductEdition.action",
+			type : "post",
+			dataType : "json",
+			success : renderEditionInfo,
+			error :  function(XMLHttpRequest, s, errorThrown) {
+	            if(XMLHttpRequest.readyState!=0){
+	            	if(s=="timeout"){
+	 				   // 请求超时
+	 				}else{// 请求发生异常
+	 					
+	 				}
+	            }
+	        }
+		});
+		
+		//判断是否嵌套在京麦工作台
+		if(userClientStr == "jingmai"){
+			//京麦首次登陆写入cookie
+			var params = "str1=1";
+			setUserCookie(params, setJingMaiCookieResult);
+		}else{
+		}
+		if(userClientCookieStr == "1"){
+			$("#sys-infor").hide();
+			$("#sys-links").hide();
+		}else{
+			$("#sys-infor").show();
+			$("#sys-links").show();
+		}
+
+		$(".i-jingmai").parent("a").bind("mouseover",function(){
+			$("#erweima").show();
+		}).bind("mouseout",function(){
+			$("#erweima").hide();
+		});
+		
+		function hiddenSys(){
+			$("#sys-b-bar").show();
+			$("#sysBarContent").css("display", "none");
+			$("#sysBarContentHidden").show();
+			$("#sys-b-bar").css("right", "-32px");
+		}
+
+		function showSys(){
+			$("#sys-b-bar").show();
+			$("#sysBarContent").show();
+			$("#sysBarContentHidden").hide();
+			$("#sys-b-bar").css("right", "0px");
+		}
+		
+		//控制图片链接
+		/* var adLink = "http://item.jd.com/11844136.html";
+		var adImgSrc = context_path + "/skin/inner/banner-sale.png";
+		var bannerBg = "#d20b1b";
+		var adCloseImgSrc = context_path + "/skin/inner/closeBtn-sale.png"; */
+		/* var newLinkTime = new Date("2016-01-04 10:00:00").getTime();
+		if(new Date().getTime() >= newLinkTime) {
+			adLink = "http://item.jd.com/11844136.html";
+			adImgSrc = context_path + "/skin/ad/banner-sale.png";
+			bannerBg = "#d20b1b";
+			adCloseImgSrc = context_path + "/skin/ad/closeBtn-sale.png";
+		} */
+		/* $("#adLink").attr("href", adLink);
+		$("#adImg").attr("src", adImgSrc);
+		$(".banner-wrap").css("background", bannerBg);
+		$(".close-btn").css("background", "url('"+adCloseImgSrc+"') 0px 0px no-repeat");
+		$(".close-btn").hover(function(){
+			$(this).css("background-position", "0px -24px");
+		}, function(){
+			$(this).css("background-position", "0px 0px");
+		});
+		if(getCookie("sysad-hide") != "1") {
+			$(".banner-wrap").show();
+		} */
+		
+		//关闭广告图片
+		/* $('.close-btn').click(function(){
+			$('.banner-wrap').slideUp('fast');
+			var date = new Date();
+			var expireDate = new Date(date.getFullYear(),date.getMonth(),date.getDate(),23,59,59);
+			document.cookie = 'sysad-hide=1' + ';path=/;' + "expires=" + expireDate.toGMTString();
+		}); */
+		
+		//弹出层
+
+		var newStartTimes = new Date();
+		var newEndTimes = new Date();
+		newStartTimes.setFullYear(2016, 04, 20);
+		newEndTimes.setFullYear(2016, 05, 03);
+		newStartTimes.setHours(8,40);
+		newEndTimes.setHours(8,40);
+		var newStartTime =Date.parse(newStartTimes);
+		var newEndTime = Date.parse(newEndTimes);
+		var day = Date.parse(new Date());
+		if(day >= newStartTime && day <= newEndTime){
+			if(getCookie("sysshow-hide") != "1") {
+				$("#odpModel .pop-dialogWindow").css("height",($(document).height())+"px");
+//				$("#odpModel .dialogContainer").css("left",(($(window).width()-660)/2)+"px");
+//				$("#odpModel .dialogContainer").css("top",((screen.height-660)/2) +"px");
+				$("#odpModel").show();
+			}
+
+		}
+
+	});
+	
+	function renderEditionInfo(result){
+		if(result){
+			var resultData = result.edition;
+			
+			var ver = resultData.versionRf;
+	        if(ver){
+	        	var sysbarHide = getCookie("sysbar-hide");
+	        	if(sysbarHide != 1){
+	        		showSys();
+	        	} else{
+	        		hiddenSys();
+	        	}
+	        	if(ver!=""){
+		            $("#VerMark").html('<span class="version '+ver.toLowerCase()+'">'+resultData.versionZh+'</span>');
+		            if(ver.toLowerCase() == "odp_elementary"){//初级版不显示咚咚
+		            }else{//中级版以上显示咚咚
+		            }
+	        	}
+	        }
+	        $("#shopNameTip").html('<a>欢迎:'+resultData.shopName+'</a>');
+	        
+	        var rawVer=resultData.rawVersion;//
+	        if(rawVer!=""){
+	        	$("#businessHref").attr("href","http://market.shop.jd.com/vas/vendor/venderApp_myApp.action");
+	        	$("#businessHref").text("[升级/续费]");
+	        }else{
+	        	$("#businessHref").attr("href","http://market.shop.jd.com/vas/more/moreApp_moreApp.action?pt=JD-ODP");
+	        	$("#businessHref").text("[订购]");
+	        }
+		}
+	}
+	
+	function getCookie(name) {
+	    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+	    if (arr != null) return unescape(arr[2]);
+	    return null;
+	}
+
+	function getOs()
+	{
+		var OsObject = "";
+		if(navigator.userAgent.indexOf("MSIE")>0) {
+			return "MSIE";
+		}
+		if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
+			return "Firefox";
+		}
+		if(isSafari=navigator.userAgent.indexOf("Safari")>0) {
+			return "Safari";
+		}
+		if(isCamino=navigator.userAgent.indexOf("Camino")>0){
+			return "Camino";
+		}
+		if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){
+			return "Gecko";
+		}
+
+	}
+
+	//关闭弹层
+	function closeShow(){
+		$('#odpModel').hide();
+		var date = new Date();
+		if(getOs() =='Firefox'){
+			var expireDate = new Date();
+			expireDate.setMonth(5);
+			expireDate.setFullYear(2016);
+			expireDate.setDate(4);
+		}else{
+			var expireDate = new Date(2016,06,03,08,00,00);
+		}
+
+		document.cookie = 'sysshow-hide=1' + ';path=/;' + "expires=" + expireDate.toGMTString();
+	}
+	
+</script>
+<link rel="stylesheet" type="text/css" href="./关键词分析_files/userset.css">
+<link rel="shortcut icon" href="https://pop.jd.com/favicon.ico">
+<!-- <div class="banner-wrap" style="display:none">
+	<div class="inner-wrap">
+		<a class="close-btn"></a>
+		<a id="adLink" target="_blank"><img id="adImg"></a>
+	</div>
+</div> -->
+<div id="header">
+    <div id="logo">
+        <a href="">京东数据罗盘</a>
+        <div id="VerMark"><span class="version odp_advanced">高级版</span></div>
+        <div id="NowVersion" style="position: relative; left: 8px; top: 24px; cursor: pointer;"><span onclick="javascript:window.open(&#39;http://luopan.jd.com/log.jsp&#39;)">V1.6.2</span></div>
+    </div>
+    <div id="sys-infor" style="">
+    	<!-- 
+        <span><a href="http://luopan.jd.com/help-new.jsp" target="_blank" style="color: #c63333; font-weight: bold">新功能介绍</a></span>
+    	 -->
+        
+        <span id="shopNameTip"><a>欢迎:世峰户外商城旗舰店</a></span>
+        
+        	<span class="more-setting">
+					<span class="more-title">
+						<span class="bracket">[</span>
+						<span class="more-setting-title">设置
+						  
+						<div style="display: inline-block; position: absolute; ">
+							 
+							<div id="ust1" class="_userset1_odp_web_usermenu">
+						    	  <div id="tutorial-1" style="left: -63px; display: none;">
+								        <a href="javascript:tutorialClose('tutorial-1','setCookie');" class="close-btn"></a>
+								        <a class="close-icon" href="javascript:tutorialClose('tutorial-1','');"></a>
+								   </div>
+						    </div>
+						    <!--
+						    <div id="ust2" class="_userset2_odp_web_usermenu">
+							    <div id="tutorial-2" style="left:-50px;display:none">
+									<a class="close-btn" href="javascript:tutorialClose('tutorial-2','setCookie');"></a>
+									<a class="close-icon" href="javascript:tutorialClose('tutorial-2','');"></a>
+								</div>
+							</div>
+							 -->
+						</div>
+						
+						</span><em class="more-status"></em>
+						<span class="bracket">]</span>
+					</span>
+					<span class="more-content">
+						<span class="cover"></span>
+						<a href="https://pop.jd.com/userset/usermenu/usermenu.jsp">快捷菜单</a>
+						<a id="userShield" href="https://pop.jd.com/userset/usershield/usershield.jsp">屏蔽自主访问</a>
+						<!--<a href="javascript:void(0)" onclick="venderVersionTimeQuery()">罗盘订购查询</a>-->
+					</span>
+			</span>
+		<a id="businessHref" href="http://market.shop.jd.com/vas/vendor/venderApp_myApp.action" target="_blank">[升级/续费]</a>
+		
+        <!-- <a id="noticeButton" href="javascript:void(0);" class="ml2">[公告]</a> -->
+		<a id="noticeButton" href="https://pop.jd.com/common/noticeAll.jsp" class="ml2">[公告]</a>
+		<a href="http://luopan.jd.com/log.jsp" class="ml2" target="_blank">[更新日志]</a>
+        
+        <a href="http://luopan.jd.com/help-new.jsp" target="_blank"><i class="i-help"></i>[帮助]</a>
+        
+        <a href="javascript:void(0);" onclick="odplogOut();return false;" class="ml2">[退出]</a>
+    </div>
+    
+    <ul id="sys-links" style="">
+    	<li>
+            <a href="https://yisou.jd.com/" target="_blank">
+                <i class="i-easysearch"></i>
+                <span>京东易搜</span>
+            	<div class="icon-links"></div>
+            	<div style="background: url(&#39;/skin/i/icon-links-new.png&#39;) no-repeat scroll 0px 0px transparent; cursor: default; height: 15px; line-height: 15px; width: 25px; position: relative; display: block; left: 35px; top: -25px;z-index: 2;"></div>
+            	<div style="float: left; z-index: 9999; position: absolute; border: 1px solid rgb(212, 212, 212); text-align: center; background-color: rgb(255, 255, 255); padding-top: 6px; top: 37px; display: none; height: 105px; width: 112px; left: -2px;" id="erweima"><img width="100" height="100" src="./关键词分析_files/jingmai.png"></div>
+            </a>
+        </li>
+        <li>
+            <a href="http://jm.jd.com/mobile/download.html" target="_blank">
+                <i class="i-jingmai"></i>
+                <span>京麦工作台</span>
+            	<div class="icon-links"></div>
+            	<div style="background: url(&#39;/skin/i/saoyisao.png&#39;) no-repeat scroll 0px 0px transparent; cursor: default; height: 20px; line-height: 20px; width: 50px; position: relative; display: block; left: 40px; top: -30px;z-index: 1;"></div>
+            	<div style="float: left; z-index: 9999; position: absolute; border: 1px solid rgb(212, 212, 212); text-align: center; background-color: rgb(255, 255, 255); padding-top: 6px; top: 37px; display: none; height: 105px; width: 112px; left: -2px;" id="erweima"><img width="100" height="100" src="./关键词分析_files/jingmai.png"></div>
+            </a>
+        </li>
+        <li>
+            <a href="http://shop.jd.com/" target="_blank">
+                <i class="i-shop"></i>
+                <span>商家后台</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://jzt.jd.com/" target="_blank" style="width:60px">
+                <i class="i-express"></i>
+                <span>京准通</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://loan.jd.com/from=datacompass" target="_blank">
+                <i class="i-jxd"></i>
+                <span>京小贷</span>
+            </a>
+        </li>
+        <!-- <li>
+            <a href="http://mjbbs.jd.com" target="_blank">
+                <i class="i-forum"></i>
+                <span>卖家论坛</span>
+            </a>
+        </li> -->
+    </ul>
+    
+    <ul id="nav"><li id="ShopAnalysis" class="curr"><a href="https://pop.jd.com/model/shopOverview/opermodel.jsp"><span>店铺分析</span></a></li><li id="IndustryData"><a href="https://pop.jd.com/model/realTimeBusiness/realTimeOverviewChnl.jsp"><span>行业分析</span></a></li><li id="JDLaboratory"><a href="https://pop.jd.com/model/sexAnlys/sexAnlys.jsp"><span>京东实验室</span></a></li><li id="ThemeAnalysis"><a href="https://pop.jd.com/model/shopDiagnosis/shopDiagnosis.jsp"><span>主题分析</span></a></li></ul>
+</div>
+
+<div id="odpModel" class="pop-dialogWindow" style="display:none">
+		<div class="pop-dialogWindow pop-opacity" style="height: 1500px;position:fixed;"></div>
+        <div class="dialogContainer" style="top: 150px; margin:0 auto; width: 450px; height: 300px;position:relative;border:0px;">
+        	<a onclick="closeShow()" class="closeShow-btn"></a>
+			<a href="http://mjbbs.jd.com/thread-59180-1-1.html" target="_blank" onclick="closeShow()"><img src="./关键词分析_files/shop_diagnosis.jpg"></a>
+        </div>
+</div>
+	<div id="container" class="wm">
+		
+
+
+
+ 
+<div id="menu">
+	<div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-report">&nbsp;</i><span>经营报告</span></a><div class="lev2"><a id="1-1" href="https://pop.jd.com/model/shopOverview/opermodel.jsp"><i>&nbsp;</i><span>经营概况</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-rtInsight">&nbsp;</i><span>实时洞察</span></a><div class="lev2"><a id="1-2Chnl" href="https://pop.jd.com/model/realTime/realtimedatav2Chnl.jsp"><i>&nbsp;</i><span>实时经营概况</span><em class="new"></em></a><a id="RTVisitorChnl" href="https://pop.jd.com/model/realTime/rtvisitorsChnl.jsp"><i>&nbsp;</i><span>实时访客</span><em class="new"></em></a><a id="rtSaleDetailsChnl" href="https://pop.jd.com/model/realTime/rtBoard.jsp"><i>&nbsp;</i><span>实时榜单</span><em class="new"></em></a><a id="shopRealTimeFlowChnl" href="https://pop.jd.com/model/shoprealtimeflow/shopRealTimeFlowChnl.jsp"><i>&nbsp;</i><span>实时流量来源</span><em class="new"></em></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-sale">&nbsp;</i><span>销售分析</span></a><div class="lev2"><a id="2-1" href="https://pop.jd.com/model/productStatic/prostatic.jsp"><i>&nbsp;</i><span>商品统计排行</span></a><a id="2-2" href="https://pop.jd.com/model/salesDetail/salemodel.jsp"><i>&nbsp;</i><span>商品销售明细</span></a><a id="2-4" href="https://pop.jd.com/model/salesStat/salesstat.jsp"><i>&nbsp;</i><span>商品销量分析</span></a><a id="OrderDetailCount" href="https://pop.jd.com/model/operModelm/shopOrderDetail.jsp"><i>&nbsp;</i><span>订单明细统计</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-flow">&nbsp;</i><span>PC流量分析</span></a><div class="lev2" style="display: block;"><a id="3-1" href="https://pop.jd.com/model/viewProfile/viewprofile.jsp"><i>&nbsp;</i><span>流量概况</span></a><a id="viewFlowForHour" href="https://pop.jd.com/model/viewFlowForHour/viewFlowForHour.jsp"><i>&nbsp;</i><span>按小时流量分析</span></a><a id="viewFlowForDay" href="https://pop.jd.com/model/viewFlowForDay/viewFlowForDay.jsp"><i>&nbsp;</i><span>按天流量分析</span></a><a id="viewFlow" href="https://pop.jd.com/model/viewFlow/viewFlow.jsp"><i>&nbsp;</i><span>流量来源分析</span></a><a id="visitorFlow" href="https://pop.jd.com/model/visitorFlow/visitorFlow.jsp"><i>&nbsp;</i><span>访客来源分析</span></a><a id="shopProFlow" href="https://pop.jd.com/model/shopProFlow/shopProFlow.jsp"><i>&nbsp;</i><span>商品页流量分析</span><em class="new"></em></a><a id="SourceDealStatistics" href="https://pop.jd.com/model/sourceDealStatistics/sourceDealStatistics.jsp"><i>&nbsp;</i><span>来源成交分析</span></a><a id="3-4" href="https://pop.jd.com/model/viewFrequency/viewFrequency.jsp"><i>&nbsp;</i><span>访问频次分布</span></a><a id="9-3" href="./关键词分析_files/关键词分析.html" class="curr"><i>&nbsp;</i><span>关键词分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-mobileAnalysis">&nbsp;</i><span>无线流量分析</span><em class="new"></em></a><div class="lev2"><a id="viewprofileMobileNew" href="https://pop.jd.com/model/viewprofileMobileNew/viewprofileMobileNew.jsp"><i>&nbsp;</i><span>流量概况</span></a><a id="viewTrendAnalyseMobile" href="https://pop.jd.com/model/viewTrendAnalyseMobile/viewTrendAnalyseMoblie.jsp"><i>&nbsp;</i><span>流量趋势分析</span></a><a id="mobileViewFlow" href="https://pop.jd.com/model/mobileViewFlow/mobileViewFlow.jsp"><i>&nbsp;</i><span>流量来源分析</span></a><a id="shopProFlowMobile" href="https://pop.jd.com/model/viewProAnalyseMobile/shopProFlowMobile.jsp"><i>&nbsp;</i><span>商品页流量分析</span></a><a id="mobileKeyWords" href="https://pop.jd.com/model/mobileKeyWords/mobileKeyWords.jsp"><i>&nbsp;</i><span>关键词分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-level">&nbsp;</i><span>商家评级</span></a><div class="lev2"><a id="venderRateNew" href="https://pop.jd.com/model/venderRate/venderRateNew.jsp"><i>&nbsp;</i><span>店铺动态评分</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-trim">&nbsp;</i><span>装修分析</span></a><div class="lev2"><a id="10-1" href="https://pop.jd.com/model/userheatpage/userheatpages.jsp"><i>&nbsp;</i><span>热力图分析</span></a><a id="10-2" href="https://pop.jd.com/model/decoTrendAnal/decoTrendAnal.jsp"><i>&nbsp;</i><span>装修趋势分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-client">&nbsp;</i><span>客户分析</span></a><div class="lev2"><a id="4-0" href="https://pop.jd.com/model/custBuy/custBuy.jsp"><i>&nbsp;</i><span>买家分析</span></a><a id="4-1" href="https://pop.jd.com/model/custScale/custScale.jsp"><i>&nbsp;</i><span>客户规模分析</span></a><a id="4-2" href="https://pop.jd.com/model/custArea/custarea.jsp"><i>&nbsp;</i><span>区域分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-mark">&nbsp;</i><span>营销分析</span></a><div class="lev2"><a id="5-3" href="https://pop.jd.com/model/proCoup/procoup.jsp"><i>&nbsp;</i><span>促销分析</span></a><a id="5-2-1" href="https://pop.jd.com/model/teamSale/teamSale.jsp"><i>&nbsp;</i><span>团购分析</span></a><a id="actAppList" href="https://pop.jd.com/model/actAppList/actAppList.jsp"><i>&nbsp;</i><span>活动页分析</span></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-delivery">&nbsp;</i><span>承诺时效分析</span></a><div class="lev2"><a id="deliveryPromiseAnalysis" href="https://pop.jd.com/model/deliveryPromise/deliveryPromise.jsp"><i>&nbsp;</i><span>承诺时效分析</span><em class="new"></em></a></div></div><div class="lev1"><a href="javascript:void(0);" class="tit"><i class="i-ats">&nbsp;</i><span>售后服务</span></a><div class="lev2"><a id="tradeDisputes" href="https://pop.jd.com/model/shopDisputes/tradeDisputes.jsp"><i>&nbsp;</i><span>交易纠纷</span><em class="new"></em></a><a id="8-1" href="https://pop.jd.com/model/shopService/shopService.jsp"><i>&nbsp;</i><span>售后概况</span></a><a id="8-2" href="https://pop.jd.com/model/shopReDetails/shopReDetails.jsp"><i>&nbsp;</i><span>售后明细</span></a></div></div>
+	
+	<!-- 
+	<div class="lev1 pic">
+		<a title="用户手册" href="/common/compassHelpdoc.html" target="_blank"><i>&nbsp;</i><span><img src="/images/mainpage/userManual.png" alt="用户手册" border="0" /></span></a>		
+	</div>	
+		
+	 -->
+	
+</div>
+
+		<div id="Mainright">
+			<div id="content">
+				<div id="main">
+					<div class="btn-con mb10">
+						<div class="fl">
+							<form id="visitKeyWordForm" method="post">
+								<span class="ft-0" id="PageTitle">关键词分析</span>
+								<span id="date1"><span class="filterLbl"></span><span id="date1Calendar" class="widget"><div class="widgetField" style="width: 170px;"><input id="dateb" type="hidden" name="filter.date" value="2016-11-15" style="width: 125px;"><input id="date1DateSeg" type="text" class="cursorPointer" readonly="readonly" style="width: 125px;"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"></a></div><div class="widgetCalendar" style="width: 578px;"><div class="c-box"><div id="date1Dimension" class="embedDimension"><ul><li val="!month!week" class="sel" style="border-right-width: 0px; border-right-style: none;">按日查看</li></ul></div><div class="Picker"><div class="Calendar"><div class="datepicker" id="datepicker_609" style="display: block; position: relative; width: 491px; height: 233px;"><div class="datepickerBorderT"></div><div class="datepickerBorderB"></div><div class="datepickerBorderL"></div><div class="datepickerBorderR"></div><div class="datepickerBorderTL"></div><div class="datepickerBorderTR"></div><div class="datepickerBorderBL"></div><div class="datepickerBorderBR"></div><div class="datepickerContainer" style="width: 471px; height: 213px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table cellspacing="0" cellpadding="0" class="datepickerViewDays"><thead><tr><th class="datepickerGoPrev"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>◀</span></a></th><th colspan="6" class="datepickerMonth"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十一月, 2016</span></a></th><th class="datepickerGoNext"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>▶</span></a></th></tr><tr class="datepickerDoW"><th class="datepickerWeek"><span>周</span></th><th><span>一</span></th><th><span>二</span></th><th><span>三</span></th><th><span>四</span></th><th><span>五</span></th><th><span>六</span></th><th><span>日</span></th></tr></thead><tbody class="datepickerMonths"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>二</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>三</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>四</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>五</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>六</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>七</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>八</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>九</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十二</span></a></td></tr></tbody><tbody class="datepickerDays"><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>44</span></a></th><td class="datepickerNotInMonth"><a class="hand"><span val="308">31</span></a></td><td class=""><a class="hand"><span val="309">1</span></a></td><td class=""><a class="hand"><span val="310">2</span></a></td><td class=""><a class="hand"><span val="311">3</span></a></td><td class=""><a class="hand"><span val="312">4</span></a></td><td class="datepickerSaturday"><a class="hand"><span val="313">5</span></a></td><td class="datepickerSunday"><a class="hand"><span val="314">6</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>45</span></a></th><td class=""><a class="hand"><span val="315">7</span></a></td><td class=""><a class="hand"><span val="316">8</span></a></td><td class=""><a class="hand"><span val="317">9</span></a></td><td class=""><a class="hand"><span val="318">10</span></a></td><td class=""><a class="hand"><span val="319">11</span></a></td><td class="datepickerSaturday"><a class="hand"><span val="320">12</span></a></td><td class="datepickerSunday"><a class="hand"><span val="321">13</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>46</span></a></th><td class=""><a class="hand"><span val="322">14</span></a></td><td class="datepickerSelected"><a class="hand"><span val="323">15</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="324">16</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="325">17</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="326">18</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="327">19</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="328">20</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>47</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="329">21</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="330">22</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="331">23</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="332">24</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="333">25</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="334">26</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="335">27</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>48</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="336">28</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="337">29</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="338">30</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="339">1</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="340">2</span></a></td><td class="datepickerNotInMonth datepickerSaturday datepickerDisabled"><a class="hand"><span val="341">3</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="342">4</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>49</span></a></th><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="343">5</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="344">6</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="345">7</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="346">8</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="347">9</span></a></td><td class="datepickerNotInMonth datepickerSaturday datepickerDisabled"><a class="hand"><span val="348">10</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="349">11</span></a></td></tr></tbody><tbody class="datepickerYears"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2010</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2011</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2012</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2013</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2014</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2015</span></a></td><td colspan="2" class="datepickerSelected"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2016</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2017</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2018</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2019</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2020</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2021</span></a></td></tr></tbody></table></td><td class="datepickerSpace"><div></div></td><td><table cellspacing="0" cellpadding="0" class="datepickerViewDays"><thead><tr><th class="datepickerGoPrev"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>◀</span></a></th><th colspan="6" class="datepickerMonth"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十二月, 2016</span></a></th><th class="datepickerGoNext"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>▶</span></a></th></tr><tr class="datepickerDoW"><th class="datepickerWeek"><span>周</span></th><th><span>一</span></th><th><span>二</span></th><th><span>三</span></th><th><span>四</span></th><th><span>五</span></th><th><span>六</span></th><th><span>日</span></th></tr></thead><tbody class="datepickerMonths"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>二</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>三</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>四</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>五</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>六</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>七</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>八</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>九</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十一</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>十二</span></a></td></tr></tbody><tbody class="datepickerDays"><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>48</span></a></th><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="336">28</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="337">29</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="338">30</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="339">1</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="340">2</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="341">3</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="342">4</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>49</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="343">5</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="344">6</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="345">7</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="346">8</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="347">9</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="348">10</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="349">11</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>50</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="350">12</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="351">13</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="352">14</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="353">15</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="354">16</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="355">17</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="356">18</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>51</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="357">19</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="358">20</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="359">21</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="360">22</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="361">23</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="362">24</span></a></td><td class="datepickerSunday datepickerDisabled"><a class="hand"><span val="363">25</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>52</span></a></th><td class="datepickerDisabled"><a class="hand"><span val="364">26</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="365">27</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="366">28</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="367">29</span></a></td><td class="datepickerDisabled"><a class="hand"><span val="368">30</span></a></td><td class="datepickerSaturday datepickerDisabled"><a class="hand"><span val="369">31</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="370">1</span></a></td></tr><tr><th class="datepickerWeek "><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#" class="week_range"><span>1</span></a></th><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="7">2</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="8">3</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="9">4</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="10">5</span></a></td><td class="datepickerNotInMonth datepickerDisabled"><a class="hand"><span val="11">6</span></a></td><td class="datepickerNotInMonth datepickerSaturday datepickerDisabled"><a class="hand"><span val="12">7</span></a></td><td class="datepickerNotInMonth datepickerSunday datepickerDisabled"><a class="hand"><span val="13">8</span></a></td></tr></tbody><tbody class="datepickerYears"><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2010</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2011</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2012</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2013</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2014</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2015</span></a></td><td colspan="2" class="datepickerSelected"><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2016</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2017</span></a></td></tr><tr><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2018</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2019</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2020</span></a></td><td colspan="2" class=""><a href="https://pop.jd.com/model/visitKeyWord/visitKeyWord.jsp#"><span>2021</span></a></td></tr></tbody></table></td></tr></tbody></table></div></div></div><div class="clr"></div><div class="c-btn"><span class="message warn"></span><a class="btn query" href="javascript:void(0);" id="query_button" onclick="">确定</a><a class="btn cancel ml5 mr10" href="javascript:void(0);" id="cancel_button">取消</a></div></div></div></div></span><span class="rapidSel ml15"><input type="hidden" id="date1CalendarRapidSel"><label class="filterLbl" for="">快速查看</label><span class="radiobox" desc="昨天" ref="!month!week" val="0"><input type="radio" class="p-ib pointer ml5" id="widgetRapidSel0" name="widgetRapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="widgetRapidSel0">昨天</label><span class="radiobox" desc="前天" ref="!month!week" val="0"><input type="radio" class="p-ib pointer ml5" id="widgetRapidSel1" name="widgetRapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="widgetRapidSel1">前天</label><span class="radiobox" desc="近7天" ref="!month!week" val="7"><input type="radio" class="p-ib pointer ml5" id="date1rapidSel2" name="date1RapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="date1rapidSel2">近7天</label><span class="radiobox" desc="本周" ref="week" val="0"><input type="radio" class="p-ib pointer ml5" id="widgetRapidSel3" name="widgetRapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="widgetRapidSel3">本周</label><span class="radiobox" desc="上周" ref="week" val="0"><input type="radio" class="p-ib pointer ml5" id="date1rapidSel4" name="date1RapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="date1rapidSel4">上周</label><span class="radiobox" desc="本月" ref="month" val="0"><input type="radio" class="p-ib pointer ml5" id="widgetRapidSel5" name="widgetRapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="widgetRapidSel5">本月</label><span class="radiobox" desc="上月" ref="month" val="0"><input type="radio" class="p-ib pointer ml5" id="date1rapidSel6" name="date1RapidSel"></span><label class="ml3 mr3 p-ib pointer" style="color: #333333" for="date1rapidSel6">上月</label></span></span>
+							</form>
+						</div>
+					</div>
+					<div id="moduleNotice" style="display: none;">
+                	</div>
+                	<div class="tableBorder mt10">
+	                    <div class="mb10 mt10 mr10 ml10" id="div_detailBar" be="div_detail">
+	                        <div class="button-slider fl"></div>
+	                        <div class="fr"><span class="fr mt1 ml10"><a href="javascript:void(0);" class="btn download"><i>&nbsp;</i><span>下载</span></a></span><label class="key-search fl mr20"><i></i><input class="ks-no" title="请输入关键字" value="请输入关键字" type="text"></label>
+								
+							</div>
+							<div class="clr"></div>
+	                    </div>
+	                    <div id="div_detail" class="mt5 grid-wrap"><div id="kwTable_wrapper" class="dataTables_wrapper" role="grid"><div class="dataTables_filter" id="kwTable_filter" style="height: 0px; margin: 0px; padding: 0px;"></div><table cellpadding="0" cellspacing="0" border="0" class="display dataTable" style="border-collapse:collapse;" id="kwTable"><thead><tr role="row"><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="热门关键词&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 269px; white-space: normal;"><span class="sortIco sorting">热门关键词&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="商品页&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting">商品页&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-sort="descending" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;该计划/活动在该日期的整体点击量&quot;&gt;&lt;/i&gt;点击量&amp;nbsp;&amp;nbsp;: activate to sort column ascending" style="width: 270px; white-space: normal;"><span class="sortIco sorting_desc"><i class="icon-help" desc="该计划/活动在该日期的整体点击量"></i>点击量&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;统计时间周期内，用户通过该关键字入店后直接下单的订单单量，不包括间接订单的单量（例如用户搜索后点击A商品入店，但未购买A商品，而购买B商品，即属于间接订单&quot;&gt;&lt;/i&gt;直接下单单量&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="统计时间周期内，用户通过该关键字入店后直接下单的订单单量，不包括间接订单的单量（例如用户搜索后点击A商品入店，但未购买A商品，而购买B商品，即属于间接订单"></i>直接下单单量&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;统计时间周期内，所产生的直接下单订单用户付款的总金额&quot;&gt;&lt;/i&gt;直接下单金额&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="统计时间周期内，所产生的直接下单订单用户付款的总金额"></i>直接下单金额&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="转化率&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting">转化率&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th></tr></thead><tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td style="text-align:left;border:0px;" class=" ">手摇发电机</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-1933554447&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">18</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">卫星电话</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-134510718&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">6</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">手摇充电器</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-47066808&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">4</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">发电</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;958743224&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">3</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">天石羽绒服</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;378197670&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">3</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">冲锋衣男</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;1950619548&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">2</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">极星</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-1079197199&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">2</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">极星冲锋衣</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-1643934533&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">2</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">手摇充电宝</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;1352385277&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">2</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">手摇发电</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;1145498220&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">2</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">手摇手机发电机</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;1012379391&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">2</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">户外双肩包</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;1991313528&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">思凯乐</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-749543327&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">运动皮带</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-456121277&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">极星羽绒服</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-87653627&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">民用发电机</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-204832336&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">自行车微型发电机</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-218284196&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">手摇手机充电器</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-620249787&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="odd"><td style="text-align:left;border:0px;" class=" ">极星软壳</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-1364752806&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr><tr class="even"><td style="text-align:left;border:0px;" class=" ">极星户外</td><td style="text-align:center;border:0px;" class=" "><a href="javascript:void(0);" onclick="popKw(&#39;-1809983837&#39;)">商品页</a></td><td style="text-align:right;border:0px;" class=" sorting_1">1</td><td style="text-align:right;border:0px;" class=" ">0</td><td style="text-align:right;border:0px;" class=" ">0.00</td><td style="text-align:right;border:0px;" class=" ">0.00%</td></tr></tbody></table><div id="kwTable_length" class="dataTables_length" style="float: left; margin-top: 6px; text-align: left;"><label>每页显示 <select size="1" name="kwTable_length" aria-controls="kwTable"><option value="20" selected="selected">20</option><option value="50">50</option><option value="100">100</option></select> 条</label></div><div class="dataTables_paginate paging_full_numbers" id="kwTable_paginate"><a tabindex="0" class="first paginate_button paginate_button_disabled" id="kwTable_first">首页</a><a tabindex="0" class="previous paginate_button paginate_button_disabled" id="kwTable_previous"><b>&lt; </b>上页</a><span><a tabindex="0" class="paginate_active">1</a><a tabindex="0" class="paginate_button">2</a></span><a tabindex="0" class="next paginate_button" id="kwTable_next">下页<b> &gt;</b></a><a tabindex="0" class="last paginate_button" id="kwTable_last">尾页</a></div><div id="kwTable_wrapper" class="dataTables_wrapper dataTables_fixed" role="grid" style="display: none; position: fixed; width: 1689px; left: 201px; top: 0px;"><table cellpadding="0" cellspacing="0" border="0" class="display dataTable" style="border-collapse:collapse;" id="kwTable"><thead><tr role="row"><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="热门关键词&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 269px; white-space: normal;"><span class="sortIco sorting">热门关键词&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="商品页&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting">商品页&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-sort="descending" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;该计划/活动在该日期的整体点击量&quot;&gt;&lt;/i&gt;点击量&amp;nbsp;&amp;nbsp;: activate to sort column ascending" style="width: 270px; white-space: normal;"><span class="sortIco sorting_desc"><i class="icon-help" desc="该计划/活动在该日期的整体点击量"></i>点击量&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;统计时间周期内，用户通过该关键字入店后直接下单的订单单量，不包括间接订单的单量（例如用户搜索后点击A商品入店，但未购买A商品，而购买B商品，即属于间接订单&quot;&gt;&lt;/i&gt;直接下单单量&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="统计时间周期内，用户通过该关键字入店后直接下单的订单单量，不包括间接订单的单量（例如用户搜索后点击A商品入店，但未购买A商品，而购买B商品，即属于间接订单"></i>直接下单单量&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="&lt;i class=&quot;icon-help&quot; desc=&quot;统计时间周期内，所产生的直接下单订单用户付款的总金额&quot;&gt;&lt;/i&gt;直接下单金额&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting"><i class="icon-help" desc="统计时间周期内，所产生的直接下单订单用户付款的总金额"></i>直接下单金额&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th><th role="columnheader" tabindex="0" aria-controls="kwTable" rowspan="1" colspan="1" aria-label="转化率&amp;nbsp;&amp;nbsp;: activate to sort column descending" style="width: 270px; white-space: normal;"><span class="sortIco sorting">转化率&nbsp;&nbsp;</span><div class="resizeBar">&nbsp;</div></th></tr></thead></table></div></div></div>
+	                    <div id="div_detail_hidden" style="display:none"><table cellpadding="0" cellspacing="0" border="0" class="display" style="border-collapse:collapse;" id="kwTableHidden"><thead><tr><th>热门关键词&nbsp;&nbsp;</th><th>商品页&nbsp;&nbsp;</th><th><i class="icon-help" desc="该计划/活动在该日期的整体点击量"></i>点击量&nbsp;&nbsp;</th><th><i class="icon-help" desc="统计时间周期内，用户通过该关键字入店后直接下单的订单单量，不包括间接订单的单量（例如用户搜索后点击A商品入店，但未购买A商品，而购买B商品，即属于间接订单"></i>直接下单单量&nbsp;&nbsp;</th><th><i class="icon-help" desc="统计时间周期内，所产生的直接下单订单用户付款的总金额"></i>直接下单金额&nbsp;&nbsp;</th><th>转化率&nbsp;&nbsp;</th></tr></thead><tbody><tr><td style="text-align:left;border:0px;">手摇发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-1933554447&#39;)">商品页</a></td><td style="text-align:right;border:0px;">18</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">卫星电话</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-134510718&#39;)">商品页</a></td><td style="text-align:right;border:0px;">6</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇充电器</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-47066808&#39;)">商品页</a></td><td style="text-align:right;border:0px;">4</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">发电</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;958743224&#39;)">商品页</a></td><td style="text-align:right;border:0px;">3</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">天石羽绒服</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;378197670&#39;)">商品页</a></td><td style="text-align:right;border:0px;">3</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">冲锋衣男</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1950619548&#39;)">商品页</a></td><td style="text-align:right;border:0px;">2</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">极星</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-1079197199&#39;)">商品页</a></td><td style="text-align:right;border:0px;">2</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">极星冲锋衣</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-1643934533&#39;)">商品页</a></td><td style="text-align:right;border:0px;">2</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇充电宝</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1352385277&#39;)">商品页</a></td><td style="text-align:right;border:0px;">2</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇发电</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1145498220&#39;)">商品页</a></td><td style="text-align:right;border:0px;">2</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇手机发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1012379391&#39;)">商品页</a></td><td style="text-align:right;border:0px;">2</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">户外双肩包</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1991313528&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">思凯乐</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-749543327&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">运动皮带</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-456121277&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">极星羽绒服</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-87653627&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">民用发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-204832336&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">自行车微型发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-218284196&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇手机充电器</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-620249787&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">极星软壳</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-1364752806&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">极星户外</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-1809983837&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇应急手电</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;-2035230993&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">冲锋裤男</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;2025207344&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">玉羽绒服女</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1906806666&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">登山包</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1343516029&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">微型发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;1054408987&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">12V发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;640662993&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇充电</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;921718510&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手电筒</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;598683313&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">家用微型发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;338638305&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr><tr><td style="text-align:left;border:0px;">手摇式发电机</td><td style="text-align:center;border:0px;"><a href="javascript:void(0);" onclick="popKw(&#39;87793446&#39;)">商品页</a></td><td style="text-align:right;border:0px;">1</td><td style="text-align:right;border:0px;">0</td><td style="text-align:right;border:0px;">0.00</td><td style="text-align:right;border:0px;">0.00%</td></tr></tbody></table></div>
+	                </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#sysBarContent a").mouseenter(function(){
+		var barId = $(this).attr("id");
+		if(barId == "bar-1"){
+			hideTipBar(barId);
+		} else {
+			showTipBar(barId);
+		}
+	});
+	$("#sysBarContent a").mouseleave(function(){
+		var barId = $(this).attr("id");
+		if(barId == "bar-1"){
+			showTipBar(barId);
+		} else {
+			hideTipBar(barId);
+		}
+	});
+});
+
+function hiddenSys(){
+	$("#sys-b-bar").show();
+	$("#sysBarContent").css("display", "none");
+	$("#sysBarContentHidden").show();
+	$("#sys-b-bar").css("right", "-32px");
+}
+
+function showSys(){
+	$("#sys-b-bar").show();
+	$("#sysBarContent").show();
+	$("#sysBarContentHidden").hide();
+	$("#sys-b-bar").css("right", "0px");
+}
+
+function clickShowSys(){
+	document.cookie = 'sysbar-hide=0' + ';path=/;';
+	showSys();
+}
+
+function clickHiddenSys(){
+	document.cookie = 'sysbar-hide=1' + ';path=/;';
+	hiddenSys();
+}
+
+function showTipBar(barId){
+	if(barId != "bar-1"){
+		$("#" + barId).attr("class", "sys-bar-hover");
+	} else{
+		$("#" + barId).attr("class", "sys-bar");
+		$("#bar-1-span-1").text("常");
+		$("#bar-1-span-1").css("width","8px");
+		$("#bar-1-span-3").text("问");
+		$("#bar-1-span-3").css("width","8px");
+	}
+	$("." + barId + "-span").css("display", "inline-block");
+	$("#" + barId + "-img").hide();
+	if(barId == "bar-2" || barId == "bar-3" || barId == "bar-4"){
+		$("#" + barId + "-span").css("margin-top", "4px");
+		$("#" + barId).css("line-height", "16px");
+	}
+	if(barId == "bar-2"){
+		$("#jingmaiTip").show();
+	}
+}
+
+function hideTipBar(barId){
+	if(barId != "bar-1"){
+		$("#" + barId).attr("class", "sys-bar");
+	} else {
+		$("#" + barId).attr("class", "sys-bar-hover");
+	}
+	$("." + barId + "-span").hide();
+	$("#" + barId + "-img").show();
+	if(barId == "bar-2"){
+		$("#jingmaiTip").hide();
+	}
+}
+
+function getCookie(name) {
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    if (arr != null) return unescape(arr[2]);
+    return null;
+}
+
+window.onload = function(){
+	  var i = 2;
+	  setInterval(function(){
+		  if($("#bar-1-img").css("display") == "none"){
+			  if(i == 2){
+				  $("#bar-1-span-1").text("常");
+				  $("#bar-1-span-1").css("width","8px");
+			  }
+			  if(i == 3){
+				  $("#bar-1-span-2").text("见");
+			  }
+			  if(i == 4){
+				  $("#bar-1-span-3").text("问");
+				  $("#bar-1-span-3").css("width","8px");
+			  }
+			  if(i == 5){
+				  i = 1;
+				  $(".bar-1-span").hide();
+				  $("#bar-1-span-1").html("常&nbsp;&nbsp;&nbsp;<br/>");
+				  $("#bar-1-span-1").css("width","auto");
+				  $("#bar-1-span-2").html("见<br/>");
+				  $("#bar-1-span-3").html("问&nbsp;&nbsp;&nbsp;");
+				  $("#bar-1-span-3").css("width","auto");
+			  } 
+			  $("#bar-1-span-" + i).fadeIn();
+			  $("#bar-1-span-" + i).css("display","inline-block");
+			  i++;
+		  }
+	  },800);
+	};
+</script>
+<div id="footer">
+	<div>
+		<p>Copyright©2004-2016&nbsp;JD.com京东商城&nbsp;版权所有    <a title="京东网上商城-综合网购首选，正品行货，机打发票，售后上门取件，省钱又放心" target="_blank" href="http://www.jd.com/">京东商城</a>旗下数据产品</p>
+		<p>京ICP证070359号 北京市公安局朝阳分局备案编号110105014669</p>
+	</div>
+</div>
+<div id="sys-b-bar-hidden">	
+</div>
+<div id="sys-b-bar" style="height: 135px; top: 588.5px; right: 0px;">	
+	<div id="sysBarContentHidden" style="display:none;margin-top:25px;">
+		<a class="to-sys-hidden" href="javascript:void(0)" onclick="clickShowSys();">
+			<img style="margin-top:5px;margin-left:1px;" src="./关键词分析_files/sys-b-bar-show.png">
+		</a>
+	</div>
+	<div id="jingmaiTip" style="display:none">
+		<img src="./关键词分析_files/jingmai.png">
+		<span style="font-size:16px;font-family:Microsoft YaHei;color:#666666;display:block;margin-top:14px">京麦移动罗盘</span>
+	</div>
+	<div id="sysBarContent" style="">
+		<a id="bar-1" href="http://luopan.jd.com/help-new.jsp" target="_blank" style="line-height:16px;" class="sys-bar">
+			<img id="bar-1-img" style="display:none" src="./关键词分析_files/bar-1.png">
+			<div>
+				<span id="bar-1-span-1" class="bar-1-span" style="display: inline-block; margin-top: 4px; width: 8px;">常</span>
+				<span id="bar-1-span-2" class="bar-1-span" style="display: inline-block;">见</span>
+			</div>
+			<div>
+				<span id="bar-1-span-3" class="bar-1-span" style="display: inline-block; width: 8px;">问</span>
+				<span id="bar-1-span-4" class="bar-1-span" style="display: inline-block;">题</span>
+			</div>
+		</a>
+		<a id="bar-2" href="javascript:void(0)" class="sys-bar">
+			<img id="bar-2-img" src="./关键词分析_files/bar-2.png">
+			<span id="bar-2-span" class="bar-2-span">移动<br>罗盘</span>
+		</a>
+		<a id="bar-3" href="javascript:void(0)" class="sys-bar toHelper">
+			<img id="bar-3-img" src="./关键词分析_files/bar-3.png">
+			<span id="bar-3-span" class="bar-3-span">问题<br>反馈</span>
+		</a>
+		<a id="bar-4" class="sys-bar" href="javascript:void(0)" onclick="clickHiddenSys()">
+			<img id="bar-4-img" src="./关键词分析_files/bar-4.png">
+			<span id="bar-4-span" class="bar-4-span">点击<br>收起</span>
+		</a>
+	</div>
+</div>
+
+<div id="sys-feedbackDiv" style="top: 506px;">
+	<form id="feedbackForm" method="post">
+		<div class="title"><label>问题反馈</label><span class="mClose2 cursorPointer" id="closeBtn"></span></div>
+		<div class="content">
+			<div class="mt15 mb5 ml15"><label><font color="red">*</font>产品问题反馈(此处用于给我们留言您对产品的建议和意见，如有具体问题咨询，请发邮件至opendata@jd.com):</label></div>
+			<textarea name="popFeedback.feedback" id="popFeedback_feedback" value=""></textarea>
+		</div>
+		<div class="warnMessageDiv" id="warnMessageDiv">
+			<i></i><span class="warnMessageContent">反馈内容不能为空</span>
+		</div>
+		<div class="contact">
+			<div class="ml15 mt15"><label>联系方式(选填):</label></div>
+			<div>
+				<span style="float: left;"><input type="text" name="popFeedback.contact" id="popFeedback_contact" value=""></span>
+				<span class="warnMessageDiv_contact"><i></i>联系方式不要超过128个字</span>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<div class="btnDiv">
+			<span style="margin-right:5px">
+			<a class="btn submit" href="javascript:void(0);" id="feedbackSubmit"><span>提&nbsp;&nbsp;交</span></a>
+			</span>
+			<span style="margin-left:5px">
+			<a class="btn_cancel cancel" href="javascript:void(0);" id="feedbackCancel"><span>取&nbsp;&nbsp;消</span></a>
+			</span>
+		</div>
+		<input type="hidden" name="popFeedback.popId" id="popFeedback_popId" value="0">
+		<input type="hidden" name="popFeedback.shopId" id="popFeedback_shopId" value="0">
+		<input type="hidden" name="popFeedback.pageName" id="popFeedback_pageName" value="店铺分析-&gt;PC流量分析-&gt;关键词分析">
+		<input type="hidden" name="popFeedback.popName" id="popFeedback_popName" value="">
+	</form>
+</div>
+<div id="sys-feedbackSubmitDiv" style="top: 746px;">
+	<div class="title"><span class="pop_close"></span></div>
+	<div class="content">
+		<label><img src="./关键词分析_files/ok_div.png">&nbsp;&nbsp;&nbsp;感谢您的反馈</label>
+	</div>
+</div>
+<!-- sysFooter end -->
+	<div id="odp_pop_dialog" class="pop-dialogWindow" style="display:none">
+		<div class="pop-dialogWindow pop-opacity" style="height: 1077px;"></div>
+		<div class="dialogContainer" style="top: 18px; left: 381.5px; width: 950px; height: 550px;position:fixed">
+			<div class="title-a">
+				<div class="title-t fl">关键词转化明细</div>
+				<div class="title-cl">
+					<i class="pop-dialog-close"></i>
+				</div>
+			</div>
+			<div class="tableBorder mt20">
+				<div id="KWTable"></div>
+			</div>
+		</div>
+	</div>
+
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png);"></div><div id="tip-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png) repeat-x;"></div><div id="tip-right-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png);"></div><div id="tip-right" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png) repeat-y;"></div><div id="tip-right-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png);"></div><div id="tip-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png) repeat-x;"></div><div id="tip-left-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png);"></div><div id="tip-left" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png);"></div><div id="tip-arrow-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png);"></div></div></body></html>

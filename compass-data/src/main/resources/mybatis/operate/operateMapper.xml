@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="operateMapper">
+	
+	<!-- 查询下单金额|下单单量|下单商品件数|下单客户数 -->
+    <select id="fidnOrderInfo" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" resultType="com.shifeng.operate.dto.OperateTableDTO">
+        SELECT
+			ROUND(SUM(amount),2) amount,
+			COUNT(0) ordernum,
+			SUM(number) purchasenum,
+			COUNT(DISTINCT userid) orderuser,
+			DATE_FORMAT( purchasetime, '%H') AS timeHour
+		FROM
+			op_purchase_detail${tableName}
+		WHERE
+			DATE(purchasetime) = #{endDate}
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			
+		GROUP BY timeHour
+    </select>
+    
+    <!-- 查询下单客户数 -->
+    <select id="fidnOrderuser" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" resultType="com.shifeng.operate.dto.OperateTableDTO">
+    	select count(userid) orderuser,timeHour from (
+			SELECT
+				userid,
+				DATE_FORMAT( purchasetime, '%H') AS timeHour
+			FROM
+				op_purchase_detail${tableName}
+			WHERE
+				DATE(purchasetime) = #{endDate}
+				<if test="type!=null and type!='' and type!='all' and type!='mp'">
+				    and type = #{type}
+				</if>
+				<if test="type=='mp'">
+				    and type != 0
+				</if>
+			GROUP BY userid,timeHour
+		) tab
+		group by timehour
+	</select>
+	
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="buyUserTendencyMapper">
+	
+	
+	 <!-- 买家分析(分页)  -->
+	 <select id="getBuyUserTendencyPage" parameterType="Page" 
+	 	resultType="com.shifeng.customer.dto.BuyUserTendencyResultPageDTO">
+		select op.userid,mu.account userName
+		<choose>
+			<when test="t.type == 0">
+			,count(op.userid) number
+			</when>
+			<when test="t.type == 1">
+			,sum(op.number) number
+			</when>
+			<when test="t.type == 2">
+			,ROUND(sum(op.amount),2) number
+			</when>
+		</choose>
+		from op_purchase_detail${t.tableName} op
+		left join mall_user mu on op.userid = mu.userid
+		where op.userid != 0
+		and purchasetime >= #{t.startDate}
+		and purchasetime &lt;= #{t.endDate}
+		group by op.userid
+		order by number desc
+	 </select>
+	 
+	 
+	 <!-- 买家分析  -->
+	 <select id="getBuyUserTendency" parameterType="Page" 
+	 	resultType="com.shifeng.customer.dto.BuyUserTendencyEchartsResultDTO">
+		select op.userid,mu.account userName,count(op.userid) orderNumber,ROUND(sum(op.amount),2) amount,sum(op.number) number
+		from op_purchase_detail${t.tableName} op
+		left join  mall_user mu on op.userid = mu.userid
+		where op.userid != 0
+		and purchasetime >= #{t.startDate}
+		and purchasetime &lt;= #{t.endDate}
+		group by op.userid
+		order by orderNumber desc
+	 </select>
+	
+	 
+	
+	
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ResourceMapper">
+  
+   
+  <insert id="saveResource" parameterType="com.shifeng.entity.purchase.Purchase">
+		INSERT INTO 
+			op_purchase_detail_${nowYearMonth}
+			(purchasetime,userid,ip,channelid,sku,number,amount,status,source,activeId,channelUrlId,type,shopId,orderId,county,productId)
+		VALUES
+			(#{purchasetime},#{userid},#{ip},#{channelid},#{sku},#{number},#{amount},#{status},#{source},#{activeId},#{channelUrlId},#{type},#{shopId},#{orderId},#{county},#{productId})
+	  
+  </insert>
+  
+  
+  
+    
+  <select id="getObject" resultType="com.shifeng.entity.purchase.Purchase">
+	 SELECT 
+	 	purchasetime,userid,ip,channelid,sku,number,amount,status,source,activeId,channelUrlId,type,shopId,orderId,county
+	 FROM 
+	 	op_purchase_detail 
+	 WHERE 
+	 	county = ''
+	 LIMIT 
+	 	1
+  
+  </select>
+  
+  <update id="update" parameterType="com.shifeng.entity.purchase.Purchase">
+  		update 
+  			op_purchase_detail
+  		set 
+  			county = #{county}
+  		where
+  			ip = #{ip}		
+  
+  </update>
+  
+  
+  
+	
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 关注店铺明细(op_follow_shop_detail)Mapper -->
+<mapper namespace="op_follow_shop_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    ctime,userid ,ip ,shopId ,url ,source ,status ,type ,county 
+    </sql>
+
+    <resultMap type="com.shifeng.merchant.entity.Op_follow_shop_detail" id="Op_follow_shop_detailReturnMap">
+		<!-- 创建时间 -->
+      <id column="ctime" property="ctime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 店铺id -->
+      <result column="shopId" property="shopId"/>
+		<!-- url -->
+      <result column="url" property="url"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 关注1 取消2 -->
+      <result column="status" property="status"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 省市 -->
+      <result column="county" property="county"/>
+   </resultMap>
+
+	<!-- 查询所有关注店铺明细 -->
+	<select id="findAllop_follow_shop_detailPage" parameterType="Page" resultType="com.shifeng.merchant.dto.FollowshopDTO">
+		select
+			op.ctime ,
+			op.userid ,
+			mu.account username,
+			op.ip ,
+			op.shopId ,
+			ms.sName shopName,
+			op.url ,
+			op.source ,
+			op.status ,
+			op.type ,
+			op.county
+		from op_follow_shop_detail_${t.tableName} op
+		left join mall_user mu on mu.userId = op.userid
+		left join mall_shop ms on ms.sId = op.shopId
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND date(op.ctime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and date(op.ctime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.userid!=null and t.userid!=''">
+            AND op.userid = #{t.userid}
+        </if>
+        <if  test="t.ip!=null and t.ip!=''">
+            AND op.ip = #{t.ip}
+        </if>
+        <if  test="t.webtype!=null and t.webtype!=''">
+            AND op.type = #{t.webtype}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND op.county like CONCAT("%",#{t.county},"%")
+        </if>
+        <if test="t.status>0">
+		    AND op.status = #{t.status}
+		</if>
+		<if  test="t.shopId!=null and t.shopId!=''">
+            AND op.shopId = #{t.shopId}
+        </if>
+		order by op.ctime
+	</select>
+
+	
+</mapper>

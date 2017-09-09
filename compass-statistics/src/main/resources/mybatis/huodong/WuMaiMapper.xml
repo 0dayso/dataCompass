@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wumaiMapper">
+    
+   	<!-- 雾霾明细-->
+   <insert id="saveDetail"  parameterType="java.util.List">
+		INSERT INTO 
+			activity_haze
+			(ip,ctime ,source ,sku ,county ,status)
+		VALUES
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.ip},#{item.ctime},#{item.source},#{item.sku},#{item.county},#{item.status})
+ 		</foreach>
+  </insert>
+   
+  
+	
+</mapper>

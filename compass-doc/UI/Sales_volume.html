@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,i,b,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        i,b{
+            font-style:normal;
+            font-weight: normal;
+        }
+        body{
+            min-width: 952px;
+            overflow-x: hidden;
+			background: #2a2b2f;
+        }
+        .body_right{
+            width:100%;
+            background: #2a2b2f;
+            float: left;
+        }
+        .right_top{
+            height: 30px;
+            padding: 30px 34px;
+        }
+        .font_RT{
+            color: #ccc;
+            font-size: 24px;
+        }
+        .RT_right_font{
+            float: right;
+        }
+        .all{
+            font-size: 18px;
+            color: #ccc;
+            padding: 8px 42px;
+            border-radius: 5px;
+        }
+        .background_B{
+            background: #028be6;
+            color: #ccc !important;
+        }
+        .background_bluck{
+            background: #3b3c42;
+            color: #028be6;
+        }
+        .updata_time{
+            font-size: 14px;
+            color: #999999;
+            margin-left: 10px;
+
+        }
+        .updata_number{
+            color: #f74c31;
+        }
+        .right_middle{
+            margin-top: 24px;
+            padding: 0 34px;
+        }
+        .data_time{
+            font-size: 14px;
+            border-radius: 5px;
+            margin-left: 22px;
+            padding: 5px 15px;
+            border: 1px solid #028be6;
+        }
+        .day_time{
+            color: #7b7b7d;
+            font-size: 16px;
+            margin-right: 2.6%;
+        }
+        .mL15{
+            margin-left: 15px;
+        }
+        .right_middle{
+            margin-top: 24px;
+            padding: 0 34px;
+        }
+        .button_top{
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            font-size: 0;
+        }
+
+        .button_top>span{
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            color: #666666;
+            overflow: hidden;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+        }
+        .button_top>span>i{
+            font-size: 16px;
+            color: #666;
+            float: right;
+        }
+        .button_top>span:nth-child(1){
+            width:16.6%;
+        }
+        .button_top>span:nth-child(2){
+            width: 16.6%;
+        }
+        .button_top>span:nth-child(3){
+            width: 16.6%;
+        }
+        .button_top>span:nth-child(4){
+            width: 16.6%;
+        }
+        .button_top>span:nth-child(5){
+            width: 16.6%;
+        }
+        .button_top>span:nth-child(6){
+            width: 16.6%;
+        }
+        .fontWhite{
+            font-size: 14px !important;
+            color: #cccccc !important;
+        }
+        .right_button{
+            margin-top: 70px;
+            margin-right: 34px;
+            margin-left: 34px;
+            border-radius: 5px;
+            background: #202022;
+        }
+        .page{
+            width: 100%;
+            height: 60px;
+            background: #2a2b2f;
+        }
+        .paging{
+            float: right;
+            margin-right: 70px;
+        }
+        .homePage{
+            line-height: 60px;
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: 1px solid #444444;
+            color: #bbbbbb;
+            font-size: 12px;
+            background: #3b3c42;
+        }
+    </style>
+</head>
+<body>
+    <div class="body_right">
+        <div class="right_top">
+            <!--  RT--right_top  -->
+            <span class="font_RT">商品销量分析<span class="data_time">2016年10月11日至2016年11月11日</span></span>
+            <span class="day_time mL15">近15天</span>
+            <span class="day_time">近30天</span>
+            <span class="day_time">本周</span>
+            <span class="day_time">上周</span>
+            <span class="day_time">本月</span>
+            <span class="day_time">上月</span>
+            <div class="RT_right_font">
+                <span class="all background_B">pc端</span>
+                <span class="all background_bluck">APP</span>
+                <span class="all background_bluck">M端</span>
+                <span class="all background_bluck">微信</span>
+            </div>
+        </div>
+
+        <div class="right_middle">
+            <span class="all background_B" style="float: right; padding: 5px 33px;">pc端</span>
+        </div>
+
+        <div class="right_button">
+            <div class="button_top">
+                <span>访问次数<i>|</i></span>
+                <span>上架商品数量<i>|</i></span>
+                <span>访问量<i>|</i></span>
+                <span>访客数<i>|</i></span>
+                <span>下单件数<i>|</i></span>
+                <span>下单金额</span>
+            </div>
+            <div class="button_top">
+                <span class="fontWhite">1</span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+
+            <div class="button_top">
+                <span class="fontWhite"></span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+            <div class="button_top">
+                <span class="fontWhite"></span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+
+            <div class="button_top">
+                <span class="fontWhite">1</span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+
+        </div>
+
+        <div class="right_middle">
+            <span class="all background_B" style="float: right; padding: 5px 33px;">pc端</span>
+        </div>
+
+        <div class="right_button">
+            <div class="button_top">
+                <span>下单件数<i>|</i></span>
+                <span>上架商品数量<i>|</i></span>
+                <span>访问量<i>|</i></span>
+                <span>访问次数<i>|</i></span>
+                <span><i>访客数</i>|</span>
+                <span>下单金额</span>
+            </div>
+            <div class="button_top">
+                <span class="fontWhite">1</span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+
+            <div class="button_top">
+                <span class="fontWhite"></span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+            <div class="button_top">
+                <span class="fontWhite"></span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+
+            <div class="button_top">
+                <span class="fontWhite">1</span>
+                <span class="fontWhite">极星户外 户外羽绒服防风防水超轻薄男女秋冬短款保暖鸭绒外套 橄榄绿 S</span>
+                <span class="fontWhite">世峰搜索</span>
+                <span class="fontWhite">陕西-西安</span>
+                <span class="fontWhite">洱海</span>
+                <span class="fontWhite">9999</span>
+            </div>
+
+        </div>
+
+        <div class="page right_middle" style="margin-top: 0;">
+
+            <div class="paging">
+                <span class="homePage">首页</span>
+                <span class="homePage">上页</span>
+                <span class="homePage">1</span>
+                <span class="homePage">2</span>
+                <span class="homePage">3</span>
+                <span class="homePage">4</span>
+                <span class="homePage">5</span>
+                <span class="homePage">下页</span>
+                <span class="homePage">尾页</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

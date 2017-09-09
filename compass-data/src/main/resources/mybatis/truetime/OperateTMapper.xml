@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 实时经营概况 -->
+<mapper namespace="operateTMapper">
+	<!-- 实时下单单量 -->
+	<select id="findOrderNum" parameterType="com.shifeng.truetime.dto.operateT.SearchOrder" resultType="com.shifeng.truetime.dto.operateT.OrderCount">
+		SELECT
+			COUNT(0) count,
+			DATE_FORMAT( purchasetime, '%H') AS hour
+		FROM
+			op_purchase_detail${tableName}
+		WHERE
+			DATE(purchasetime) = #{endDate}
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			<if test="status=='cj'">
+			    and status != 0
+			</if>
+			
+		GROUP BY hour
+	</select>
+	
+	<!-- 实时下单金额 -->
+	<select id="findOrderAmount" parameterType="com.shifeng.truetime.dto.operateT.SearchOrder" resultType="com.shifeng.truetime.dto.operateT.OrderCount">
+		SELECT
+			ROUND(SUM(amount),2) count,
+			DATE_FORMAT( purchasetime, '%H') AS hour
+		FROM
+			op_purchase_detail${tableName}
+		WHERE
+			DATE(purchasetime) = #{endDate}
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			<if test="status=='cj'">
+			    and status != 0
+			</if>
+			
+		GROUP BY hour
+	</select>
+	
+	<!-- 实时下单商品件数 -->
+	<select id="findPurchaseNum" parameterType="com.shifeng.truetime.dto.operateT.SearchOrder" resultType="com.shifeng.truetime.dto.operateT.OrderCount">
+		SELECT
+			SUM(number) count,
+			DATE_FORMAT( purchasetime, '%H') AS hour
+		FROM
+			op_purchase_detail${tableName}
+		WHERE
+			DATE(purchasetime) = #{endDate}
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			<if test="status=='cj'">
+			    and status != 0
+			</if>
+			
+		GROUP BY hour
+	</select>
+	
+
+</mapper>

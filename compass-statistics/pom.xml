@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.shifeng</groupId>
+    <artifactId>DataCompass</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>compass-statistics</artifactId>
+  <packaging>war</packaging>
+  
+  
+ 	<!-- 声明版本号，以后统一在这里进行管理 WinZhong -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- compass-commons 版本号 -->
+		<compass-commons.version>0.0.1-SNAPSHOT</compass-commons.version>
+		<!-- compass-sql 版本号 -->
+		<compass-sql.version>0.0.1-SNAPSHOT</compass-sql.version>
+		<!-- solrj 版本号 -->
+		<solrj.version>4.10.4</solrj.version>
+	</properties> 
+	
+	<dependencies>
+	
+	
+		<!-- compass-commons 模块 -->
+		<dependency>
+			<groupId>com.shifeng</groupId>
+			<artifactId>compass-commons</artifactId>
+			<version>${compass-commons.version}</version>
+		</dependency>
+	
+	
+		<!-- compass-sql 模块 -->
+		<dependency>
+			<groupId>com.shifeng</groupId>
+			<artifactId>compass-sql</artifactId>
+			<version>${compass-sql.version}</version>
+		</dependency>
+		<!-- compass-ip 模块 -->
+		<dependency>
+			<groupId>com.shifeng</groupId>
+			<artifactId>compass-ip</artifactId>
+			<version>${compass-sql.version}</version>
+		</dependency>
+
+		<!-- Solrj -->
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-solrj</artifactId>
+			<version>${solrj.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		    <version>2.2.3</version>
+		</dependency>
+				
+				
+		<dependency>
+			<groupId>com.microsoft</groupId>
+			<artifactId>sqlserver-jdbc</artifactId>
+			<version>41</version>
+		</dependency>
+	
+	</dependencies>
+	
+</project>

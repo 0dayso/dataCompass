@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<!-- quartz配置 动态配置所以我们将 Factory 作为一个service一样的接口 QuartzJobFactory.java -->
+	<!-- 调度工厂 -->
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"></bean>
+
+
+	<!-- 分割线 -->
+
+	
+	<!-- 启动触发器的配置 -->
+	<bean name="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	  <!--QuartzScheduler 延时启动，/秒，应用启动后 QuartzScheduler 再启动-->
+	  <property name="startupDelay" value="2" />
+	  <!-- 普通触发器：触发器列表，（可以配置多个任务）-->
+		<property name="triggers">
+			<list>
+				<ref bean="channelJobTrigger" />
+				<ref bean="visitDetailJobTrigger" />
+				<ref bean="dataJobTrigger" />
+				<ref bean="keywordJobTrigger"/>
+				<ref bean="sqlJobTrigger"/>
+				<ref bean="mallJobTrigger"/>
+				<!-- 多维度数据统计任务 -->
+				<ref bean="dimensionJobTrigger"/>
+				<!-- 明细记录任务 -->
+
+				<ref bean="detailedJobTrigger"/>
+				<!-- solr任务
+				<ref bean="solrJobTrigger"/>-->
+			</list>
+		</property>
+	</bean>
+
+	<!-- 调度配置 -->
+	<bean id="channelJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="channelJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0/60 * * * * ?</value>
+		</property>
+	</bean>
+	<!-- 调度配置 -->
+	<bean id="sqlJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="sqlJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>* * *  2,15,28 * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="visitDetailJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="visitDetailJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/3 * * * ? *</value>
+		</property>
+	</bean>
+	
+	<bean id="dataJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="dataJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/10 * * * ?</value>
+		</property>
+	</bean>
+
+	<!-- job配置 -->
+	<bean id="sqlJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="sqlJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	<!-- job配置 -->
+	<bean id="channelJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="channelJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	<bean id="visitDetailJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="visitDetailJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	<bean id="dataJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="dataJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	 
+
+<!-- ========================== -->
+	<!-- 调度配置 -->
+	<bean id="keywordJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="keywordJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/8 * * * ?</value>
+		</property>
+	</bean>
+
+	<!-- job配置 -->
+	<bean id="keywordJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="keywordJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	
+<!-- ============================ -->
+	 
+
+<!-- ===========mall=============== -->
+	<!-- 调度配置 -->
+	<bean id="mallJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="mallJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 3 * * ?</value>
+		</property>
+	</bean>
+
+	<!-- job配置 -->
+	<bean id="mallJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="mallJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="mallJob" class="com.shifeng.job.MallJob" />
+<!-- ============mall================ -->
+
+	<!-- 工作的bean -->
+	<bean id="channelJob" class="com.shifeng.job.ChannelJob" />
+	<bean id="visitDetailJob" class="com.shifeng.job.VisitDetailJob" />
+	
+	<bean id="dataJob" class="com.shifeng.job.DataJob">
+		<!-- 几天之前 默认（0：当天）-->
+		<property name="beforeDay" value="${update.beforeDay}" />
+	</bean>
+	
+	<bean id="keywordJob" class="com.shifeng.job.KeywordJob" />
+	<bean id="sqlJob" class="com.shifeng.job.SqlJob" />
+	
+	
+	
+	
+	
+<!-- =============多维度数据统计任务============= -->
+	<!-- 多维度数据统计任务bean -->
+	<bean id="dimensionJob" class="com.shifeng.job.DimensionJob">
+		<!-- 几天之前 默认（0：当天）-->
+		<property name="beforeDay" value="${update.beforeDay}" />
+	</bean>
+	<!-- 调度配置 -->
+	<bean id="dimensionJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="dimensionJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/15 * * * ? *</value>
+		</property>
+	</bean>
+
+	<!-- job配置 -->
+	<bean id="dimensionJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="dimensionJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	
+<!-- =============多维度数据统计任务============= -->	
+	
+	
+<!-- =============明细记录任务============= -->
+	<!-- 明细记录任务bean -->
+	<bean id="detailedJob" class="com.shifeng.job.DetailedJob" />
+	
+	<!-- 明细记录任务 调度配置 -->
+	<bean id="detailedJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="detailedJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/4 * * * ? *</value>
+		</property>
+	</bean>
+
+	<!-- 明细记录任务 job配置 -->
+	<bean id="detailedJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="detailedJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+		<property name="concurrent" value="false" />
+	</bean>
+<!-- =============明细记录任务============= -->		
+	
+	
+	
+	
+		
+	
+	
+ <!--=============更新关键词相关结果数量任务=============
+	 明细记录任务bean
+	<bean id="solrJob" class="com.shifeng.job.SolrJob" />
+	
+	 明细记录任务 调度配置
+	<bean id="solrJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="solrJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 30 4 * * ?</value>
+		</property>
+	</bean>
+
+	 明细记录任务 job配置
+	<bean id="solrJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="solrJob" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+		 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程
+		<property name="concurrent" value="false" />
+	</bean>
+ =============更新关键词相关结果数量任务============= -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</beans>

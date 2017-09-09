@@ -1,0 +1,164 @@
+@CHARSET "UTF-8";
+/**
+* userset
+*/
+#header #sys-infor .more-setting {
+  position: relative;
+  overflow: visible;
+  z-index: 2;
+  background: #fff;
+  border: 1px solid #fff;
+  padding: 2px 0px;
+  width: 46px;
+}
+#header #sys-infor .more-setting .more-title {
+  color: #48a7e7;
+  cursor: default;
+  /*解决标签换行带来的多余空格*/
+
+  font-size: 0;
+  /*中括号样式*/
+
+  /*设置文字样式*/
+
+}
+#header #sys-infor .more-setting .more-title .bracket {
+  font-size: 12px;
+}
+#header #sys-infor .more-setting .more-title .more-setting-title {
+  font-size: 12px;
+  padding-right: 12px;
+  padding-left: 3px;
+}
+#header #sys-infor .more-setting .more-title .more-status {
+  position: absolute;
+  width: 7px;
+  height: 4px;
+  top: 7px;
+  right: 8px;
+  *top: 12px;
+  background: url(i/ico-arrow-more.png) 0 0;
+}
+#header #sys-infor .more-setting .more-title .more-status.orange {
+  background-position: -8px 0;
+}
+#header #sys-infor .more-setting .more-content {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  top: 17px;
+  *top: 21px;
+  left: -1px;
+  width: 83px;
+  border: 1px solid #9bcff7;
+  background: #fff;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+#header #sys-infor .more-setting .more-content .cover {
+  position: absolute;
+  top: -1px;
+  left: 0px;
+  width: 50px;
+  *width: 52px;
+  height: 1px;
+  border-top: 1px solid #fff;
+}
+#header #sys-infor .more-setting .more-content a {
+  display: block;
+  padding-left: 5px;
+  padding-bottom: 3px;
+}
+#header #sys-infor .more-setting .more-content a:link,
+#header #sys-infor .more-setting .more-content a:visited {
+  color: #48a7e7;
+}
+#header #sys-infor .hover,
+#header #sys-infor .more-setting:hover {
+  /*.hover样式加到的是.more-setting上边*/
+
+  border-color: #9bcff7;
+  border-bottom: #fff;
+}
+#header #sys-infor .hover .more-title .bracket,
+#header #sys-infor .more-setting:hover .more-title .bracket {
+  visibility: hidden;
+}
+#header #sys-infor .hover .more-title .more-status,
+#header #sys-infor .more-setting:hover .more-title .more-status {
+  background-position: 0 -4px;
+}
+#header #sys-infor .hover .more-title .more-status.orange,
+#header #sys-infor .more-setting:hover .more-title .more-status.orange {
+  background-position: -8px -4px;
+}
+#header #sys-infor .hover .more-content,
+#header #sys-infor .more-setting:hover .more-content {
+  display: block;
+}
+
+
+#header #tutorial-1 {
+    background: url("i/tips-setting1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: none;
+    height: 251px;
+    position: absolute;
+    top: 0;
+    width: 263px;
+    z-index: 3;
+}
+#header #tutorial-1 .close-icon {
+    background: url("//misc.360buyimg.com/lib/img/e/blank.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 25px;
+    left: 197px;
+    position: absolute;
+    top: 70px;
+    width: 25px;
+}
+#header #tutorial-1 .close-btn {
+    background: url("//misc.360buyimg.com/lib/img/e/blank.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 45px;
+    left: 80px;
+    position: absolute;
+    top: 180px;
+    width: 90px;
+}
+#header #tutorial-2 {
+    background: url("i/tips-setting2.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: none;
+    height: 108px;
+    position: absolute;
+    top: 23px;
+    width: 228px;
+    z-index: 3;
+}
+#header #tutorial-2 .close-btn {
+    background: url("//misc.360buyimg.com/lib/img/e/blank.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 25px;
+    left: 80px;
+    position: absolute;
+    top: 73px;
+    width: 90px;
+}
+#header #tutorial-2 .close-icon {
+    background: url("//misc.360buyimg.com/lib/img/e/blank.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 25px;
+    left: 200px;
+    position: absolute;
+    top: 10px;
+    width: 25px;
+}
+#header #sys-links li a:link i.i-jingmai, #header #sys-links li a:visited i.i-jingmai {
+    background-position: 0px -120px;
+}
+#header #sys-links .icon-links-new{
+	background: url('i/icon-links-new.png') no-repeat scroll 0% 0% transparent;
+	height: 12px;
+	width: 20px;
+	top: -27px;
+	right: -52px;
+	position: relative;
+}
+#header #sys-links li a:link i.i-easysearch, #header #sys-links li a:visited i.i-jingmai {
+    background-position: 0px -222px;
+}

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- PC流量分析 -->
+<mapper namespace="flowMapper">
+	
+	<!-- 按天统计访问/访客/访问用户数 -->
+	<select id="statisticsFlowByDay" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.pc.dto.day_hour_flow.ShowDayFlow">
+		select
+			SUM(visitnum) visitnum,
+			SUM(uv) uv,
+			SUM(visitusernum) visitusernum,
+			SUM(cookie) cookie,
+			cdate date
+		from op_data${tableName}
+		where
+			type = 0
+			AND cdate >= #{startDate}
+			AND cdate &lt;= #{endDate}
+	    group by cdate
+	    order by cdate asc
+	</select>
+	
+	
+	
+	<!-- 按小时查询浏览量/访客数ip/访客数cookie/访问用户数 -->
+	<select id="statisticsFlowByHour" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.pc.dto.day_hour_flow.ShowDayFlow">
+	    SELECT
+			COUNT(userid) visitnum,COUNT(DISTINCT ip) uv,COUNT(DISTINCT cookieid) cookie,COUNT(DISTINCT CASE WHEN userid!=0 THEN userid END) visitusernum,
+			DATE_FORMAT( visittime, '%H') AS date
+		FROM
+		    	op_visit_detail${tableName}
+		WHERE
+			DATE(visittime) = #{endDate}
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+		GROUP BY date
+	    
+	</select>
+	
+	
+	
+	
+	<!-- 查询访问明细/小时      浏览量(pv) -->
+	<select id="statisticsPvBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.pc.dto.day_hour_flow.ShowHourPvFlow">
+		SELECT
+			COUNT(userid) count,
+			DATE_FORMAT( visittime, '%H') AS timeHour
+		FROM
+    		op_visit_detail${tableName}
+		where
+			DATE(visittime) = #{endDate}
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			
+		GROUP BY timeHour
+
+	</select>
+	
+	
+	<!-- 查询访客明细/小时           访客数(ip) -->
+	<select id="statisticsUvBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.pc.dto.day_hour_flow.ShowHourUvFlow">
+		SELECT COUNT(ipNum) ipNum,timeHour from (
+			SELECT
+				COUNT(DISTINCT ip) ipNum,
+				DATE_FORMAT( visittime, '%H') AS timeHour
+			FROM
+    			op_visit_detail${tableName}
+			WHERE
+			DATE(visittime) = #{endDate}
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			
+			GROUP BY ip,timeHour
+		) tab
+		group by timeHour
+	</select>
+	
+	
+	<!-- 查询访问用户明细/小时  访客数(cookie)-->
+	<select id="statisticsUserCookieBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.pc.dto.day_hour_flow.ShowHourCookieFlow">
+		SELECT COUNT(cookieid) cookieNum,timeHour from (
+			SELECT
+				COUNT(DISTINCT cookieid) cookieid,
+				DATE_FORMAT( visittime, '%H') AS timeHour
+			FROM
+    			op_visit_detail${tableName}
+			WHERE
+			DATE(visittime) = #{endDate}
+			AND cookieid is not null
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			
+			GROUP BY cookieid,timeHour
+		) tab
+		group by timeHour
+	</select>
+	
+	<!-- 查询访问用户明细/小时    访问用户数   -->
+	<select id="statisticsUservBydate" parameterType="com.shifeng.pc.dto.day_hour_flow.SearchDayFlow" 
+		resultType="com.shifeng.pc.dto.day_hour_flow.ShowHourUservFlow">
+		SELECT COUNT(useridNum) useridNum,timeHour from (
+			SELECT
+				COUNT(DISTINCT userid) useridNum,
+				DATE_FORMAT( visittime, '%H') AS timeHour
+			FROM
+    			op_visit_detail${tableName}
+			WHERE
+			DATE(visittime) = #{endDate}
+			AND userid != 0
+			<if test="type!=null and type!='' and type!='all' and type!='mp'">
+			    and type = #{type}
+			</if>
+			<if test="type=='mp'">
+			    and type != 0
+			</if>
+			
+			GROUP BY userid,timeHour
+		) tab
+		group by timeHour
+	</select>
+	
+	
+	
+</mapper>

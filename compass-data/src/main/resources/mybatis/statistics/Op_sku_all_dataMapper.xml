@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- sku总统计表(op_sku_all_data)Mapper -->
+<mapper namespace="op_sku_all_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    sku,productid ,type ,follow ,cart ,cdate 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_sku_all_data" id="Op_sku_all_dataReturnMap">
+		<!-- sku -->
+      <id column="sku" property="sku"/>
+		<!-- 产品id -->
+      <result column="productid" property="productid"/>
+		<!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+		<!-- 关注 -->
+      <result column="follow" property="follow"/>
+		<!-- 购物车 -->
+      <result column="cart" property="cart"/>
+		<!-- 创建日期 -->
+      <result column="cdate" property="cdate"/>
+   </resultMap>
+
+	<!-- 查询所有sku总统计表 -->
+	<select id="findAllop_sku_all_dataPage" parameterType="Page" resultMap="Op_sku_all_dataReturnMap">
+		select
+			op.sku ,
+			mp.name productName,
+			op.type ,
+			SUM(follow) follow,
+			SUM(cart) cart,
+			cdate 
+		from op_sku_all_data_${t.tableName} op
+		left join mall_product mp on mp.sku = op.sku
+		where 1=1
+        <if test="t.startDate != null and t.startDate != ''">
+            and op.cdate = #{t.startDate}
+        </if>
+		<if  test="t.webtype!=null and t.webtype!=''">
+            AND op.type = #{t.webtype}
+        </if>
+		GROUP BY ''
+			<if test="t.rowFieldVO.isShowDate==1">
+                ,op.cdate
+            </if>
+			<if test="t.rowFieldVO.isShowType==1">
+                ,op.type
+            </if>
+            <if test="t.rowFieldVO.isShowSku==1">
+                ,op.sku
+            </if>
+		 ORDER BY ''
+		 	<if test="t.rowFieldVO.isShowType==1">
+                ,op.type ASC
+            </if>
+		 	,follow desc,cart desc
+		 	<if test="t.rowFieldVO.isShowSku==1">
+                ,op.sku ASC
+            </if>
+	</select>
+
+</mapper>

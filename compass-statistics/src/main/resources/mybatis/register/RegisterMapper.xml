@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RegisterMapper">
+  
+   
+  <insert id="saveRegister" parameterType="com.shifeng.entity.register.Register">
+		INSERT INTO 
+			op_register_detail_${nowYearMonth}
+			(registertime,userid,ip,channelid,source,activeId,channelUrlId,county)
+		VALUES
+			 (#{registertime},#{userid},#{ip},#{channelid},#{source},#{activeId},#{channelUrlId},#{county})
+	  
+  </insert>
+  
+  
+  <select id="getObject" resultType="com.shifeng.entity.register.Register">
+	 SELECT 
+	 	registertime,userid,ip,channelid,source,activeId,channelUrlId,county 
+	 FROM 
+	 	op_register_detail 
+	 WHERE 
+	 	county = ''
+	 LIMIT 
+	 	1
+  
+  </select>
+  
+  <update id="update" parameterType="com.shifeng.entity.register.Register">
+  		update 
+  			op_register_detail
+  		set 
+  			county = #{county}
+  		where
+  			ip = #{ip}		
+  
+  </update>
+  
+	
+</mapper>

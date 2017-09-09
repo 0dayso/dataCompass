@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.shifeng</groupId>
+    <artifactId>DataCompass</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>compass-sql</artifactId>
+ 	<!-- 声明版本号，以后统一在这里进行管理 WinZhong -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- compass-commons 版本号 -->
+		<compass-commons.version>0.0.1-SNAPSHOT</compass-commons.version>
+	</properties> 
+	
+	<dependencies>
+	
+	
+		<!-- compass-commons 模块 -->
+		<dependency>
+			<groupId>com.shifeng</groupId>
+			<artifactId>compass-commons</artifactId>
+			<version>${compass-commons.version}</version>
+		</dependency>
+		
+	</dependencies>
+	
+</project>

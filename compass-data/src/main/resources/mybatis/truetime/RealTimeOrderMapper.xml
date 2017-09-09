@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 统计表(op_data)Mapper -->
+<mapper namespace="realtimeorderMapper">
+
+
+    <select id="getData" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.Op_data">
+
+       SELECT
+            mp.`name` as productname,
+            sum(pd.amount) as payamount,
+            sum(pd.number) as purchasenum,
+            count(DISTINCT(pd.userid)) as registernum,
+            vd.visittime as visitnum,
+            vd.cookieid as cookie
+        FROM
+            op_purchase_detail_${tableName} pd
+        LEFT JOIN mall_product mp ON mp.sku = pd.sku
+        LEFT JOIN (
+            SELECT
+                vd.sku AS sku,
+                count(vd.visittime) AS visittime,
+                count(vd.cookieid) AS cookieid
+            FROM
+                op_visit_detail_${tableName} vd
+            WHERE
+             date(vd.visittime) =  #{startDate}
+
+                <if test="webtype !=''">
+                    and  type  = #{webtype}
+                </if>
+            GROUP BY
+                vd.sku
+        ) AS vd ON vd.sku = pd.sku
+        WHERE
+        date(pd.purchasetime)=  #{startDate}
+        AND pd.`status` = 1
+        <if test="webtype !=''">
+            and  type  = #{webtype}
+        </if>
+        AND pd.sku IS NOT NULL
+        GROUP BY
+            mp.pid
+        order by sum( pd.number) desc
+        limit 20
+	</select>
+
+
+    <select id="getDataVisitDetail" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.Op_data">
+        SELECT
+        county as hour,
+        count(*) AS visitnum,
+        count(DISTINCT(ip)) AS uv,
+        count(DISTINCT(cookieid)) AS cookie,
+        count(DISTINCT(userid)) AS visitusernum
+        FROM
+        ${tableName}
+        WHERE
+        1=1
+        <if test="webtype !=''">
+            and  type  = #{webtype}
+        </if>
+        and
+        <![CDATA[
+        county <>''
+        and
+         county is not null
+         ]]>
+        and
+        date(visittime)  = #{startDate}
+        GROUP BY county
+        order by  visitnum desc
+    </select>
+</mapper>

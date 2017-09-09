@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="msgMapper">
+    
+   	<!-- 保存消息明细-->
+   <insert id="saveDetail"  parameterType="java.util.Map">
+		INSERT INTO 
+			message_${nowYearMonth}
+			(userid,username ,ip ,ctime ,source ,type ,shopid ,shopname ,content,status)
+		VALUES
+		<foreach collection="detailList" item="item" index="index" separator=",">
+ 			(#{item.userid},#{item.username},#{item.ip},#{item.ctime},#{item.source},#{item.type},#{item.shopid},#{item.shopname},#{item.content},#{item.status})
+ 		</foreach>
+  </insert>
+   
+  
+	
+</mapper>

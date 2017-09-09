@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 访问明细(op_visit_detail)Mapper -->
+<mapper namespace="op_visit_detailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    visittime,userid ,ip ,channelid ,sku ,url ,second ,three ,source ,activeId ,channelUrlId ,type,shopId,county
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_visit_detail" id="Op_visit_detailReturnMap">
+		<!-- 创建时间 -->
+      <id column="visittime" property="visittime"/>
+		<!-- userid -->
+      <result column="userid" property="userid"/>
+		<!-- ip -->
+      <result column="ip" property="ip"/>
+		<!-- 渠道id -->
+      <result column="channelid" property="channelid"/>
+		<!-- sku -->
+      <result column="sku" property="sku"/>
+		<!-- url -->
+      <result column="url" property="url"/>
+		<!-- 二级 -->
+      <result column="second" property="second"/>
+		<!-- 三级 -->
+      <result column="three" property="three"/>
+		<!-- 来源 -->
+      <result column="source" property="source"/>
+		<!-- 活动ID -->
+      <result column="activeId" property="activeId"/>
+		<!-- 渠道链接ID -->
+      <result column="channelUrlId" property="channelUrlId"/>
+      <!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+      <!-- 店铺ID -->
+      <result column="shopId" property="shopId"/>
+      <!-- 省市 -->
+      <result column="county" property="county"/>
+   </resultMap>
+
+	<!-- 查询所有访问明细 -->
+	<select id="findAllop_visit_detailPage" parameterType="Page" resultMap="Op_visit_detailReturnMap">
+		select
+			visittime ,
+			userid ,
+			cookieid,
+			ip ,
+			sku ,
+			ovd.url ,
+			second ,
+			three ,
+			source ,
+			activeId ,
+			c.name channelid ,
+			cu.name channelurlid ,
+			type,
+			shopId,
+			county
+		from  op_visit_detail_${t.tableName} ovd
+		left join channel c on c.id = channelid
+		left join channelurl cu on cu.id = channelurlid
+		where 1=1
+		<if test="t.startDate != null and t.startDate != ''">
+            AND DATE(visittime)  >= #{t.startDate}
+        </if>
+        <if test="t.endDate != null and t.endDate != ''">
+            and DATE(visittime) <![CDATA[ <= ]]> #{t.endDate}
+        </if>
+        <if  test="t.channelId != null and t.channelId != '' and t.channelId!='0'">
+            AND channelid = #{t.channelId}
+        </if>
+        <if  test="t.channelurl!=null and t.channelurl!='' and t.channelurl!='0'">
+            AND channelUrlId = #{t.channelurl}
+        </if>
+        
+        <if  test="t.userid!=null and t.userid!=''">
+            AND userid = #{t.userid}
+        </if>
+        <if  test="t.cookie!=null and t.cookie!=''">
+            AND cookieid = #{t.cookie}
+        </if>
+        <if  test="t.sku!=null and t.sku!=''">
+            AND sku = #{t.sku}
+        </if>
+        <if  test="t.second!=null and t.second!=''">
+            AND second = #{t.second}
+        </if>
+        <if  test="t.three!=null and t.three!=''">
+            AND three = #{t.three}
+        </if>
+        <if  test="t.activeId!=null and t.activeId!=''">
+            AND activeId = #{t.activeId}
+        </if>
+        <if  test="t.ip!=null and t.ip!=''">
+            AND ip = #{t.ip}
+        </if>
+        
+        <if  test="t.webtype!=null and t.webtype!='' and t.webtype!='all' and t.webtype!='mp'">
+            AND type = #{t.webtype}
+        </if>
+        <if  test="t.webtype=='mp'">
+            AND type!=0
+        </if>
+        
+        <if  test="t.shopId!=null and t.shopId!=''">
+            AND shopId = #{t.shopId}
+        </if>
+        <if  test="t.county!=null and t.county!=''">
+            AND county like CONCAT("%",#{t.county},"%")
+        </if>
+        
+		<if test="t.vdtype==1">
+			group by ip
+		</if>
+		<if test="t.vdtype==2">
+			group by cookieid
+		</if>
+		<if test="t.vdtype==3">
+			group by userid
+		</if>
+        
+        order by visittime desc
+	</select>
+
+    <select id="getDataVisitDetail" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.Op_data">
+        SELECT
+        county as hour,
+        count(*) AS visitnum,
+        count(DISTINCT(ip)) AS uv,
+        count(DISTINCT(cookieid)) AS cookie,
+        count(DISTINCT(userid)) AS visitusernum
+        FROM
+        ${tableName}
+        WHERE
+        1=1
+        <if test="webtype !=  '0'">
+            and  type  <![CDATA[ >= ]]>  #{webtype}
+        </if>
+        <if test="webtype ==  '0'">
+            and  type  = #{webtype}
+        </if>
+        and
+        <![CDATA[
+        county <>''
+        and
+         county is not null
+         ]]>
+        and
+        date(visittime)  >= #{startDate}
+        <if test="endDate != null and endDate != ''">
+            and   date(visittime)  <![CDATA[ <= ]]> #{endDate}
+        </if>
+        GROUP BY county
+        order by  visitnum desc
+    </select>
+</mapper>

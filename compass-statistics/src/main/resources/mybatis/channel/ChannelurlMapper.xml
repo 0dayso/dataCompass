@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 商城渠道链接(channelurl)Mapper -->
+<mapper namespace="channelurlMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    id,cid ,url ,cuser ,cdate ,updateuser ,updatetime ,status 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.channel.Channelurl" id="ChannelurlReturnMap">
+		<!-- id -->
+      <id column="id" property="id"/>
+		<!-- 渠道ID -->
+      <result column="cid" property="cid"/>
+		<!-- 链接地址 -->
+      <result column="url" property="url"/>
+		<!-- 创建人 -->
+      <result column="cuser" property="cuser"/>
+		<!-- 创建时间 -->
+      <result column="cdate" property="cdate"/>
+		<!-- 修改人 -->
+      <result column="updateuser" property="updateuser"/>
+		<!-- 修改时间 -->
+      <result column="updatetime" property="updatetime"/>
+		<!-- 状态(0：正常；1：冻结；2：关闭) -->
+      <result column="status" property="status"/>
+   </resultMap>
+   
+    <insert id="saveChannelurl" parameterType="com.shifeng.entity.channel.Channelurl">
+		INSERT INTO 
+			Channelurl
+			(id,cid ,url ,cuser ,cdate ,updateuser ,updatetime ,status,name )
+		VALUES
+			 (#{id},#{cid},#{url},#{cuser},NOW(),#{updateuser},NOW(),#{status},#{name})
+	    ON DUPLICATE KEY UPDATE 
+	    	cid=VALUES(cid) ,url=VALUES(url),updatetime=VALUES(updatetime) ,status=VALUES(status) ,name=VALUES(name)
+  </insert>
+	
+</mapper>

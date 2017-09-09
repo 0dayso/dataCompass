@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 关键词搜索记录明细(op_keyword_detail)Mapper -->
+<mapper namespace="KeywordDetailMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    ip,userid ,keyword ,statistics_time ,shopId ,type 
+    </sql>
+
+    <resultMap type="com.shifeng.entity.keyword.KeywordDetail" id="KeywordDetailReturnMap">
+		<!-- 搜索客户端ip -->
+      <id column="ip" property="ip"/>
+		<!-- 用户id -->
+      <result column="userid" property="userid"/>
+		<!-- 搜索关键词 -->
+      <result column="keyword" property="keyword"/>
+		<!-- 日期 -->
+      <result column="statistics_time" property="statistics_time"/>
+		<!-- 店铺id -->
+      <result column="shopId" property="shopId"/>
+		<!-- 站来源类型 0 pc 1m 2app 3 微信 必填 -->
+      <result column="type" property="type"/>
+   </resultMap>
+    
+    <!-- 获取关键词搜索明细记录 -->
+    <select id="getKeywordDetailListPage" parameterType="page"  resultType="com.shifeng.entity.keyword.KeywordDetail">
+    	select
+    		ip,userid ,keyword ,statistics_time ,shopId ,type 
+    	from
+    		Op_keyword_detail_${t.nowYearMonth}
+    	where
+    		DATE_FORMAT(statistics_time,'%Y-%m-%d') = #{t.startDate}			
+		<!-- 关键词 查询 -->
+		<if test="t.keyword != null and t.keyword != '' ">
+			AND keyword LIKE CONCAT(CONCAT('%', #{t.keyword}),'%')
+		</if>
+		<!-- 站来源 查询 -->
+		<if test="t.type != null">
+			AND type = #{t.type} 
+		</if>	
+    	order by
+    		statistics_time desc		
+    </select>
+  
+   
+</mapper>

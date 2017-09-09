@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- 统计表(op_data)Mapper -->
+<mapper namespace="op_dataMapper">
+    <!--mybatis ehcache缓存配置 -->
+    <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 不使用缓存加入useCache="false" -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+    <!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>  -->
+
+	<sql id="Base_Column_List">
+    cdate,channelid ,channelurlid ,visitnum ,purchasenum ,amount ,registernum ,
+    payamount,type,shopId,ordernum,uv,visitusernum,cookie
+    </sql>
+
+    <resultMap type="com.shifeng.entity.statistics.Op_data" id="Op_dataReturnMap">
+		<!-- 创建日期 -->
+      <id column="cdate" property="cdate"/>
+		<!-- 渠道id -->
+      <result column="channelid" property="channelid"/>
+		<!-- 渠道链接id -->
+      <result column="channelurlid" property="channelurlid"/>
+		<!-- 访问量 -->
+      <result column="visitnum" property="visitnum"/>
+		<!-- 购买数量 -->
+      <result column="purchasenum" property="purchasenum"/>
+		<!-- 购买金额 -->
+      <result column="amount" property="amount"/>
+		<!-- 注册量 -->
+      <result column="registernum" property="registernum"/>
+      <!-- 支付金额 -->
+      <result column="payamount" property="payamount"/>
+      <!-- 站来源类型(0 pc 1m 2app 3 微信) -->
+      <result column="type" property="type"/>
+      <!-- 店铺ID -->
+      <result column="shopId" property="shopId"/>
+      <!-- 订单数量 -->
+      <result column="ordernum" property="ordernum"/>
+      <!-- 访客数 -->
+      <result column="uv" property="uv"/>
+      <!-- 访问用户数 -->
+      <result column="visitusernum" property="visitusernum"/>
+      <!-- cookie -->
+      <result column="cookie" property="cookie"/>
+   </resultMap>
+
+	<!-- 查询所有统计表 -->
+	<select id="findAllop_data" parameterType="com.shifeng.dto.statistics.SearchData" resultMap="Op_dataReturnMap">
+		select
+			od.cdate ,
+			channelid,
+			c.name channel ,
+			channelurlid,
+			cu.name channelurl ,
+			type,
+			shopId,
+			SUM(visitnum) visitnum,
+			SUM(purchasenum) purchasenum,
+            ROUND(SUM(amount),2) amount,
+            SUM(registernum) registernum,
+            ROUND(SUM(payamount),2) payamount,
+            SUM(ordernum) ordernum,
+            SUM(uv) uv,
+            SUM(visitusernum) visitusernum,
+            SUM(cookie) cookie
+		from op_data_${tableName} od
+		left join channel c on c.id = od.channelid
+		left join channelurl cu on cu.id = od.channelurlid
+		
+		WHERE 1=1
+        <if test="startDate != null and startDate != ''">
+            AND od.cdate  >= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != ''">
+            and od.cdate <![CDATA[ <= ]]> #{endDate}
+        </if>
+        <if  test="channelId != null and channelId!='' and channelId!='0'">
+            AND od.channelid = #{channelId}
+        </if>
+        <if  test="channelurl!=null and channelurl!='' and channelurl!='0'">
+            AND od.channelurlid = #{channelurl}
+        </if>
+        <if  test="webtype!=null and webtype!=''">
+            AND od.type = #{webtype}
+        </if>
+
+        GROUP BY ''
+            <if test="rowFieldVO.isShowDate==1">
+                ,od.cdate
+            </if>
+            <if test="rowFieldVO.isShowChannel==1">
+                ,od.channelid
+            </if>
+            <if test="rowFieldVO.isShowChannelurl==1">
+                ,od.channelurlid
+            </if>
+            <if test="rowFieldVO.isShowType==1">
+                ,od.type
+            </if>
+            <if test="rowFieldVO.isShowShop==1">
+                ,od.shopId
+            </if>
+            
+         ORDER BY ''
+            <if test="rowFieldVO.isShowDate==1">
+                ,od.cdate ASC
+            </if>
+            <if test="rowFieldVO.isShowChannel==1">
+                ,od.channelid ASC
+            </if>
+            <if test="rowFieldVO.isShowChannelurl==1">
+                ,od.channelurlid ASC
+            </if>
+            <if test="rowFieldVO.isShowType==1">
+                ,od.type ASC
+            </if>
+            <if test="rowFieldVO.isShowShop==1">
+                ,od.shopId ASC
+            </if>
+            
+	</select>
+
+	<!-- 访客来源统计 -->
+	<select id="uvSource" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.pc.dto.UvSource">
+		select
+			sum(uv) uvCount,
+	    	sum(visitnum) pvCount,
+	    	sum(visitusernum) userCount,
+            SUM(cookie) cookieCount,
+	    	name channel,
+	    	channelid
+	    from op_data_${tableName} od
+	    left join channel on channel.id = channelid
+		where
+			od.cdate >= #{startDate}
+			<if test="endDate!=null and endDate!=''">
+			     and od.cdate <![CDATA[ <= ]]> #{endDate}
+			</if>
+			<if test="webtype!=null and webtype!='' and webtype!='all' and webtype!='mp'">
+			    and type = #{webtype}
+			</if>
+			<if test="webtype=='mp'">
+			    and type != 0
+			</if>
+			
+		group by channelid
+	</select>
+
+    <select id="getPcmainByAllData" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.Op_data">
+        select
+        SUM(visitnum) visitnum,
+        SUM(uv) uv,
+        SUM(cookie) cookie,
+        SUM(visitusernum) visitusernum,
+        SUM(registernum) registernum
+        from ${tableName}
+        where 1=1
+        <if test="webtype !=  0">
+            and  type  <![CDATA[ >= ]]>  #{webtype}
+        </if>
+        <if test="webtype ==  0">
+            and  type  = #{webtype}
+        </if>
+        and
+         cdate  >= #{startDate}
+        <if test="endDate != null and endDate != ''">
+            and  cdate  <![CDATA[ <= ]]> #{endDate}
+        </if>
+    </select>
+    <select id="getPcmainByData" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.Op_data">
+        SELECT
+        SUM(visitnum) visitnum,
+        SUM(uv) uv,
+        SUM(visitusernum) visitusernum,
+        SUM(registernum) registernum,
+        SUM(cookie) cookie,
+        cdate hour
+        FROM
+        ${tableName}
+        WHERE
+
+        cdate  >= #{startDate}
+        <if test="endDate != null and endDate != ''">
+            and  cdate  <![CDATA[ <= ]]> #{endDate}
+        </if>
+        <if test="webtype !=  0">
+            and  type  <![CDATA[ >= ]]>  #{webtype}
+        </if>
+        <if test="webtype ==  0">
+            and  type  = #{webtype}
+        </if>
+        GROUP BY cdate
+        order by cdate
+    </select>
+
+
+
+    <select id="getAllmainByAllData" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.Op_data">
+        select
+        SUM(visitnum) visitnum,
+        SUM(uv) uv,
+        SUM(cookie) cookie,
+        SUM(visitusernum) visitusernum,
+        SUM(registernum) registernum
+        from ${tableName}
+        where
+        cdate  >= #{startDate}
+        <if test="endDate != null and endDate != ''">
+            and  cdate  <![CDATA[ <= ]]> #{endDate}
+        </if>
+    </select>
+    <select id="getAllmainByData" parameterType="com.shifeng.dto.statistics.SearchData" resultType="com.shifeng.entity.statistics.Op_data">
+        SELECT
+        SUM(visitnum) visitnum,
+        SUM(uv) uv,
+        SUM(visitusernum) visitusernum,
+        SUM(registernum) registernum,
+        SUM(cookie) cookie,
+        cdate hour
+        FROM
+        ${tableName}
+        WHERE
+        cdate  >= #{startDate}
+        <if test="endDate != null and endDate != ''">
+            and  cdate  <![CDATA[ <= ]]> #{endDate}
+        </if>
+
+        GROUP BY cdate
+        order by cdate
+    </select>
+
+
+	<!-- 统计经营概况 -->
+	<select id="findOperate" parameterType="java.util.Map" resultMap="Op_dataReturnMap">
+		select
+			cdate ,
+			SUM(visitnum) visitnum,
+			SUM(purchasenum) purchasenum,
+            ROUND(SUM(amount),2) amount,
+            SUM(registernum) registernum,
+            ROUND(SUM(payamount),2) payamount,
+            SUM(ordernum) ordernum,
+            SUM(uv) uv,
+            SUM(visitusernum) visitusernum,
+            SUM(cookie) cookie
+		from op_data_${tableName}
+		
+		WHERE cdate = #{cdate}
+		<if test="type!=null and type!='' and type!='all' and type!='mp'">
+		    and type = #{type}
+		</if>
+		<if test="type=='mp'">
+		    and type != 0
+		</if>
+		
+		GROUP BY cdate
+		ORDER BY cdate ASC
+	</select>
+	
+	<!-- 昨天当时经营概况 -->
+	<select id="findOperateByYesterdayNow" parameterType="String" resultMap="Op_dataReturnMap">
+	    SELECT 
+	    	COUNT(0) visitnum,COUNT(DISTINCT(ip)) uv,COUNT(DISTINCT(cookieid)) cookie,COUNT(DISTINCT(userid)) visitusernum
+	    FROM op_visit_detail_${_parameter}
+	    WHERE visittime >= DATE(DATE_SUB(NOW(),INTERVAL 1 DAY)) AND visittime <![CDATA[ <= ]]> DATE_SUB(NOW(),INTERVAL 1 DAY)
+	</select>
+	
+	
+</mapper>

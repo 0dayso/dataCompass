@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TableMapper">
+  
+  <select id="checkVisitMonthTableIsExist" parameterType="String" resultType="int">
+	 SELECT 
+	 	COUNT(1) 
+	 FROM 
+	 	INFORMATION_SCHEMA.TABLES 
+	 WHERE
+		 TABLE_SCHEMA = 'compass' 
+	 AND 
+	 	TABLE_NAME = 'op_visit_detail_${nowYearMonth}'
+  </select>
+  
+  <update id="createVisitMonthTable" parameterType="String">
+  	 CREATE TABLE op_visit_detail_${nowYearMonth}
+	(
+	   visittime            DATETIME COMMENT '创建时间',
+	   userid               INT COMMENT 'userid',
+	   ip                   VARCHAR(20) COMMENT 'ip',
+	   channelid            INT COMMENT '渠道id',
+	   sku                  VARCHAR(20) COMMENT 'sku',
+	   url                  VARCHAR(200) COMMENT 'url',
+	   SECOND               VARCHAR(20) COMMENT '二级',
+	   three                VARCHAR(20) COMMENT '三级',
+	   source               VARCHAR(100) COMMENT '来源',
+	   activeId             VARCHAR(100) COMMENT '活动ID',
+	   channelUrlId         INT COMMENT '渠道链接ID',
+	   TYPE                 INT,
+	   shopId               VARCHAR(100),
+	   county               VARCHAR(60)
+	)
+  </update>
+  
+	
+</mapper>
